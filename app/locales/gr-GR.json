@@ -2,5 +2,6 @@
   "language": "Ελληνικά",
   "loginTitle": "Σύνδεση",
   "emailPlaceholder": "Email",
-  "passwordPlaceholder": "Συνθηματικό"
+  "passwordPlaceholder": "Συνθηματικό",
+  "loginAction": "Είσοδος"
 }

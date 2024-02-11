@@ -1,22 +1,29 @@
-import {ReactNode, useState } from "react";
+"use client"
+import React, {ReactNode, useEffect, useState } from "react";
 
 export type dropdownProps = {
   className?: any;
-  children?: ReactNode;
+  children?: ReactNode[];
   title?: ReactNode | string;
+  onChange: (selectedItem :string) => void;
 };
 
 
 export type itemProps = {
   className?: any;
-  children?: ReactNode;
-  onClick?: () => void;
+  children?: string;
+  id: string;
+  defaultSelect?: boolean | false;
+  onClick?: (id: string) => any;
 }
 
-function Dropdown({ className, children, title, }: dropdownProps) {
+function Dropdown({ className, children, title, onChange}: dropdownProps) {
 
+  /* states */
   const [listVisible, setListVisible] = useState(false);
-  
+  const [selectedItem, setSelectedItem] = useState("")
+
+  /* styling */
   const containerPositionStyle = "fixed"
 
   const baseStyle = "rounded-full text-left border-2 border-blue-900";
@@ -41,6 +48,39 @@ function Dropdown({ className, children, title, }: dropdownProps) {
     listVisible ? appearListStyle : disappearListStyle,
   ].join(" ");
 
+  /* functionality */
+  
+  // copy children and select by default the first one
+  const Items = children?.map((child: any,  index) => {
+    const {id, defaultSelect} = child.props;
+
+    return React.cloneElement(child, {
+      key: index,
+      id: id,
+      defaultSelect: defaultSelect ? defaultSelect : false,
+      onClick: (id: string) => setSelectedItem(id),
+    });
+  })
+
+  // set default choice, if exists
+  useEffect(() => {
+    const defaultItem = Items?.find((item) => item.props.defaultSelect === true);
+    
+    if (defaultItem) {
+      setSelectedItem(defaultItem.props.id)
+    }
+
+    return () => {
+      setSelectedItem("");
+    }
+  }, [children])
+
+  // pass the change to the parent
+  useEffect(() => {
+    onChange(selectedItem);
+  }, [selectedItem])
+  
+
   return (
     <div className={`${containerPositionStyle} ${className}`}>
     <button
@@ -53,15 +93,17 @@ function Dropdown({ className, children, title, }: dropdownProps) {
 
       <div className={`${listStyles}`}>
        <div className={`${listArrowStyle}`}/>
-       {children}
+       {/* {children} */}
+       {Items}
       </div>
     
     </div>
   );
 }
 
-function Item({ className, children, onClick }: itemProps) {
+function Item({ className, children, id, defaultSelect, onClick }: itemProps) {
 
+  // styling
   const colorStyle = "border-full rounded-none "
   const shapeStyle = "w-full object-center p-1 m-1"
   const hoverStyle = "hover:bg-blue-400 text-blue-900 hover:rounded-2xl ";
@@ -72,12 +114,13 @@ function Item({ className, children, onClick }: itemProps) {
     colorStyle,
   ].join(" ")
 
-  return (
-    <button
-    className={itemStyles}
-    >
-        {children}
+  const onItemClick = () => {
+    onClick && onClick(id)
+  }
 
+  return (
+    <button id={id} defaultChecked={defaultSelect} className={itemStyles} onClick={onItemClick}>
+        {children}
     </button>
   );
 }

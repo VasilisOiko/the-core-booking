@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
 
 import LocalesDropdown from "./components/organisms/LocalesDropdown"
+// import { useTranslation } from "react-i18next";
 
-// const LocalesDropdown = dynamic(() => import("./components/organisms/LocalesDropdown"))
+// const { t, i18n } = useTranslation();
 
 const inter = Inter({ subsets: ["latin"] });
 
