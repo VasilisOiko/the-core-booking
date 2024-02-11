@@ -31,7 +31,6 @@ body {
     center;
   background-size: 25%, cover;
   background-repeat: no-repeat;
-  color: whitesmoke;
 }
 
 @layer utilities {

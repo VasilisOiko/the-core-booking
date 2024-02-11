@@ -10,6 +10,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "i18next": "^23.7.20",
     "next": "^14.1.0",
     "react": "^18",

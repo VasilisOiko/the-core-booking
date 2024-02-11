@@ -7,6 +7,7 @@ import Button from "../../atoms/Button";
 export type useFormProps = {
   className?: any;
   children?: ReactNode;
+  onSubmit?: (event:any) => any;
 };
 
 export type useItemProps = {
@@ -18,9 +19,15 @@ export type useItemProps = {
 const inputContainerStyle = "my-2";
 const symbolStyle = "h-6 w-6 fill-blue-zodiac";
 
-function Form({ className, children }: useFormProps) {
+function Form({ className, children, onSubmit }: useFormProps) {
+
+  /* functionality */
+
+
   return (
-    <form className={`flex w-72 flex-col items-center ${className}`}>
+    <form className={`flex w-72 flex-col items-center ${className}`}
+    onSubmit={onSubmit? (event) => onSubmit(event) : () => {}}
+    >
       {children}
     </form>
   );

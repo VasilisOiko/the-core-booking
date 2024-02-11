@@ -6,7 +6,7 @@ export type useProps = {
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
   variant?: "primary";
-  onClick?: () => void;
+  onClick?: (event:any) => void;
 };
 
 function Button({
@@ -38,7 +38,7 @@ function Button({
         className={`${buttonStyles} ${className}`}
         type={type}
         disabled={disabled}
-        onClick={onClick}
+        onClick={onClick ? (event) => onClick(event) : () =>{}}
       >
         {children}
       </button>
