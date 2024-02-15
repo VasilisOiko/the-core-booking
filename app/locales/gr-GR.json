@@ -3,5 +3,9 @@
   "loginTitle": "Σύνδεση",
   "emailPlaceholder": "Email",
   "passwordPlaceholder": "Συνθηματικό",
-  "loginAction": "Είσοδος"
+  "loginAction": "Είσοδος",
+
+  "login.error.wrongDetails": "Έχετε συμπληρώσει λάθος στοιχεία σύνδεσης, παρακαλώ δοκιμάστε ξανά.",
+  "login.error.unknown": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα, παρακαλώ προσπαθήστε ξανά αργότερα."
+
 }

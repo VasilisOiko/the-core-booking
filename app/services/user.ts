@@ -1,11 +1,14 @@
 import axios from "axios";
+import REQUEST from "../utils/constants/network";
+import { stringifyError } from "next/dist/shared/lib/utils";
+
+type Login = Promise<string>
 
 type loginProps = {
     username: string;
     password: string;
 }
 
-const baseURL = "https://thecorecf.com//api/";
 const loginURL = "auth/token/athlete/";
 
 const api = axios.create({
@@ -14,31 +17,29 @@ const api = axios.create({
     headers: {
         Accept: "application/json, text/plain",
         "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br",
         "Content-Type": "application/json",
-        Connection: "keep-alive",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        TE: "trailers",
     }
 })
 
-const services = {
-    login: ({ username, password }: loginProps) => {
-        console.log("login with: ", username, password);
-        api.post(`${loginURL}${username}`, {
-            username: username,
-            password: password,
-        })
-        .then((response) => {
-            console.log(response)
-            return response;
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
+
+const Login = ({ username, password }: loginProps) => {
+    let returnValue = "";
+
+    return api.post(`${loginURL}${username}`, {
+        username: username,
+        password: password,
+    })
+    .then((response) => {
+        return response.data.token;
+    })
+    .catch((error) => {
+        if(JSON.stringify(error.response.data) === REQUEST.FAILED.WRONG_USER_DATA) {
+            return REQUEST.FAILED.WRONG_USER_DATA;
+        }
+        else {
+            return  REQUEST.FAILED.UNKNOWN_ERROR;
+        }
+    })
 }
 
-export default services;
+export {Login}

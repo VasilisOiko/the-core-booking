@@ -7,7 +7,7 @@ type useProps = {
     className?: string;
 }
 
-const getRawLocalizedText = (id: string) => {
+const RawLocalizedText = (id: string) => {
   const {t} = useTranslation();
   return t(id);
 }
@@ -19,4 +19,4 @@ function LocalizedText({ id, className }: useProps) {
 }
 
 export default LocalizedText;
-export {getRawLocalizedText};
+export {RawLocalizedText};

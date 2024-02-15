@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 type State = {
+  token: string;
   user: object;
   userBookings: object[];
   availableBookings: object[];
@@ -10,6 +11,7 @@ type State = {
 };
 
 type actions = {
+  updateToken: (token: State["token"]) => void;
   updateUser: (user: State["user"]) => void;
   updateUserBookings: (userBookings: State["userBookings"]) => void;
   updateAvailableBookings: (
@@ -21,6 +23,7 @@ type actions = {
 };
 
 const useStore = create<State & actions>((set) => ({
+  token: "",
   user: {},
   userBookings: [],
   availableBookings: [],
@@ -28,6 +31,7 @@ const useStore = create<State & actions>((set) => ({
   extraFields: {},
   notifications: [],
 
+  updateToken: (token)  => set (() => ({token: token})),
   updateUser: (user) => set(() => ({ user: user })),
   updateUserBookings: (userBookings) =>
     set(() => ({ userBookings: userBookings })),
@@ -38,3 +42,5 @@ const useStore = create<State & actions>((set) => ({
   updateNotifications: (notifications) =>
     set(() => ({ notifications: notifications })),
 }));
+
+export default useStore;
