@@ -74,7 +74,7 @@ function page() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">
-      <Alert visible={showAlert} type="warning" title="Error" message={alertMessage} />
+      <Alert visible={showAlert} type="warning" message={alertMessage} />
       <LocalizedText
         className="text-lg font-semibold text-gray-100"
         id="loginTitle"
