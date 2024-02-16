@@ -33,6 +33,15 @@ function page() {
   const symbolStyle = "h-6 w-6";
 
   /* functionality */
+  const showAlertMessage = () => {
+    setShowAlert(true);
+
+    const timeout = setTimeout(() => {
+      setShowAlert(false)
+      clearTimeout(timeout);
+    }, 5000);
+  }
+  
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
@@ -59,9 +68,9 @@ function page() {
         setAlertMessage("success");
         break;
     }
-    setShowAlert(true);
-
-  };
+    showAlertMessage();
+  }
+  console.log(showAlert);
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">
