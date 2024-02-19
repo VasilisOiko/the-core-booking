@@ -18,12 +18,19 @@ const config: Config = {
     },
     extend: {
       colors: {
-        shiraz: "#ba122b",
         neptune: "#67BDAE",
         "blue-zodiac": "#14225a",
         azure: "#00a0ff",
         "light-gray": "#a1a8ad",
         "dark-gray": "##212121",
+        // red
+        shiraz: "#BA122B",
+        "firebrick": "#7D0C1D",
+        // green
+        "greenish-blue": "#2a8979",
+        "sea-mist": "#bcdcd7",
+        "dark-green-blue": "#1e6156",
+        "gable-green": "#123b34"
       },
       safelist: [
         "brand-red", // Add more classes as needed

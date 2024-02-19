@@ -1,5 +1,12 @@
-import Image from "next/image";
+import React from 'react'
+import Layout from './layout'
 
-export default function Home() {
-  return <main></main>;
+function page() {
+  return (
+    <Layout>
+        page
+    </Layout>
+  )
 }
+
+export default page

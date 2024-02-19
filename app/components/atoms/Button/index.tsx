@@ -19,7 +19,7 @@ function Button({
 }: useProps) {
   const baseStyle = "px-6 py-2 rounded-full focus:outline-none";
   const primaryContainerStyle = "h-0.5 mt-2";
-  const primaryStyle = "bg-azure text-black";
+  const primaryStyle = "bg-sea-mist text-black";
   const hoverStyle = "transition hover:scale-105";
   const activeStyle = "active:scale-90";
   const disabledStyle = "cursor-not-allowed opacity-50";

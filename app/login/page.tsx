@@ -10,7 +10,7 @@ import LocalizedText, {
 
 import useStore from "../store/user";
 
-import { Login } from "../services/user";
+import { authenticate } from "../lib/actions";
 import Form from "../components/molecules/Form";
 import Input from "../components/atoms/Input";
 import Button from "../components/atoms/Button";
@@ -45,14 +45,11 @@ function page() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
-    console.log("form content: ", event);
-    console.log("email: ", event.target.email.value);
-    console.log("password: ", event.target.password.value);
 
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    const data = await Login({ username: email, password });
+    const data = await authenticate({ email, password });
 
     switch (data) {
       case REQUEST.FAILED.WRONG_USER_DATA:
@@ -70,7 +67,6 @@ function page() {
     }
     showAlertMessage();
   }
-  console.log(showAlert);
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">

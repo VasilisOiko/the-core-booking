@@ -24,7 +24,8 @@ body {
   border-radius: 10px;
   background-color: black; */
   background-image: url("../public/THE+CORE+logo+final.png"),
-    url("../public/blurry-gradient-haikei.svg");
+    /* url("../public/blurry-gradient-haikei.svg"); */
+    url("../public/stacked-waves-haikei.svg");
   background-repeat: no-repeat;
   background-position:
     top left,

@@ -29,12 +29,12 @@ function Dropdown({ className, children, title, onChange}: dropdownProps) {
   /* styling */
   const containerPositionStyle = "fixed"
 
-  const baseStyle = "rounded-full text-left border-2 border-blue-900";
-  const hoverStyle = "hover:bg-gray-300";
+  const baseStyle = "rounded-full text-left bg-sea-mist border-2 border-black";
+  const hoverStyle = "hover:bg-greenish-blue";
 
   const listPositionStyle = "btn-group absolute right-0 items-center";
   const listColorStyle = "bg-blue-200 border-4 border-blue-900";
-  const listShapeStyle = "mt-3 p-3 rounded-bl-3xl";
+  const listShapeStyle = "mt-3 p-3 rounded-l-md";
   const listArrowStyle = "absolute -top-2 right-1 z-0 transform rotate-45 p-2 bg-blue-200 text-white";
   const appearListStyle = "transition ease-out duration-200 translate-y-0 opacity-100";
   const disappearListStyle = "transition ease-out duration-200 -translate-y-3.5 opacity-0 pointer-events-none";

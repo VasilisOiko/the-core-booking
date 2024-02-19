@@ -18,7 +18,7 @@ function LocalesDropdown() {
       <Dropdown
           className={"right-11 top-8"}
           onChange={(language) =>  changeLanguage(language)}
-          title={<MdLanguage className={"h-8 w-8 fill-blue-600"} />}
+          title={<MdLanguage className={"h-10 w-10 fill-shiraz"} />}
           >
             <Dropdown.Item id={LANGUAGES.GREEK} defaultSelect={true}>
               {LANGUAGES.GREEK_TEXT}

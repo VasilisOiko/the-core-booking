@@ -1,8 +1,5 @@
 import axios from "axios";
 import REQUEST from "../utils/constants/network";
-import { stringifyError } from "next/dist/shared/lib/utils";
-
-type Login = Promise<string>
 
 type loginProps = {
     username: string;
@@ -22,24 +19,12 @@ const api = axios.create({
 })
 
 
-const Login = ({ username, password }: loginProps) => {
-    let returnValue = "";
+const login = ({ username, password }: loginProps) => {
 
     return api.post(`${loginURL}${username}`, {
         username: username,
         password: password,
     })
-    .then((response) => {
-        return response.data.token;
-    })
-    .catch((error) => {
-        if(JSON.stringify(error.response.data) === REQUEST.FAILED.WRONG_USER_DATA) {
-            return REQUEST.FAILED.WRONG_USER_DATA;
-        }
-        else {
-            return  REQUEST.FAILED.UNKNOWN_ERROR;
-        }
-    })
 }
 
-export {Login}
+export {login}

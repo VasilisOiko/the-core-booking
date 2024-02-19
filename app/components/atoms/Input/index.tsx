@@ -21,7 +21,7 @@ function Input({
 }: useProps) {
   const containerBaseStyle =
     "flex items-center rounded-xl border-4 border-gray-400 min-w-full bg-white";
-  const containerFocusStyle = "focus-within:border-blue-900 ";
+  const containerFocusStyle = "focus-within:border-gable-green";
   const iconStyle = "pl-2 pr-1";
   const inputBaseStyle = "outline-none border-none py-2 mr-3 basis-full peer";
   const inputInvalidStyle = "invalid:text-shiraz";
