@@ -18,5 +18,4 @@ function LocalizedText({ id, className }: useProps) {
   return <span className={className}>{t(id)}</span>;
 }
 
-export default LocalizedText;
-export {RawLocalizedText};
+export { LocalizedText, RawLocalizedText };

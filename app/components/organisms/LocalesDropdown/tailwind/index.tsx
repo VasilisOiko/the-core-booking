@@ -1,10 +1,10 @@
 "use client"
 
 import React from 'react'
-import Dropdown from '../../molecules/Dropdown/index'
-import LANGUAGES from "../../../utils/constants/languages"
+import Dropdown from '../../../molecules/Dropdown/tailwind/index'
+import LANGUAGES from "../../../../utils/constants/languages"
 import { MdLanguage } from "react-icons/md";
-import i18n from '../../atoms/LocalizedText/helpers';
+import i18n from '../../../atoms/LocalizedText/helpers';
 
 
 function LocalesDropdown() {

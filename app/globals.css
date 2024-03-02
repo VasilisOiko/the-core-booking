@@ -19,18 +19,14 @@
 body {
   /* background: rgba( 255, 255, 255, 0.25 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 10px );
   border-radius: 10px;
   background-color: black; */
-  background-image: url("../public/THE+CORE+logo+final.png"),
+  backdrop-filter: blur( 0px );
+  background-image:
+  url("../public/stacked-waves-haikei.svg");
     /* url("../public/blurry-gradient-haikei.svg"); */
-    url("../public/stacked-waves-haikei.svg");
-  background-repeat: no-repeat;
-  background-position:
-    top left,
-    center;
-  background-size: 25%, cover;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 

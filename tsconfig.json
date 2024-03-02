@@ -25,9 +25,12 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.png",
+    "**/*.svg",
+    "app/**/*.ts",
+    "app/**/*.tsx",
     ".next/types/**/*.ts",
-    "app/components/atoms/Dropdown", "app/utils/helpers",
+    "app/components/atoms/Dropdown",
   ],
   "exclude": ["node_modules"],
 }

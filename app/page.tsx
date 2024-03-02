@@ -1,11 +1,15 @@
 import React from 'react'
-import Layout from './layout'
+import protectedRoute from "./auth/protectedRoute"
+import { Spinner } from './components';
+import ProtectedRoute from './auth/protectedRoute';
 
 function page() {
   return (
-    <Layout>
-        page
-    </Layout>
+    <ProtectedRoute>
+      <div className='static object-center'>
+          <Spinner/>
+      </div>
+    </ProtectedRoute>
   )
 }
 

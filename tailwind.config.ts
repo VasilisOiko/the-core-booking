@@ -32,6 +32,9 @@ const config: Config = {
         "dark-green-blue": "#1e6156",
         "gable-green": "#123b34"
       },
+      scale: {
+        "20": "0.20"
+      },
       safelist: [
         "brand-red", // Add more classes as needed
         // Patterns are also supported

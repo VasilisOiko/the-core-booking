@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { HiAtSymbol } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
-import Input from "../../atoms/Input";
-import Button from "../../atoms/Button";
+import Input from "../../../atoms/Input/tailwind";
+import Button from "../../../atoms/Button/tailwind";
 
 export type useFormProps = {
   className?: any;

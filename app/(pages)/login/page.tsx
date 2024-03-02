@@ -4,18 +4,19 @@ import React, { useState } from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { HiOutlineAtSymbol } from "react-icons/hi";
 
-import LocalizedText, {
+import {
+  Form,
+  Input,
+  Button,
+  Alert,
+  LocalizedText,
   RawLocalizedText,
-} from "../components/atoms/LocalizedText";
+} from "../../components"
 
-import useStore from "../store/user";
+import useStore from "../../store/user";
 
-import { authenticate } from "../lib/actions";
-import Form from "../components/molecules/Form";
-import Input from "../components/atoms/Input";
-import Button from "../components/atoms/Button";
-import REQUEST from "../utils/constants/network";
-import Alert from "../components/atoms/Alert";
+import { authenticate } from "../../lib/actions";
+import REQUEST from "../../utils/constants/network";
 
 function page() {
   const updateToken = useStore((state) => state.updateToken);
@@ -67,7 +68,7 @@ function page() {
     }
     showAlertMessage();
   }
-
+  console.log("token: ", token)
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">
       <Alert visible={showAlert} type="warning" message={alertMessage} />
