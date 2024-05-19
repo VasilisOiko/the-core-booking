@@ -11,13 +11,14 @@
     "prettier-format": "prettier --config .prettierrc 'app/**/*.ts' --write"
   },
   "dependencies": {
+    "antd": "^5.17.2",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "i18next": "^23.7.20",
     "next": "^14.1.0",
     "next-auth": "^4.24.6",
     "react": "^18",
-    "react-bootstrap": "^2.10.1",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18",
     "react-error-boundary": "^4.0.12",
     "react-i18next": "^14.0.1",
