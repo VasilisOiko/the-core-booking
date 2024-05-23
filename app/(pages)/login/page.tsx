@@ -3,14 +3,13 @@
 import React, { useState } from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { HiOutlineAtSymbol } from "react-icons/hi";
+import { RawLocalizedText, LocalizedText } from "../../locales/index"
 
 import {
   Form,
   Input,
   Button,
   Alert,
-  LocalizedText,
-  RawLocalizedText,
 } from "../../components"
 
 import useStore from "../../store/user";
@@ -84,7 +83,7 @@ function page() {
             id="email"
             name="email"
             required={true}
-            icon={
+            prefix={
               <HiOutlineAtSymbol
                 className={`${symbolStyle} stroke-blue-zodiac stroke-2`}
               />
@@ -98,7 +97,7 @@ function page() {
             id="password"
             name="password"
             required={true}
-            icon={
+            prefix={
               <RiLockPasswordFill
                 className={`${symbolStyle} fill-blue-zodiac`}
               />
@@ -106,7 +105,7 @@ function page() {
           />
         </Form.Item>
         <Form.Item>
-          <Button variant="primary" type="submit">
+          <Button type="primary">
             <LocalizedText id="loginAction" />
           </Button>
         </Form.Item>

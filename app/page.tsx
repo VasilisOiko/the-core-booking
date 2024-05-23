@@ -4,9 +4,16 @@ import { Spinner } from './components';
 import ProtectedRoute from './auth/protectedRoute';
 import { ConfigProvider } from 'antd';
 
+
 function page() {
   return (
-    <ConfigProvider direction="rtl">
+    <ConfigProvider
+    theme={{
+      token: {
+        colorPrimary: '#1677ff',
+      },
+    }}
+    >
       <ProtectedRoute>
         <div className='static object-center'>
             <Spinner/>

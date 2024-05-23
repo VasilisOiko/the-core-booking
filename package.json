@@ -11,11 +11,16 @@
     "prettier-format": "prettier --config .prettierrc 'app/**/*.ts' --write"
   },
   "dependencies": {
-    "antd": "^5.17.2",
+    "@ant-design/cssinjs": "^1.20.0",
+    "@ant-design/icons": "^5.3.7",
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "antd": "^5.17.3",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "i18next": "^23.7.20",
-    "next": "^14.1.0",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "next": "^14.2.3",
     "next-auth": "^4.24.6",
     "react": "^18",
     "react-bootstrap": "^2.10.2",
