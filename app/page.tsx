@@ -1,26 +1,17 @@
-import React from 'react'
-import protectedRoute from "./auth/protectedRoute"
-import { Spinner } from './components';
-import ProtectedRoute from './auth/protectedRoute';
-import { ConfigProvider } from 'antd';
+import React from "react"
+import { Spinner } from "./components"
+import ProtectedRoute from "./auth/protectedRoute"
+// import 'antd/dist/antd.css'
+// import '../styles/globals.css'
 
 
-function page() {
+function Page() {
   return (
-    <ConfigProvider
-    theme={{
-      token: {
-        colorPrimary: '#1677ff',
-      },
-    }}
-    >
-      <ProtectedRoute>
-        <div className='static object-center'>
+        <div className="static object-center">
+          <h1>loading</h1>
             <Spinner/>
         </div>
-      </ProtectedRoute>
-    </ConfigProvider>
   )
 }
 
-export default page;
+export default Page

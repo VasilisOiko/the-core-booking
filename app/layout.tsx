@@ -5,11 +5,9 @@ import i18n from './locales/init';
 
 import {
   LocalesDropdown,
-  Row,
-  Col,
   Header,
   Image,
-  UserAvatar
+  UserProfileMenu
 } from "./components"
 import { Flex, Layout  } from "antd";
 import { Content } from 'antd/lib/layout/layout';
@@ -18,7 +16,6 @@ import { AntdRegistry } from '@ant-design/nextjs-registry'
 import theme from './themes/antd/themeConfig'
 
 import crossfitLogo from "public/THE+CORE+logo+final.png"
-import { getAuthenticationStatus } from "./utils/helpers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +38,6 @@ export default function RootLayout({ children , }: Readonly<{
     />
   )
 
-  const isAuthenticated = getAuthenticationStatus();
   
   return (
     <html lang="en">
@@ -51,16 +47,9 @@ export default function RootLayout({ children , }: Readonly<{
         <body>
           <AntdRegistry>
             <ConfigProvider theme={theme}>
-                <Header
-                  logo={logo}
-                >
-                  {/* <img
-                    src={crossfitLogo.src}
-                    alt="crossfit logo"
-                    className="absolute inset-5 w-2/12 h-2/12"
-                  /> */}
+                <Header logo={logo}>
                   <LocalesDropdown />
-                  {isAuthenticated && <UserAvatar/>}
+                  <UserProfileMenu/>
                 </Header>
               <Layout>
                 <Content>

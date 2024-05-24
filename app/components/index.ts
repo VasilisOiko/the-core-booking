@@ -1,19 +1,17 @@
 import Alert from "./atoms/Alert/tailwind";
 import Spinner from "./atoms/Spinner/bootstrap";
 /* Molecules */
-import Form from "./molecules/Form/tailwind";
 
 /* Organisms */
-import UserAvatar from "./organisms/UserAvatar/antd"
+import UserProfileMenu from "./organisms/UserProfileMenu"
 import NavigationBar from "./organisms/NavigationBar/antd";
-import LocalesDropdown from "./organisms/LocalesDropdown/antd";
+import LocalesDropdown from "./organisms/LocalesDropdown";
 import Header from "./templates/Header/antd";
 
 export {
     Alert,
     Spinner,
-    Form,
-    UserAvatar,
+    UserProfileMenu,
     NavigationBar,
     LocalesDropdown,
     Header
@@ -33,6 +31,7 @@ export {
     Drawer,
     Dropdown,
     Flex,
+    Form,
     Grid,
     Image,
     Input,

@@ -1,13 +1,10 @@
-import ProtectedRoute from '@/app/auth/protectedRoute'
 import React from 'react'
 
-
+// TODO: Suspense react when fetching
 function Dashboard() {
 
   return (
-    <ProtectedRoute>
       <div>Dashboard</div>
-    </ProtectedRoute>
   )
 }
 

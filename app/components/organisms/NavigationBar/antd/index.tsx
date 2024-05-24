@@ -9,26 +9,22 @@ function NavigationBar() {
 
 const navItems: MenuItem[] = [
     {
-        label: 'Navigation One',
-        key: 'mail',
+        label: 'Dashboard',
+        key: 'Dashboard',
     },
     {
-        label: (<LocalesDropdown/>),
-        key: 'locales',
+        label: 'Bookings',
+        key: 'Bookings',
     },
     {
-        icon: (<MdLanguage/>),
-        key: 'SubMenu',
-        children: [
-            { label: LANGUAGES.GREEK_TEXT, key: LANGUAGES.GREEK },
-            { label: LANGUAGES.ENGLISH_TEXT, key: LANGUAGES.ENGLISH },
-        ],
+        label: 'information',
+        key: 'information',
     }
 ];
 
     return (
         <Menu
-            mode="horizontal"
+            mode="vertical"
             items={navItems}
         />
     )

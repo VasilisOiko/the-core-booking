@@ -1,15 +1,15 @@
-import React from 'react';
-import { Dropdown, Button } from '../../../index';
-import { type MenuProps } from 'antd';
-import LANGUAGES from "../../../../utils/constants/languages";
-import i18n from '../../../../locales/init';
-import { MdLanguage } from 'react-icons/md';
-import { handleSelect } from './helper'
+import React from "react";
+import { Dropdown, Button } from "../../index";
+import { type MenuProps } from "antd";
+import LANGUAGES from "../../../utils/constants/languages";
+import i18n from "../../../locales/init";
+import { MdLanguage } from "react-icons/md";
+import { handleSelect } from "./helper"
 
 
 function LocalesDropdown(props?:any) {
 
-    const localesOptions: MenuProps['items'] = [
+    const localesOptions: MenuProps["items"] = [
         {
             key: LANGUAGES.GREEK,
             label: (<div>{LANGUAGES.GREEK_TEXT}</div>),

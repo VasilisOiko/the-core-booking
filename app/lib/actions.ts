@@ -1,7 +1,8 @@
-'use server'
+"use server"
  
-import { login } from '../services/user'
-import REQUEST from '../utils/constants/network';
+import useAuth from "../hooks/useAuth";
+import { fetchToken } from "../services/user"
+import REQUEST from "../utils/constants/network";
 
 type loginCredentials = {
     email: string;
@@ -10,10 +11,16 @@ type loginCredentials = {
  
 export async function authenticate({email, password}: loginCredentials) {
   try {
-    const response = await login({username: email, password})
+    const response = await fetchToken({username: email, password})
+
+    console.log("response: ", response)
+    const { login } = useAuth()
     
-    return response.data.token;
+    login(response.data.token)
+    
+    return REQUEST.SUCCESSFUL;
   } catch (error) {
+    console.log("response: ", error)
     if (error) {
         if(JSON.stringify(error.response.data) === REQUEST.FAILED.WRONG_USER_DATA) {
             return REQUEST.FAILED.WRONG_USER_DATA;

@@ -3,28 +3,29 @@
 import React, { useState } from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { HiOutlineAtSymbol } from "react-icons/hi";
-import { RawLocalizedText, LocalizedText } from "../../locales/index"
+import { RawLocalizedText, LocalizedText } from "../../../locales/index"
 
 import {
   Form,
   Input,
   Button,
   Alert,
-} from "../../components"
+} from "../../../components"
 
-import useStore from "../../store/user";
+import useStore from "../../../store/user";
 
-import { authenticate } from "../../lib/actions";
-import REQUEST from "../../utils/constants/network";
+import { authenticate } from "../../../lib/actions";
+import REQUEST from "../../../utils/constants/network";
+import useAuth from "@/app/hooks/useAuth";
 
 function page() {
-  const updateToken = useStore((state) => state.updateToken);
-  const token = useStore((state) => state.token);
 
   /* state */
   const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+
+  const [form] = Form.useForm()
 
   const wrongDetailsError = RawLocalizedText("login.error.wrongDetails")
   const unknownError = RawLocalizedText("login.error.unknown");
@@ -42,16 +43,21 @@ function page() {
     }, 5000);
   }
   
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  const handleSubmit = async (values: any) => {
+
     setLoading(true);
 
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+    console.log("values: ", values)
+
+    const email = values.email.value;
+    const password = values.password.value;
 
     const data = await authenticate({ email, password });
 
     switch (data) {
+      case REQUEST.SUCCESSFUL:
+        setAlertMessage("success");
+        break;
       case REQUEST.FAILED.WRONG_USER_DATA:
         setAlertMessage(wrongDetailsError);
         break;
@@ -61,13 +67,13 @@ function page() {
         break;
 
       default:
-        updateToken(data);
-        setAlertMessage("success");
+        //TODO: set locale
+        setAlertMessage("unknown");
         break;
     }
     showAlertMessage();
   }
-  console.log("token: ", token)
+
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">
       <Alert visible={showAlert} type="warning" message={alertMessage} />
@@ -75,13 +81,20 @@ function page() {
         className="text-lg font-semibold text-gray-100"
         id="loginTitle"
       />
-      <Form className="disabled" onSubmit={handleSubmit}>
-        <Form.Item>
+      <Form form={form}
+        onFinish={handleSubmit}
+      >
+        <Form.Item
+          name="email"
+          rules={[
+            { required: true, message: "Please input your email!" },
+            { type: "email", message: "Email must be \"user@example.com\" format"}
+          ]}
+        >
           <Input
             type="email"
             placeholder={RawLocalizedText("emailPlaceholder")}
             id="email"
-            name="email"
             required={true}
             prefix={
               <HiOutlineAtSymbol
@@ -90,12 +103,15 @@ function page() {
             }
           />
         </Form.Item>
-        <Form.Item>
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
           <Input
             type="password"
             placeholder={RawLocalizedText("passwordPlaceholder")}
             id="password"
-            name="password"
+            
             required={true}
             prefix={
               <RiLockPasswordFill
@@ -105,7 +121,7 @@ function page() {
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary">
+          <Button type="primary" onClick={form.submit}>
             <LocalizedText id="loginAction" />
           </Button>
         </Form.Item>
@@ -114,4 +130,4 @@ function page() {
   );
 }
 
-export default page;
+export default page

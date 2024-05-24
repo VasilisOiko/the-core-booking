@@ -30,6 +30,7 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     ".next/types/**/*.ts",
+    "./middleware.ts",
     "app/components/atoms/Dropdown", "app/components/molecules/Dropdown/antd",
   ],
   "exclude": ["node_modules"],

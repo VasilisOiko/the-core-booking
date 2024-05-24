@@ -1,31 +1,35 @@
-import { cookies } from 'next/headers'
-import { RedirectType, redirect, useRouter  } from 'next/navigation';
-import { NextResponse } from 'next/server';
-import { ReactNode } from 'react';
-import { getAuthenticationStatus } from '../utils/helpers';
+import { ReactNode } from "react"
+import useAuth from "../hooks/useAuth"
 
-// Function to check if the user is authenticated
-// const isAuthenticated = (): boolean => {
-//     const cookieStore = cookies()
-//     const tokenCookie = cookieStore.get('token')
-//     console.log("tokenCookie: ", !!tokenCookie, tokenCookie);
-//     return !!tokenCookie;
-// };
+
 
 // Higher-order function to create protected server-side props
-const ProtectedRoute= ({children}:{children: ReactNode}) => {
-  // Check if the user is authenticated
-  const isAuthenticated = getAuthenticationStatus();
+const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
-  // If user is not authenticated, redirect to login page
-  if (!isAuthenticated) {
-    console.log("redirect to login")
-    redirect("/login", RedirectType.replace);
-  }
+  // const pathname = usePathname()
+  // const { isAuthenticated } = useAuth()
+  // const router = useRouter()
 
+  // useEffect(() => {
 
-  // If user is authenticated, call the original getServerSideProps function
-  return <div>{children}</div>;
-};
+  //   console.log("isAuthenticated: ", isAuthenticated)
+  //   if (!isAuthenticated) {
+  //     console.log("redirect to login")
+  //     // Redirect user to login if not authenticated
+  //     router.push("/login")
+  //   } else if (pathname === "/login") {
+  //     console.log("from login page redirect to dashboard")
+  //     // Redirect authenticated user away from login page
+  //     router.push("/dashboard")
+  //   }
+  // }, [isAuthenticated, router])
+
+  // if (!isAuthenticated && pathname !== "/login") {
+  //   return null // Prevent rendering until authentication check is done
+  // }
+
+  // return <>{children}</>
+  
+}
 
 export default ProtectedRoute

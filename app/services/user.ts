@@ -19,7 +19,7 @@ const api = axios.create({
 })
 
 
-const login = ({ username, password }: loginProps) => {
+const fetchToken = ({ username, password }: loginProps) => {
 
     return api.post(`${loginURL}${username}`, {
         username: username,
@@ -27,4 +27,4 @@ const login = ({ username, password }: loginProps) => {
     })
 }
 
-export {login}
+export { fetchToken }
