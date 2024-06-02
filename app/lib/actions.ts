@@ -13,6 +13,8 @@ export async function authenticate({email, password}: loginCredentials) {
   try {
     const response = await fetchToken({username: email, password})
 
+    console.log("authenticate: ", email, password)
+
     console.log("response: ", response)
     const { login } = useAuth()
     

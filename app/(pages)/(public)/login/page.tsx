@@ -1,8 +1,9 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { RiLockPasswordFill } from "react-icons/ri";
-import { HiOutlineAtSymbol } from "react-icons/hi";
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
+import { RiLockPasswordFill } from "react-icons/ri"
+import { HiOutlineAtSymbol } from "react-icons/hi"
 import { RawLocalizedText, LocalizedText } from "../../../locales/index"
 
 import {
@@ -10,124 +11,132 @@ import {
   Input,
   Button,
   Alert,
+  Row,
+  Col,
+  Flex,
+  Title,
+  Text,
 } from "../../../components"
 
-import useStore from "../../../store/user";
+import { authenticate } from "../../../lib/actions"
+import REQUEST from "../../../utils/constants/network"
 
-import { authenticate } from "../../../lib/actions";
-import REQUEST from "../../../utils/constants/network";
-import useAuth from "@/app/hooks/useAuth";
 
 function page() {
 
-  /* state */
-  const [loading, setLoading] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState("")
 
   const [form] = Form.useForm()
 
   const wrongDetailsError = RawLocalizedText("login.error.wrongDetails")
-  const unknownError = RawLocalizedText("login.error.unknown");
+  const unknownError = RawLocalizedText("login.error.unknown")
+  const emailRequiredMessage = RawLocalizedText("login.email.required.message")
+  const emailValidationMessage = RawLocalizedText("login.email.email.validation.message")
 
-  /* styles */
-  const symbolStyle = "h-6 w-6";
+  const router = useRouter()
 
-  /* functionality */
-  const showAlertMessage = () => {
-    setShowAlert(true);
-
-    const timeout = setTimeout(() => {
-      setShowAlert(false)
-      clearTimeout(timeout);
-    }, 5000);
+  const showAlertMessage = (message: string) => {
+    setAlertMessage(message)
+    setShowAlert(true)
   }
   
   const handleSubmit = async (values: any) => {
 
-    setLoading(true);
+    setLoading(true)
+    setShowAlert(false)
 
-    console.log("values: ", values)
+    const email = values.email
+    const password = values.password
 
-    const email = values.email.value;
-    const password = values.password.value;
-
-    const data = await authenticate({ email, password });
+    const data = await authenticate({ email, password })
 
     switch (data) {
+
       case REQUEST.SUCCESSFUL:
-        setAlertMessage("success");
-        break;
+        router.push('/dashboard')
+        break
+
       case REQUEST.FAILED.WRONG_USER_DATA:
-        setAlertMessage(wrongDetailsError);
-        break;
+        showAlertMessage(wrongDetailsError)
+        break
 
       case REQUEST.FAILED.UNKNOWN_ERROR:
-        setAlertMessage(unknownError);
-        break;
+        showAlertMessage(unknownError)
+        break
 
       default:
-        //TODO: set locale
-        setAlertMessage("unknown");
-        break;
+        showAlertMessage(unknownError)
+        break
     }
-    showAlertMessage();
+    setLoading(false)
   }
 
+  console.log(showAlert)
+
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-blurry-gradient">
-      <Alert visible={showAlert} type="warning" message={alertMessage} />
-      <LocalizedText
-        className="text-lg font-semibold text-gray-100"
-        id="loginTitle"
-      />
+    <Flex
+      className="h-screen"
+      justify="center"
+      align="center"
+    >
       <Form form={form}
-        onFinish={handleSubmit}
-      >
-        <Form.Item
-          name="email"
-          rules={[
-            { required: true, message: "Please input your email!" },
-            { type: "email", message: "Email must be \"user@example.com\" format"}
-          ]}
+          onFinish={handleSubmit}
+          className="w-80"
         >
-          <Input
-            type="email"
-            placeholder={RawLocalizedText("emailPlaceholder")}
-            id="email"
-            required={true}
-            prefix={
-              <HiOutlineAtSymbol
-                className={`${symbolStyle} stroke-blue-zodiac stroke-2`}
+        <Row gutter={[24, 8]} justify="center">
+          <Col span={24} flex={"inherit"}>
+            <Title level={3}>
+              <LocalizedText id="loginTitle"/>
+            </Title>
+          </Col>
+
+          <Col span={24}>
+            {showAlert && <Alert type="warning" message={<Text>{alertMessage}</Text>} showIcon/>}
+          </Col>
+          
+          <Col span={24}>
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: emailRequiredMessage },
+                { type: "email", message:emailValidationMessage}
+              ]}>
+              <Input
+                type="email"
+                placeholder={RawLocalizedText("emailPlaceholder")}
+                id="email"
+                required={true}
+                prefix={
+                  <HiOutlineAtSymbol className={"h-6 w-6 stroke-blue-zodiac stroke-2"} />
+                }
               />
-            }
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input
-            type="password"
-            placeholder={RawLocalizedText("passwordPlaceholder")}
-            id="password"
-            
-            required={true}
-            prefix={
-              <RiLockPasswordFill
-                className={`${symbolStyle} fill-blue-zodiac`}
-              />
-            }
-          />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" onClick={form.submit}>
-            <LocalizedText id="loginAction" />
-          </Button>
-        </Form.Item>
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item name="password">
+              <Input.Password
+                id="password"
+                type="password"
+                placeholder={RawLocalizedText("passwordPlaceholder")}
+                visibilityToggle={true}                
+                prefix={
+                  <RiLockPasswordFill className="h-6 w-6 fill-blue-zodiac" />
+                }/>
+            </Form.Item>
+          </Col>
+          <Col>
+            <Form.Item>
+              <Button type="primary" onClick={form.submit} loading={loading}>
+                <LocalizedText id="loginAction" />
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
       </Form>
-    </div>
-  );
+    </Flex>
+  )
 }
 
 export default page

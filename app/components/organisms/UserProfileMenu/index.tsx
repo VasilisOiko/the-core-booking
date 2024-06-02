@@ -4,28 +4,20 @@ import React from "react"
 import { Dropdown, Button, Avatar, Menu } from "../../index"
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
+import useAuth from "@/app/hooks/useAuth"
 
 function UserProfileMenu(props:any) {
-
-    const userOptions: MenuProps["items"] = [
-        {
-            key: 1,
-            label: (<div>Personal Details</div>),
-        },
-        {
-            key: 2,
-            label: (<div>Change Password</div>),
-        }
-    ]
 
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
         {
             key: 1,
+            // TODO: set locale
             label: (<div>Personal Details</div>),
         },
         {
             key: 2,
+            // TODO: set locale
             label: (<div>Change Password</div>),
         },
         {
@@ -33,6 +25,7 @@ function UserProfileMenu(props:any) {
         },
         {
             key: 3,
+            // TODO: set locale
             label: (<div>Log out</div>),
         }
       ]
@@ -40,8 +33,7 @@ function UserProfileMenu(props:any) {
     const dropdownContainer = (menu:any) => <><Menu className="w-44" items={items}/></>
 
     return (
-        <Dropdown dropdownRender={dropdownContainer} menu={{ items: userOptions}}
-        // <Dropdown  menu={{ items: userOptions}}
+        <Dropdown dropdownRender={dropdownContainer}
             placement="bottom"
         >
             <Avatar

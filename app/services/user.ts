@@ -21,6 +21,8 @@ const api = axios.create({
 
 const fetchToken = ({ username, password }: loginProps) => {
 
+    console.log("fetchToken", username, password)
+
     return api.post(`${loginURL}${username}`, {
         username: username,
         password: password,

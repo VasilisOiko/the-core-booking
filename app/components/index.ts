@@ -1,4 +1,4 @@
-import Alert from "./atoms/Alert/tailwind";
+
 import Spinner from "./atoms/Spinner/bootstrap";
 /* Molecules */
 
@@ -9,7 +9,6 @@ import LocalesDropdown from "./organisms/LocalesDropdown";
 import Header from "./templates/Header/antd";
 
 export {
-    Alert,
     Spinner,
     UserProfileMenu,
     NavigationBar,
@@ -17,7 +16,16 @@ export {
     Header
 }
 
+import Title from "antd/es/typography/Title";
+import Text from "antd/es/typography/Text";
+
 export {
+    Title,
+    Text
+}
+
+export {
+    Alert,
     Avatar,
     Badge,
     Button,

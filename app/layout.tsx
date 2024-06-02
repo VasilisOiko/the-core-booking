@@ -16,6 +16,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry'
 import theme from './themes/antd/themeConfig'
 
 import crossfitLogo from "public/THE+CORE+logo+final.png"
+import useAuth from "./hooks/useAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,8 @@ export default function RootLayout({ children , }: Readonly<{
   children: React.ReactNode;
 }>) {
 
+  const { isAuthenticated } = useAuth()
+
   const logo = (
     <Image
       src={crossfitLogo.src}
@@ -38,6 +41,7 @@ export default function RootLayout({ children , }: Readonly<{
     />
   )
 
+  // TODO: make locales changing clickable instead of hover
   
   return (
     <html lang="en">
@@ -49,7 +53,7 @@ export default function RootLayout({ children , }: Readonly<{
             <ConfigProvider theme={theme}>
                 <Header logo={logo}>
                   <LocalesDropdown />
-                  <UserProfileMenu/>
+                  {isAuthenticated() && <UserProfileMenu/>}
                 </Header>
               <Layout>
                 <Content>

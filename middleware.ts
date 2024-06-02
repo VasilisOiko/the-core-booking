@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
         // Redirect user to login if not authenticated
         return NextResponse.redirect(new URL('/login', request.url))
 
-    } else if (isAuthenticated() && request.nextUrl.pathname.match(("/login"))) {
+    } else if (isAuthenticated() && request.nextUrl.pathname.match(("/login|/$"))) {
 
         console.log("from login page redirect to dashboard")
 
@@ -25,6 +25,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/login', '/dashboard'],
+    matcher: ['/', '/login', '/dashboard'],
   }
   
