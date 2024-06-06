@@ -1,10 +1,8 @@
 "use client"
 
-import React from "react"
-import { Dropdown, Button, Avatar, Menu } from "../../index"
+import { Dropdown, Button, Avatar, Menu } from "@/app/components"
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
-import useAuth from "@/app/hooks/useAuth"
 
 function UserProfileMenu(props:any) {
 
@@ -33,13 +31,15 @@ function UserProfileMenu(props:any) {
     const dropdownContainer = (menu:any) => <><Menu className="w-44" items={items}/></>
 
     return (
-        <Dropdown dropdownRender={dropdownContainer}
-            placement="bottom"
-        >
-            <Avatar
-                icon={<UserOutlined/>}
-                size="large"
-            />
+        <Dropdown dropdownRender={dropdownContainer} trigger={["click"]} placement="bottom">
+            <Button
+                ghost
+                shape="circle"
+                icon={<Avatar icon={<UserOutlined/>} size="large"/>}
+            >
+
+            </Button>
+            
         </Dropdown>
     )
 }

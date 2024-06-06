@@ -1,0 +1,63 @@
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Form } from 'antd';
+import { authenticate } from '../lib/actions';
+import REQUEST from '../utils/constants/network';
+import { RawLocalizedText } from '../locales/index';
+
+const useLoginHandler = () => {
+  const [loading, setLoading] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [form] = Form.useForm();
+
+  const router = useRouter();
+
+  const wrongDetailsError = RawLocalizedText('login.error.wrongDetails');
+  const unknownError = RawLocalizedText('login.error.unknown');
+  const emailRequiredMessage = RawLocalizedText('login.email.required.message');
+  const emailValidationMessage = RawLocalizedText('login.email.email.validation.message');
+
+  const showAlertMessage = (message: string) => {
+    setAlertMessage(message);
+    setShowAlert(true);
+  };
+
+  const handleSubmit = async (values: any) => {
+    setLoading(true);
+    setShowAlert(false);
+
+    const email = values.email;
+    const password = values.password;
+
+    const data = await authenticate({ email, password });
+
+    switch (data) {
+      case REQUEST.SUCCESSFUL:
+        router.push('/dashboard');
+        break;
+      case REQUEST.FAILED.WRONG_USER_DATA:
+        showAlertMessage(wrongDetailsError);
+        break;
+      case REQUEST.FAILED.UNKNOWN_ERROR:
+        showAlertMessage(unknownError);
+        break;
+      default:
+        showAlertMessage(unknownError);
+        break;
+    }
+    setLoading(false);
+  };
+
+  return {
+    form,
+    loading,
+    showAlert,
+    alertMessage,
+    emailRequiredMessage,
+    emailValidationMessage,
+    handleSubmit,
+  };
+};
+
+export default useLoginHandler;

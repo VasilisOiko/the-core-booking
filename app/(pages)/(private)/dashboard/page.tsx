@@ -1,10 +1,10 @@
-import React from 'react'
+import { Title } from "@/app/components"
 
 // TODO: Suspense react when fetching
 function Dashboard() {
 
   return (
-      <div>Dashboard</div>
+      <Title>Dashboard</Title>
   )
 }
 

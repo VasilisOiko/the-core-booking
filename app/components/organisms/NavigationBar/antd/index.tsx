@@ -1,8 +1,6 @@
 import React from 'react'
 import type { MenuProps } from 'antd'
-import { LocalesDropdown, Menu } from '../../../index'
-import LANGUAGES from "../../../../utils/constants/languages";
-import { MdLanguage } from 'react-icons/md';
+import { Menu, Layout } from '@/app/components'
 
 function NavigationBar() {
     type MenuItem = Required<MenuProps>['items'][number];
@@ -24,8 +22,10 @@ const navItems: MenuItem[] = [
 
     return (
         <Menu
-            mode="vertical"
+            theme='dark'
+            mode="inline"
             items={navItems}
+            className="rounded-r-lg h-full"
         />
     )
 }

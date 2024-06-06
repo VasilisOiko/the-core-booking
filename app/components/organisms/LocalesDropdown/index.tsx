@@ -1,8 +1,6 @@
-import React from "react";
 import { Dropdown, Button } from "../../index";
 import { type MenuProps } from "antd";
 import LANGUAGES from "../../../utils/constants/languages";
-import i18n from "../../../locales/init";
 import { MdLanguage } from "react-icons/md";
 import { handleSelect } from "./helper"
 
@@ -25,13 +23,11 @@ function LocalesDropdown(props?:any) {
             {...props}
             menu={{ items: localesOptions, onClick: handleSelect }}
             placement="bottom"
-            trigger={["hover"]}
+            trigger={["click"]}
             arrow
         >
-            <MdLanguage
-                size="30px"
-                color="white"
-            />
+            <Button shape="circle" icon={<MdLanguage size="30px" color="black"/>}>
+            </Button>
         </Dropdown>
     );
 }

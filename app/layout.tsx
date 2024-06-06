@@ -1,16 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import i18n from './locales/init';
 
 import {
+  Flex,
+  Space,
+  Layout,
   LocalesDropdown,
   Header,
   Image,
   UserProfileMenu
 } from "./components"
-import { Flex, Layout  } from "antd";
-import { Content } from 'antd/lib/layout/layout';
+
+import { Content } from 'antd/lib/layout/layout'
 import { ConfigProvider } from 'antd';
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import theme from './themes/antd/themeConfig'
@@ -18,7 +19,7 @@ import theme from './themes/antd/themeConfig'
 import crossfitLogo from "public/THE+CORE+logo+final.png"
 import useAuth from "./hooks/useAuth";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "The core booking",
@@ -40,8 +41,6 @@ export default function RootLayout({ children , }: Readonly<{
       width={160}
     />
   )
-
-  // TODO: make locales changing clickable instead of hover
   
   return (
     <html lang="en">
@@ -51,15 +50,17 @@ export default function RootLayout({ children , }: Readonly<{
         <body>
           <AntdRegistry>
             <ConfigProvider theme={theme}>
-                <Header logo={logo}>
-                  <LocalesDropdown />
-                  {isAuthenticated() && <UserProfileMenu/>}
-                </Header>
-              <Layout>
-                <Content>
+              <Header logo={logo}>
+                 <Flex justify="center" align="center" gap="middle">
+                    <LocalesDropdown />
+                    {isAuthenticated() && <UserProfileMenu/>}
+                </Flex>
+              </Header>
+              {/* <Layout>
+                <Content> */}
                   {children}
-                </Content>
-              </Layout>
+                {/* </Content>
+              </Layout> */}
           </ConfigProvider>
         </AntdRegistry>
       </body>

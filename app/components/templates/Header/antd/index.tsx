@@ -1,27 +1,19 @@
-
-
 import React from "react"
-import { Layout, Row, Col, Space, Flex } from "../../../index"
+import { Layout, Row, Col, Space, Flex, Affix } from "@/app/components"
 import { Header as AntdHeader } from "antd/lib/layout/layout";
-
-
-
 
 function Header(props?: any) {
 
     return (
         <Layout>
-            <AntdHeader>
-                <Flex justify="space-between" align="center">
-
-                    <Space>
+            <Affix>
+                <AntdHeader>
+                    <Flex justify="space-between" align="center">
                         {props.logo}
-                    </Space>
-                    <Space align="center" size="large">
                         {props.children}
-                    </Space>
-                </Flex>
-            </AntdHeader>
+                    </Flex>
+                </AntdHeader>
+            </Affix>
         </Layout>
     )
 }
