@@ -8,16 +8,6 @@ RUN apk upgrade
 RUN apk add nodejs-current npm
 RUN apk add git
 WORKDIR /home/app
-RUN npm init --yes
-RUN npm install -D tailwindcss
-RUN npm install next@latest react@latest react-dom@latest
-RUN npm install -D prettier prettier-plugin-tailwindcss
-RUN npm install react-i18next i18next --save
-RUN npm install react-icons --save
-RUN npm i axios
-RUN npm install zustand
-RUN npm i react-error-boundary
-RUN npm audit fix --force
 
 RUN apk add --no-cache tzdata
 RUN apk add --no-cache su-exec

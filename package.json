@@ -1,10 +1,11 @@
 {
-  "name": "the-core-frontend",
+  "name": "the-core-booking",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "fast": "next dev --turbo",
     "start": "next start",
     "lint": "next lint",
     "format": "npx prettier --write .",
