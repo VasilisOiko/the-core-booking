@@ -7,14 +7,14 @@ function layout({children}: {children: React.ReactNode}) {
   return (
     <>
       <Layout className="h-rest-screen">
-        <Sider width={200}>
-          <NavigationBar/>
-        </Sider>
-        <Content className="m-6">
-          <Card>
+          <Sider width={200}>
+            <NavigationBar/>
+          </Sider>
+        <Layout>
+          <Content className="m-6">
             {children}
-          </Card>
-        </Content>
+          </Content>
+        </Layout>
       </Layout>
     </>
   )

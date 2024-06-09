@@ -56,11 +56,11 @@ export default function RootLayout({ children , }: Readonly<{
                     {isAuthenticated() && <UserProfileMenu/>}
                 </Flex>
               </Header>
-              {/* <Layout>
-                <Content> */}
+              <Layout>
+                <Content>
                   {children}
-                {/* </Content>
-              </Layout> */}
+                </Content>
+              </Layout>
           </ConfigProvider>
         </AntdRegistry>
       </body>

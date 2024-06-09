@@ -1,5 +1,6 @@
 
-import { Flex, Spinner } from "./components"
+import { Flex, Spin } from "./components"
+import { GiJumpingRope } from "react-icons/gi";
 
 const Loading = () => {
   return (
@@ -8,8 +9,7 @@ const Loading = () => {
       justify="center"
       align="center"
     >
-      <h1>loading</h1>
-      <Spinner/>
+      <Spin fullscreen/> 
     </Flex>
   )
 }

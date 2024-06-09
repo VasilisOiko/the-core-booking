@@ -1,8 +1,11 @@
 import dynamic from "next/dynamic";
 import { Flex } from "../../../components"
+import Loading from "@/app/loading";
 
 
-const LoginForm = dynamic(() => import("@/app/components/organisms/LoginForm"), { ssr: false });
+const LoginForm = dynamic(() => import("@/app/components/organisms/LoginForm"), {
+  ssr: false,
+  loading: () =>  <Loading/>});
 
 const page = () => {
 
