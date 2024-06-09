@@ -1,5 +1,5 @@
 import React from "react";
-import { Affix, Card, Flex, Layout, Sider, Content, NavigationBar } from "@/app/components"
+import { Layout, Sider, Content, NavigationBar } from "@/app/components"
 
 function layout({children}: {children: React.ReactNode}) {
 

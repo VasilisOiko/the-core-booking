@@ -1,6 +1,5 @@
 
 import { Flex, Spin } from "./components"
-import { GiJumpingRope } from "react-icons/gi";
 
 const Loading = () => {
   return (

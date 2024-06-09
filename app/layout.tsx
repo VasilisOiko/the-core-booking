@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 
 import {
   Flex,
-  Space,
   Layout,
   LocalesDropdown,
   Header,

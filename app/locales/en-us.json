@@ -8,6 +8,14 @@
   "login.error.wrongDetails": "Incorrect Email or Password, please try again.",
   "login.error.unknown": "There was an unexpected error, please try again later.",
   "login.email.required.message": "Email field cannot be empty",
-  "login.email.email.validation.message": "Email must be \"user@example.com\" format"
+  "login.email.email.validation.message": "Email must be \"user@example.com\" format",
 
+  "dashboard.page.name": "dashboard",
+  "dashboard.page.title": "dashboard",
+
+  "bookings.page.name": "Bookings",
+  "bookings.page.title": "Bookings",
+
+  "information.page.name": "Information",
+  "information.page.title": "Information"
 }

@@ -8,7 +8,16 @@
   "login.error.wrongDetails": "Έχετε συμπληρώσει λάθος στοιχεία σύνδεσης, παρακαλώ δοκιμάστε ξανά.",
   "login.error.unknown": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα, παρακαλώ προσπαθήστε ξανά αργότερα.",
   "login.email.required.message": "Το πεδίο email είναι υποχρεωτικό",
-  "login.email.validation.message": "Το email πρέπει να είναι της μορφής \"user@example.com\""
+  "login.email.validation.message": "Το email πρέπει να είναι της μορφής \"user@example.com\"",
+
+  "dashboard.page.name": "Πίνακας ελέγχου",
+  "dashboard.page.title": "Πίνακας ελέγχου",
+
+  "bookings.page.name": "Κρατήσεις",
+  "bookings.page.title": "Κρατήσεις",
+
+  "information.page.name": "Πληροφορίες",
+  "information.page.title": "Πληροφορίες"
 
 
 }

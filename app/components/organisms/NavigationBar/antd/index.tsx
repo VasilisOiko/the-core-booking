@@ -1,28 +1,38 @@
-import React from 'react'
-import type { MenuProps } from 'antd'
-import { Menu, Layout } from '@/app/components'
+import React from "react"
+import type { MenuProps } from "antd"
+import { Menu } from "@/app/components"
+import { RawLocalizedText } from "@/app/locales";
+import { PAGES } from "@/app/utils/constants/pages"
 
 function NavigationBar() {
-    type MenuItem = Required<MenuProps>['items'][number];
+    type MenuItem = Required<MenuProps>["items"][number];
 
-const navItems: MenuItem[] = [
-    {
-        label: 'Dashboard',
-        key: 'Dashboard',
-    },
-    {
-        label: 'Bookings',
-        key: 'Bookings',
-    },
-    {
-        label: 'information',
-        key: 'information',
-    }
-];
+    // const dashboardLabel = RawLocalizedText("dashboard.page.name")
+    // const bookingsLabel = RawLocalizedText("bookings.page.name")
+    // const informationLabel = RawLocalizedText("information.page.name")
+
+    const dashboardLabel = "dashboard"
+    const bookingsLabel = "bookings"
+    const informationLabel = "information"
+
+    const navItems: MenuItem[] = [
+        {
+            label:dashboardLabel,
+            key: PAGES.DASHBOARD_KEY,
+        },
+        {
+            label: bookingsLabel,
+            key: PAGES.BOOKINGS_KEY,
+        },
+        {
+            label: informationLabel,
+            key: PAGES.INFORMATION_KEY,
+        }
+    ];
 
     return (
         <Menu
-            theme='dark'
+            theme="dark"
             mode="inline"
             items={navItems}
             className="rounded-r-lg h-full"
