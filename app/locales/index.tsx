@@ -1,6 +1,5 @@
-"use client"
-import React from "react";
-import { useTranslation } from "react-i18next";
+
+import {useTranslations} from "next-intl";
 
 type useProps = {
     id: string;
@@ -8,14 +7,14 @@ type useProps = {
 }
 
 const RawLocalizedText = (id: string) => {
-  const {t} = useTranslation();
+  const t = useTranslations();
   return t(id);
 }
 
 function LocalizedText({ id, className }: useProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
-  return <span className={className}>{t(id)}</span>;
+  return <span className={className}>{t(id)}</span>
 }
 
 export { LocalizedText, RawLocalizedText };

@@ -1,7 +1,7 @@
 const LANGUAGES = {
-    GREEK: "GR",
+    GREEK: "gr-GR",
     GREEK_TEXT: "Ελληνικά",
-    ENGLISH: "EN",
+    ENGLISH: "en-US",
     ENGLISH_TEXT: "English",
 }
 

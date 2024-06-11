@@ -17,7 +17,7 @@ const useLoginHandler = () => {
   const wrongDetailsError = RawLocalizedText("login.error.wrongDetails")
   const unknownError = RawLocalizedText("login.error.unknown")
   const emailRequiredMessage = RawLocalizedText("login.email.required.message")
-  const emailValidationMessage = RawLocalizedText("login.email.email.validation.message")
+  const emailValidationMessage = RawLocalizedText("login.email.validation.message")
 
   const showAlertMessage = (message: string) => {
     setAlertMessage(message)

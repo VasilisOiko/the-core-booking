@@ -1,7 +1,7 @@
 "use client"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { HiOutlineAtSymbol } from "react-icons/hi"
-import { RawLocalizedText, LocalizedText } from "../../../locales/index"
+import { RawLocalizedText, LocalizedText } from "@/app/locales"
 import {
     Form,
     Input,
@@ -11,7 +11,7 @@ import {
     Col,
     Title,
     Text,
-  } from "../../../components"
+  } from "@/app/components"
 
 import useLoginHandler from "@/app/lib/useLoginHandler"
 
@@ -36,7 +36,7 @@ const LoginForm = () => {
         <Row gutter={[24, 8]} justify="center">
           <Col span={24} flex={"inherit"}>
             <Title level={3}>
-              <LocalizedText id="loginTitle"/>
+              <LocalizedText id="login.title"/>
             </Title>
           </Col>
 
@@ -53,7 +53,7 @@ const LoginForm = () => {
               ]}>
               <Input
                 type="email"
-                placeholder={RawLocalizedText("emailPlaceholder")}
+                placeholder={RawLocalizedText("login.email.placeholder")}
                 id="email"
                 required={true}
                 prefix={
@@ -67,7 +67,7 @@ const LoginForm = () => {
               <Input.Password
                 id="password"
                 type="password"
-                placeholder={RawLocalizedText("passwordPlaceholder")}
+                placeholder={RawLocalizedText("login.password.placeholder")}
                 visibilityToggle={true}                
                 prefix={
                   <RiLockPasswordFill className="h-6 w-6 fill-blue-zodiac" />
@@ -77,7 +77,7 @@ const LoginForm = () => {
           <Col>
             <Form.Item>
               <Button type="primary" onClick={form.submit} loading={loading}>
-                <LocalizedText id="loginAction" />
+                <LocalizedText id="login.button.title" />
               </Button>
             </Form.Item>
           </Col>

@@ -1,23 +1,50 @@
 {
   "language": "Ελληνικά",
-  "loginTitle": "Σύνδεση",
-  "emailPlaceholder": "Email",
-  "passwordPlaceholder": "Συνθηματικό",
-  "loginAction": "Είσοδος",
 
-  "login.error.wrongDetails": "Έχετε συμπληρώσει λάθος στοιχεία σύνδεσης, παρακαλώ δοκιμάστε ξανά.",
-  "login.error.unknown": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα, παρακαλώ προσπαθήστε ξανά αργότερα.",
-  "login.email.required.message": "Το πεδίο email είναι υποχρεωτικό",
-  "login.email.validation.message": "Το email πρέπει να είναι της μορφής \"user@example.com\"",
+  "login": {
+    "title": "Σύνδεση",
 
-  "dashboard.page.name": "Πίνακας ελέγχου",
-  "dashboard.page.title": "Πίνακας ελέγχου",
+    "error": {
+      "wrongDetails": "Έχετε συμπληρώσει λάθος στοιχεία σύνδεσης, παρακαλώ δοκιμάστε ξανά.",
+      "unknown": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα, παρακαλώ προσπαθήστε ξανά αργότερα."
+    },
 
-  "bookings.page.name": "Κρατήσεις",
-  "bookings.page.title": "Κρατήσεις",
+    "email": {
+      "placeholder": "Email",
+      "required": {
+        "message": "Το πεδίο email είναι υποχρεωτικό"
+      },
 
-  "information.page.name": "Πληροφορίες",
-  "information.page.title": "Πληροφορίες"
+      "validation": {
+        "message": "Το email πρέπει να είναι της μορφής \"user@example.com\""
+      }
+    },
 
+    "password": {
+      "placeholder": "Συνθηματικό"
+    },
 
+    "button": {
+      "title": "Είσοδος"
+    }
+  },
+
+  "dashboard": {
+    "page": {
+      "name": "Πίνακας ελέγχου",
+      "title": "Πίνακας ελέγχου" 
+    }
+  },
+  "bookings": {
+    "page": {
+      "name": "Κρατήσεις",
+      "title": "Κρατήσεις" 
+    }
+  },
+  "information": {
+    "page": {
+      "name": "Πληροφορίες",
+      "title": "Πληροφορίες" 
+    }
+  }
 }

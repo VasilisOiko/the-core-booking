@@ -1,21 +1,50 @@
 {
   "language": "English",
-  "loginTitle": "Login",
-  "emailPlaceholder": "Email",
-  "passwordPlaceholder": "Password",
-  "loginAction": "Login",
 
-  "login.error.wrongDetails": "Incorrect Email or Password, please try again.",
-  "login.error.unknown": "There was an unexpected error, please try again later.",
-  "login.email.required.message": "Email field cannot be empty",
-  "login.email.email.validation.message": "Email must be \"user@example.com\" format",
+  "login": {
+    "title": "Login",
 
-  "dashboard.page.name": "dashboard",
-  "dashboard.page.title": "dashboard",
+    "error": {
+      "wrongDetails": "Incorrect Email or Password, please try again.",
+      "unknown": "There was an unexpected error, please try again later."
+    },
 
-  "bookings.page.name": "Bookings",
-  "bookings.page.title": "Bookings",
+    "email": {
+      "placeholder": "Email",
+      "required": {
+        "message": "Email field cannot be empty"
+      },
 
-  "information.page.name": "Information",
-  "information.page.title": "Information"
+      "validation": {
+        "message": "Email must be \"user@example.com\" format"
+      }
+    },
+
+    "password": {
+      "placeholder": "Password"
+    },
+
+    "button": {
+      "title": "Login"
+    }
+  },
+
+  "dashboard": {
+    "page": {
+      "name": "dashboard",
+      "title": "dashboard" 
+    }
+  },
+  "bookings": {
+    "page": {
+      "name": "Bookings",
+      "title": "Bookings" 
+    }
+  },
+  "information": {
+    "page": {
+      "name": "Information",
+      "title": "Information" 
+    }
+  }
 }

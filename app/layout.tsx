@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-
+import {NextIntlClientProvider} from 'next-intl';
+import {getLocale, getMessages} from 'next-intl/server';
 import {
   Flex,
   Layout,
@@ -25,9 +26,15 @@ export const metadata: Metadata = {
   description: "The unofficial booking website of The core",
 };
 
-export default function RootLayout({ children , }: Readonly<{
+export default async function RootLayout({ children , }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const locale = await getLocale();
+ 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
   const { isAuthenticated } = useAuth()
 
@@ -42,11 +49,12 @@ export default function RootLayout({ children , }: Readonly<{
   )
   
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
 
       </head>
         <body>
+        <NextIntlClientProvider messages={messages}>
           <AntdRegistry>
             <ConfigProvider theme={theme}>
               <Header logo={logo}>
@@ -60,8 +68,9 @@ export default function RootLayout({ children , }: Readonly<{
                   {children}
                 </Content>
               </Layout>
-          </ConfigProvider>
-        </AntdRegistry>
+            </ConfigProvider>
+          </AntdRegistry>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
