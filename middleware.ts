@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import useAuth from "./app/hooks/useAuth"
+import useAuth from "./app/lib/useAuth"
 
 export function middleware(request: NextRequest) {
     const { isAuthenticated } = useAuth()

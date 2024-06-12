@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { cookies } from 'next/headers';
 
 const useAuth = () => {

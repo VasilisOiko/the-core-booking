@@ -17,7 +17,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry'
 import theme from './themes/antd/themeConfig'
 
 import crossfitLogo from "public/THE+CORE+logo+final.png"
-import useAuth from "./hooks/useAuth";
+import useAuth from "./lib/useAuth";
 
 // const inter = Inter({ subsets: ["latin"] });
 

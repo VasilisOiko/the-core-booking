@@ -1,11 +1,9 @@
 "use client"
+//TODO: move this file to hooks
+
 import { MenuProps } from "antd";
-import i18n from "../../../locales/react-i18next.config";
+import { setLanguage } from "@/app/lib/useLocales";
 
-export const handleSelect: MenuProps["onClick"] = ({ key }) => {
-    changeLanguage(key)
-};
-
-const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-};
+export const handleSelect: MenuProps["onClick"] = async ({ key }) => {
+    await setLanguage(key)
+}

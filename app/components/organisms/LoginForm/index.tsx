@@ -13,7 +13,7 @@ import {
     Text,
   } from "@/app/components"
 
-import useLoginHandler from "@/app/lib/useLoginHandler"
+import useLoginHandler from "@/app/hooks/useLoginHandler"
 
 const LoginForm = () => {
 

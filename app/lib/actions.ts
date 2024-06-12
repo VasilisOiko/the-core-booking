@@ -1,6 +1,6 @@
 "use server"
  
-import useAuth from "../hooks/useAuth";
+import useAuth from "./useAuth";
 import { fetchToken } from "../services/user"
 import REQUEST from "../utils/constants/network";
 
