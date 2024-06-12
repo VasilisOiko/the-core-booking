@@ -1,5 +1,4 @@
 "use client"
-//TODO: move this file to hooks
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"

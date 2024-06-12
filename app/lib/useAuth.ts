@@ -1,22 +1,22 @@
-import { cookies } from 'next/headers';
+import { cookies } from "next/headers"
 
 const useAuth = () => {
 
-  const cookieStore = cookies();
+  const cookieStore = cookies()
 
   const isAuthenticated = () => {
-    return cookieStore.has('token')
+    return cookieStore.has("token")
   }
 
   const login = (token: string) => {
-    cookieStore.set('token', token);
-  };
+    cookieStore.set("token", token)
+  }
 
   const logout = () => {
-    cookieStore.delete('token');
-  };
+    cookieStore.delete("token")
+  }
 
-  return { isAuthenticated, login, logout };
-};
+  return { isAuthenticated, login, logout }
+}
 
-export default useAuth;
+export default useAuth

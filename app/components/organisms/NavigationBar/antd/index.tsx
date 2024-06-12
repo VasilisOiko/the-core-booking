@@ -7,13 +7,9 @@ import { PAGES } from "@/app/utils/constants/pages"
 function NavigationBar() {
     type MenuItem = Required<MenuProps>["items"][number];
 
-    // const dashboardLabel = RawLocalizedText("dashboard.page.name")
-    // const bookingsLabel = RawLocalizedText("bookings.page.name")
-    // const informationLabel = RawLocalizedText("information.page.name")
-
-    const dashboardLabel = "dashboard"
-    const bookingsLabel = "bookings"
-    const informationLabel = "information"
+    const dashboardLabel = RawLocalizedText("dashboard.page.name")
+    const bookingsLabel = RawLocalizedText("bookings.page.name")
+    const informationLabel = RawLocalizedText("information.page.name")
 
     const navItems: MenuItem[] = [
         {

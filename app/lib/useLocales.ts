@@ -9,7 +9,7 @@ const hasLanguageCookie = () => {
 }
 
 const setLanguage = async (language: string) => {
-    cookies().set("language", language)
+    cookies().set("language", language, { secure: true, sameSite: "strict" })
 }
 
 const getLanguage = ():string => {
@@ -17,7 +17,4 @@ const getLanguage = ():string => {
     return cookieStore.get("language")?.value || LANGUAGES.GREEK
 }
 
-
 export { hasLanguageCookie, getLanguage, setLanguage }
-
-

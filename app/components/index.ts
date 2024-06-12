@@ -1,6 +1,4 @@
 
-import Spinner from "./atoms/Spinner/bootstrap";
-/* Molecules */
 
 /* Organisms */
 import UserProfileMenu from "./organisms/UserProfileMenu"
@@ -13,7 +11,6 @@ import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 
 export {
-    Spinner,
     UserProfileMenu,
     NavigationBar,
     LocalesDropdown,

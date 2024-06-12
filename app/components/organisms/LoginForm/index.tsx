@@ -25,7 +25,7 @@ const LoginForm = () => {
         emailRequiredMessage,
         emailValidationMessage,
         handleSubmit,
-      } = useLoginHandler();
+      } = useLoginHandler()
 
 
   return (
