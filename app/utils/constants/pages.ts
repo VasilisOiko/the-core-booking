@@ -1,7 +1,16 @@
-const PAGES = {
-    DASHBOARD_KEY: "DASHBOARD",
-    BOOKINGS_KEY: "BOOKINGS",
-    INFORMATION_KEY: "INFORMATION",
-}
+const PAGES = Object.freeze({
+    DASHBOARD: {
+        KEY: "DASHBOARD",
+        ROUTE: "dashboard"
+    },
+    BOOKINGS: {
+        KEY: "BOOKINGS",
+        ROUTE: "bookings"
+    },
+    INFORMATION: {
+        KEY: "INFORMATION",
+        ROUTE: "information"
+    },
+})
 
-export {PAGES};
+export {PAGES}

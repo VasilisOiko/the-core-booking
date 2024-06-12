@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Form } from "antd"
-import { authenticate } from "../lib/actions"
 import REQUEST from "../utils/constants/network"
 import { RawLocalizedText } from "../locales/index"
+import { login } from "../actions/authentication"
 
 const useLoginHandler = () => {
   const [loading, setLoading] = useState(false)
@@ -26,13 +26,17 @@ const useLoginHandler = () => {
   }
 
   const handleSubmit = async (values: any) => {
+
     setLoading(true)
     setShowAlert(false)
 
     const email = values.email
     const password = values.password
 
-    const data = await authenticate({ email, password })
+    
+    const data = await login({ email, password })
+
+    // const data = await authenticate({ email, password })
 
     switch (data) {
       case REQUEST.SUCCESSFUL:

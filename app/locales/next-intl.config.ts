@@ -1,6 +1,6 @@
-import {getRequestConfig} from 'next-intl/server';
-import LANGUAGES from '../utils/constants/languages';
-import { hasLanguageCookie, getLanguage, setLanguage } from '../lib/useLocales';
+import {getRequestConfig} from "next-intl/server"
+import LANGUAGES from "../utils/constants/languages"
+import { getLanguage, hasLanguageCookie, setLanguage } from "../actions/localization"
 
  
 export default getRequestConfig(async () => {
@@ -24,5 +24,5 @@ export default getRequestConfig(async () => {
   return {
     locale,
     messages: (await import(`./${locale}.json`)).default
-  };
-});
+  }
+})

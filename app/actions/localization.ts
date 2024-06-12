@@ -17,4 +17,4 @@ const getLanguage = ():string => {
     return cookieStore.get("language")?.value || LANGUAGES.GREEK
 }
 
-export { hasLanguageCookie, getLanguage, setLanguage }
+export { getLanguage, hasLanguageCookie, setLanguage }

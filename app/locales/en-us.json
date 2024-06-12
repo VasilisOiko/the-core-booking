@@ -31,19 +31,19 @@
 
   "dashboard": {
     "page": {
-      "name": "dashboard",
-      "title": "dashboard" 
+      "label": "Dashboard",
+      "title": "Dashboard" 
     }
   },
   "bookings": {
     "page": {
-      "name": "Bookings",
+      "label": "Bookings",
       "title": "Bookings" 
     }
   },
   "information": {
     "page": {
-      "name": "Information",
+      "label": "Information",
       "title": "Information" 
     }
   }
