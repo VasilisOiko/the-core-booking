@@ -36,8 +36,6 @@ const useLoginHandler = () => {
     
     const data = await login({ email, password })
 
-    // const data = await authenticate({ email, password })
-
     switch (data) {
       case REQUEST.SUCCESSFUL:
         router.push("/dashboard")

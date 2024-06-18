@@ -1,17 +1,15 @@
-import { create } from "zustand";
+import { create } from "zustand"
 
 type State = {
-  token: string;
-  user: object;
-  userBookings: object[];
-  availableBookings: object[];
-  clientUnit: object;
-  extraFields: object;
-  notifications: object[];
+  user: object
+  userBookings: object[]
+  availableBookings: object[]
+  clientUnit: object
+  extraFields: object
+  notifications: object[]
 };
 
 type actions = {
-  updateToken: (token: State["token"]) => void;
   updateUser: (user: State["user"]) => void;
   updateUserBookings: (userBookings: State["userBookings"]) => void;
   updateAvailableBookings: (
@@ -20,7 +18,7 @@ type actions = {
   updateClientUnit: (clientUnit: State["clientUnit"]) => void;
   updateExtraFields: (extraFields: State["extraFields"]) => void;
   updateNotifications: (notifications: State["notifications"]) => void;
-};
+}
 
 const useStore = create<State & actions>((set) => ({
   token: "",
@@ -31,7 +29,7 @@ const useStore = create<State & actions>((set) => ({
   extraFields: {},
   notifications: [],
 
-  updateToken: (token)  => set (() => ({token: token})),
+
   updateUser: (user) => set(() => ({ user: user })),
   updateUserBookings: (userBookings) =>
     set(() => ({ userBookings: userBookings })),
@@ -43,4 +41,4 @@ const useStore = create<State & actions>((set) => ({
     set(() => ({ notifications: notifications })),
 }));
 
-export default useStore;
+export default useStore

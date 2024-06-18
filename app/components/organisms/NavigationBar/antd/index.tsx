@@ -27,7 +27,8 @@ function NavigationBar() {
             theme="dark"
             mode="inline"
             items={navItems}
-            className="rounded-r-lg h-full"
+            defaultSelectedKeys={[PAGES.DASHBOARD.KEY]}
+            className="h-full"
         />
     )
 }

@@ -8,31 +8,27 @@ type loginCredentials = {
   password: string;
 }
 
-
 const isAuthenticated = () => {
   return cookies().has("token")
+}
+const getToken = () => {
+  return cookies().get("token")?.value
 }
 
 const login = async ({email, password}: loginCredentials) => {
   try {
     const response = await fetchToken({username: email, password})
-    
+
+    if (response.status !== 200) {
+      return REQUEST.FAILED.WRONG_USER_DATA
+    }
+
     cookies().set("token", response.data.token, { secure: true, sameSite: "strict" })
     
     return REQUEST.SUCCESSFUL
-
   }
   catch (error: any) {
-
-    if (error) {
-        if(JSON.stringify(error.response.data) === REQUEST.FAILED.WRONG_USER_DATA) {
-            return REQUEST.FAILED.WRONG_USER_DATA
-        }
-        else {
-            return REQUEST.FAILED.UNKNOWN_ERROR
-        }
-    }
-    throw error
+    return REQUEST.FAILED.UNKNOWN_ERROR
   }
   
 }
@@ -42,4 +38,4 @@ const logout = () => {
 }
 
 
-export { isAuthenticated, login, logout}
+export { isAuthenticated, getToken, login, logout}
