@@ -1,4 +1,4 @@
-import { Flex, Spin } from "./components"
+import { Flex, Spin } from "@/app/components"
 
 const Loading = () => {
   return (
@@ -7,7 +7,7 @@ const Loading = () => {
       justify="center"
       align="center"
     >
-      <Spin fullscreen/> 
+      <Spin/> 
     </Flex>
   )
 }

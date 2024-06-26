@@ -1,15 +1,15 @@
 const PAGES = Object.freeze({
     DASHBOARD: {
         KEY: "DASHBOARD",
-        ROUTE: "dashboard"
+        ROUTE: "/dashboard"
     },
     BOOKINGS: {
         KEY: "BOOKINGS",
-        ROUTE: "bookings"
+        ROUTE: "/bookings"
     },
     INFORMATION: {
         KEY: "INFORMATION",
-        ROUTE: "information"
+        ROUTE: "/information"
     },
 })
 

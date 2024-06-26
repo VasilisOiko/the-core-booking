@@ -9,10 +9,14 @@ const hasLanguageCookie = () => {
 }
 
 const setLanguage = async (language: string) => {
-    cookies().set("language", language, { secure: true, sameSite: "strict" })
+    try {
+        cookies().set("language", language, { secure: true, sameSite: "strict" })
+    } catch (error) {
+        console.error(error)
+    }
 }
 
-const getLanguage = ():string => {
+const getLanguage = (): string => {
     const cookieStore = cookies()
     return cookieStore.get("language")?.value || LANGUAGES.GREEK
 }

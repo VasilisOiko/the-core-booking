@@ -1,3 +1,4 @@
+
 import { Affix, Card, Flex, Text, Title } from "@/app/components"
 
 // TODO: Suspense react when fetching
@@ -7,38 +8,7 @@ function Dashboard() {
     <>
       <Title>Dashboard</Title>
       <Card className="overflow-auto">
-
-          <Text>
-            l
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
-          </Text>
+        
 
       </Card>
 
