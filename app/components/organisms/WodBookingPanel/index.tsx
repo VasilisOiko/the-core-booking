@@ -10,6 +10,7 @@ import {
 import { RawLocalizedText } from "@/app/locales"
 import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
 import dayjs from "dayjs"
+import WodTimeTabs from "../../molecules/WodTimeTabs"
 
 const WODBookingPanel = () => {
 
@@ -47,6 +48,7 @@ const WODBookingPanel = () => {
             tabList={dateTabs}
         >
             <Flex vertical>
+                <WodTimeTabs/>
                 <WodTable/>
             </Flex>
         </Card>
