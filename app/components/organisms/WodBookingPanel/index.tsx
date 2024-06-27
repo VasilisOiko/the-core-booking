@@ -47,7 +47,6 @@ const WODBookingPanel = () => {
             tabList={dateTabs}
         >
             <Flex vertical>
-                <WodFilterTags/>
                 <WodTable/>
             </Flex>
         </Card>
