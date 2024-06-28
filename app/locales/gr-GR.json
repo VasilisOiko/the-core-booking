@@ -56,5 +56,17 @@
       "label": "Πληροφορίες",
       "title": "Πληροφορίες" 
     }
+  },
+
+  "userProfileMenu": {
+    "PersonalDetails": {
+      "label": "Προφίλ χρήστη"
+    },
+    "changePassword": {
+      "label": "Αλλαγή κωδικού"
+    },
+    "logOut": {
+      "label": "Αποσύνδεση"
+    }
   }
 }

@@ -56,5 +56,17 @@
       "label": "Information",
       "title": "Information" 
     }
+  },
+  
+  "userProfileMenu": {
+    "PersonalDetails": {
+      "label": "Personal Details"
+    },
+    "changePassword": {
+      "label": "Change Password"
+    },
+    "logOut": {
+      "label": "Log Out"
+    }
   }
 }

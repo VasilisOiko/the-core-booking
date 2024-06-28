@@ -1,8 +1,11 @@
 "use client"
 
-import { Dropdown, Button, Avatar, Menu } from "@/app/components"
+import { Dropdown, Button, Avatar, Menu, Text } from "@/app/components"
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
+import { RawLocalizedText } from "@/app/locales"
+
+// TODO: create constants for menu items keys
 
 function UserProfileMenu(props:any) {
 
@@ -10,21 +13,18 @@ function UserProfileMenu(props:any) {
     const items: MenuItem[] = [
         {
             key: 1,
-            // TODO: set locale
-            label: (<div>Personal Details</div>),
+            label: (<Text>{RawLocalizedText("userProfileMenu.PersonalDetails.label")}</Text>),
         },
         {
             key: 2,
-            // TODO: set locale
-            label: (<div>Change Password</div>),
+            label: (<Text>{RawLocalizedText("userProfileMenu.changePassword.label")}</Text>),
         },
         {
             type: "divider",
         },
         {
             key: 3,
-            // TODO: set locale
-            label: (<div>Log out</div>),
+            label: (<Text>{RawLocalizedText("userProfileMenu.logOut.label")}</Text>),
         }
       ]
 
