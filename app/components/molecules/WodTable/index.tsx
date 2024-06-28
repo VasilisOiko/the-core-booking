@@ -1,4 +1,5 @@
 "use client"
+// TODO: delete this component
 import { Button, Table, Text } from "@/app/components"
 import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
 import { TableProps } from "antd"
@@ -68,7 +69,7 @@ const WodTable = () => {
     return (
         <Table
             pagination={false}
-            showHeader={true}
+            showHeader={false}
             columns={columns}
             dataSource={rows}
         />

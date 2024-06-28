@@ -1,36 +1,25 @@
 "use client"
-import { Button, Tabs, WodTable } from "@/app/components"
-import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
-import { changeConfirmLocale } from "antd/es/modal/locale"
+// TODO: delete this component
+
+import { Tabs } from "@/app/components"
 
 
-const WodTimeTabs = () => {
+type WodTimeTabsProps = {
+    tabs: {
+        label: string
+        key: string
+        children: React.ReactNode
+    }[]
+}
 
-    const wodClasses = BOOKINGS
-    .filter(booking => booking.date === "2024-06-19T09:00:00Z")
-    .flatMap(booking => booking.wodClasses)
-    
-    const wodTimes = Array.from(new Set(
-        BOOKINGS
-        .filter(booking => booking.date === "2024-06-19T09:00:00Z")
-        .flatMap(booking => booking.wodClasses)
-        .map(wodClass => wodClass.time)
-    ))
-    .map((time) => ({
-        label: time,
-        key: time,
-        children: (
-            <WodTable/>
-        )
-    }))
-
+const WodTimeTabs = ({ tabs }: WodTimeTabsProps) => {
 
 
   return (
     <Tabs
         defaultActiveKey="1"
         tabPosition="left"
-        items={wodTimes}
+        items={tabs}
       />
   )
 }
