@@ -5,36 +5,38 @@ import WodList from "./molecules/WodList"
 import WodTable from "./molecules/WodTable"
 
 /* Organisms */
-import UserProfileMenu from "./organisms/UserProfileMenu"
-import NavigationBar from "./organisms/NavigationBar"
-import LocalesDropdown from "./organisms/LocalesDropdown"
 import BookingPanel from "./organisms/BookingPanel"
+import LocalesDropdown from "./organisms/LocalesDropdown"
+import LoginForm from "./organisms/LoginForm"
+import NavigationBar from "./organisms/NavigationBar"
+import UserProfileMenu from "./organisms/UserProfileMenu"
 
 /* ant design direct imports */
-import Header from "./templates/Header/antd"
-import Sider from "antd/es/layout/Sider"
-import Content from "antd/es/layout/layout"
-import Title from "antd/es/typography/Title"
-import Text from "antd/es/typography/Text"
 import CheckableTag from "antd/es/tag/CheckableTag"
+import Content from "antd/es/layout/layout"
+import Header from "./templates/Header/antd"
 import { default as ListItem } from "antd/es/list/Item"
+import Sider from "antd/es/layout/Sider"
+import Text from "antd/es/typography/Text"
+import Title from "antd/es/typography/Title"
 
 export {
     DateSegment,
     WodFilterTags,
-    UserProfileMenu,
-    NavigationBar,
-    LocalesDropdown,
-    Header,
-    Sider,
-    Content,
-    Title,
-    Text,
-    CheckableTag,
-    ListItem,
     WodList,
     WodTable,
-    BookingPanel
+    BookingPanel,
+    LocalesDropdown,
+    LoginForm,
+    NavigationBar,
+    UserProfileMenu,
+    CheckableTag,
+    Content,
+    Header,
+    ListItem,
+    Sider,
+    Text,
+    Title,
 }
 
 export {

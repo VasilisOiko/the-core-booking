@@ -5,6 +5,8 @@ type loginProps = {
     username: string
     password: string
 }
+
+// TODO: replace urls as they are in a separate file
 const apiURL = "https://thecorecf.com/api/"
 const authURL = `${apiURL}auth/token/athlete/`
 const clientURL = `${apiURL}client/ddb67c26-e64c-4cc9-9468-0f1f75eb3e67`

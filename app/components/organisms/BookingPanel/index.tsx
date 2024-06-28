@@ -1,5 +1,5 @@
 "use client"
-// TODO: change file name
+
 import {
     Card,
     Flex,
@@ -10,16 +10,16 @@ import {
 
 import { RawLocalizedText } from "@/app/locales"
 import dayjs from "dayjs"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { getUniqueWodTitles, getWodClassesByTitle } from "@/app/utils/helpers/bookingFilters"
 import { BookingProps } from "@/app/utils/types/bookings"
 
 
-type WODBookingPanelProps = {
+type BookingPanelProps = {
     bookings: BookingProps
 }
 
-const BookingPanel = ({ bookings }: WODBookingPanelProps) => {
+const BookingPanel = ({ bookings }: BookingPanelProps) => {
 
 
     const [selectedDate, setSelectedDate] = useState<string>(bookings[0].date)
@@ -56,6 +56,7 @@ const BookingPanel = ({ bookings }: WODBookingPanelProps) => {
 
 
     return (
+
         <Card
             type="inner"
             tabList={dateTabs}
@@ -66,9 +67,10 @@ const BookingPanel = ({ bookings }: WODBookingPanelProps) => {
                     defaultActiveKey="1"
                     tabPosition="left"
                     items={wodClassesItems}
-                />
+                    />
             </Flex>
         </Card>
+
     )
 }
 

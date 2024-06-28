@@ -14,6 +14,11 @@ const fetchClasses = async () => {
                 "Authorization": `Bearer ${token}`
             }
         })
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch classes')
+          }
+
         const data = await response.json()
 
         return { status: response.status, data}

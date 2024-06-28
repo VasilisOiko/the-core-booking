@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic"
-import { Flex } from "../../../components"
+import { Flex } from "@/app/components"
 import Loading from "@/app/loading"
 
-// TODO: change loginForm path
 const LoginForm = dynamic(() => import("@/app/components/organisms/LoginForm"), {
   ssr: false,
   loading: () =>  <Loading/>})

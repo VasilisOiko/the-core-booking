@@ -1,4 +1,4 @@
-"use client"
+
 
 import { getAvailableBookings } from "@/app/actions/bookings"
 import {
@@ -6,35 +6,18 @@ import {
     Title,
     BookingPanel
 } from "@/app/components"
-import Loading from "@/app/loading"
-import { BookingProps } from "@/app/utils/types/bookings"
-import { Suspense, useEffect, useState } from "react"
 
 // TODO: Suspense react when fetching
 
+async function Bookings() {
 
-function Bookings() {
-
-  const [availableBookings, setAvailableBookings] = useState<BookingProps>([])
-
-  useEffect(() => {
-    getAvailableBookings().then((data) => {
-        setAvailableBookings(data)
-    })
-  }, [])
-
-
+  const availableBookings = await getAvailableBookings()
 
   return (
   <>
     <Title>Bookings</Title>
     <Card className="overflow-auto">
-      {
-        availableBookings.length === 0
-        ? <Loading />
-        :
-        <BookingPanel bookings={availableBookings}/>
-      }
+      <BookingPanel bookings={ availableBookings }/>
     </Card>
 
   </>
