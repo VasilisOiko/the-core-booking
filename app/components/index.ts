@@ -8,7 +8,7 @@ import WodTable from "./molecules/WodTable"
 import UserProfileMenu from "./organisms/UserProfileMenu"
 import NavigationBar from "./organisms/NavigationBar"
 import LocalesDropdown from "./organisms/LocalesDropdown"
-import WodBookingPanel from "./organisms/WodBookingPanel"
+import BookingPanel from "./organisms/BookingPanel"
 
 /* ant design direct imports */
 import Header from "./templates/Header/antd"
@@ -34,7 +34,7 @@ export {
     ListItem,
     WodList,
     WodTable,
-    WodBookingPanel
+    BookingPanel
 }
 
 export {

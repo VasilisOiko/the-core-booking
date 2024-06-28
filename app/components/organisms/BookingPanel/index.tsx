@@ -4,29 +4,22 @@ import {
     Card,
     Flex,
     Tabs,
-    Title,
-    WodFilterTags,
     Text,
-    WodTable,
     WodList
 } from "@/app/components"
 
 import { RawLocalizedText } from "@/app/locales"
-import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
 import dayjs from "dayjs"
-import WodTimeTabs from "../../molecules/WodTimeTabs"
 import { useState } from "react"
 import { getUniqueWodTitles, getWodClassesByTitle } from "@/app/utils/helpers/bookingFilters"
 import { BookingProps } from "@/app/utils/types/bookings"
 
-import { getLanguage } from "@/app/actions/localization"
-import Loading from "@/app/loading"
 
 type WODBookingPanelProps = {
     bookings: BookingProps
 }
 
-const WodBookingPanel = ({ bookings }: WODBookingPanelProps) => {
+const BookingPanel = ({ bookings }: WODBookingPanelProps) => {
 
 
     const [selectedDate, setSelectedDate] = useState<string>(bookings[0].date)
@@ -79,4 +72,4 @@ const WodBookingPanel = ({ bookings }: WODBookingPanelProps) => {
     )
 }
 
-export default WodBookingPanel
+export default BookingPanel

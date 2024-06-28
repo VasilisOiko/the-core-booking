@@ -4,7 +4,7 @@ import { getAvailableBookings } from "@/app/actions/bookings"
 import {
     Card,
     Title,
-    WodBookingPanel
+    BookingPanel
 } from "@/app/components"
 import Loading from "@/app/loading"
 import { BookingProps } from "@/app/utils/types/bookings"
@@ -33,7 +33,7 @@ function Bookings() {
         availableBookings.length === 0
         ? <Loading />
         :
-        <WodBookingPanel bookings={availableBookings}/>
+        <BookingPanel bookings={availableBookings}/>
       }
     </Card>
 
