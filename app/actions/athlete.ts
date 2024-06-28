@@ -1,7 +1,7 @@
 import { fetchClient } from "../services/user"
 
 
-type athlete = {
+type AthleteProps = {
     firstName: string,
     lastName: string,
     email: string,
@@ -20,7 +20,7 @@ type athlete = {
     }[]
 }
 
-export type AthletePastBookings = {
+export type AthletePastBookingsProps = {
     id: string,
     athleteId: string,
     gymId: null | string,
@@ -39,7 +39,7 @@ export type AthletePastBookings = {
 }[]
 
 
-const getAthlete = async (): Promise<athlete> => {
+const getAthlete = async (): Promise<AthleteProps> => {
 
     try {
         const response = await fetchClient()
@@ -62,7 +62,7 @@ const getAthlete = async (): Promise<athlete> => {
     }
 }
 
-const getAthletePastBookings = async (): Promise<AthletePastBookings> => {
+const getAthletePastBookings = async (): Promise<AthletePastBookingsProps> => {
 
     try {
         const response = await fetchClient()

@@ -1,5 +1,5 @@
 "use client"
-
+// TODO: change file name
 import {
     Card,
     Flex,
@@ -17,14 +17,23 @@ import dayjs from "dayjs"
 import WodTimeTabs from "../../molecules/WodTimeTabs"
 import { useState } from "react"
 import { getUniqueWodTitles, getWodClassesByTitle } from "@/app/utils/helpers/bookingFilters"
+import { BookingProps } from "@/app/utils/types/bookings"
 
-const WODBookingPanel = () => {
+import { getLanguage } from "@/app/actions/localization"
+import Loading from "@/app/loading"
 
-    const [selectedDate, setSelectedDate] = useState<string>(BOOKINGS[0].date)
-    const [selectedTime, setSelectedTime] = useState(BOOKINGS[0].wodClasses[0].time)
+type WODBookingPanelProps = {
+    bookings: BookingProps
+}
+
+const WodBookingPanel = ({ bookings }: WODBookingPanelProps) => {
 
 
-    const dateTabs = BOOKINGS.map(booking => booking.date)
+    const [selectedDate, setSelectedDate] = useState<string>(bookings[0].date)
+    const [selectedTime, setSelectedTime] = useState(bookings[0].wodClasses[0].time)
+
+
+    const dateTabs = bookings.map(booking => booking.date)
     .map(date => {
         const day = dayjs(date)
 
@@ -42,37 +51,13 @@ const WODBookingPanel = () => {
             )
         }
     })
-
-    const getWodsPerTime = (time: string) => (
-        BOOKINGS
-        .filter(booking => booking.date === selectedDate)
-        .flatMap(booking => booking.wodClasses)
-        .filter(wod => wod.time === time)
-    )
     
-
-    const wodTimesItems = Array.from(new Set(
-        BOOKINGS
-        .filter(booking => booking.date === selectedDate)
-        .flatMap(booking => booking.wodClasses)
-        .map(wodClass => wodClass.time)
-    ))
-    .map((time) => ({
-        label: time,
-        key: time,
-        children: (
-            <WodList list={getWodsPerTime(time)}/>
-        )
-    }))
-
-    /* ------------------------------------------ */
-
-    const wodClassesItems = getUniqueWodTitles(Array.from(BOOKINGS), selectedDate)
+    const wodClassesItems = getUniqueWodTitles(Array.from(bookings), selectedDate)
     .map(title => ({
         label: title,
         key: title,
         children: (
-            <WodList list={getWodClassesByTitle(Array.from(BOOKINGS), selectedDate, title)}/>
+            <WodList list={getWodClassesByTitle(Array.from(bookings), selectedDate, title)}/>
         )
     }))
 
@@ -94,4 +79,4 @@ const WODBookingPanel = () => {
     )
 }
 
-export default WODBookingPanel
+export default WodBookingPanel

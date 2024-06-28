@@ -1,5 +1,5 @@
 "use client"
-import { Button, List, ListItem, Text } from "@/app/components"
+import { Button, List, ListItem, Text, Title } from "@/app/components"
 import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
 import { WodClassesProps } from "@/app/utils/types/bookings";
 
@@ -9,20 +9,14 @@ type WodListProps = {
 }
 
 const WodList = ({ list }: WodListProps) => {
-    
-    const wods = BOOKINGS
-    .filter(booking => booking.date === "2024-06-19T09:00:00Z")
-    .flatMap(booking => booking.wodClasses)
-    .filter(wod => wod.time === "10:00")
 
+    const wodClass = list[0].title
+    
     const renderWod = (item: WodClassesProps) => (
         <>
             <ListItem>
                 <Text>
                     {item.time}
-                </Text>
-                <Text>
-                    {item.title}
                 </Text>
                 <Button>
                     Make booking
@@ -33,12 +27,17 @@ const WodList = ({ list }: WodListProps) => {
 
 
   return (
+    <>
+        <Title level={2} >
+            {wodClass}
+        </Title>
+        <List
+            dataSource={list}
+            renderItem={renderWod}
+        >
+        </List>
+    </>
 
-    <List
-        dataSource={list}
-        renderItem={renderWod}
-    >
-    </List>
   )
 }
 

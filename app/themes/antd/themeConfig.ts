@@ -4,7 +4,7 @@ const theme: ThemeConfig = {
     token: {
         fontSize: 16,
         colorPrimary: "#1890ff",
-        colorTextHeading: "#f1f0f1",
+        colorTextHeading: "#45a099",
         borderRadius: 24
     },
     components: {
