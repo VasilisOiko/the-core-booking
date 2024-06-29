@@ -1,12 +1,13 @@
+
 import { Card, Title } from "@/app/components"
 import { LocalizedText } from "@/app/locales"
 
 // TODO: Suspense react when fetching
-function Information() {
+function Overview() {
 
   return (
     <>
-      <Title><LocalizedText id="information.page.title"/></Title>
+      <Title><LocalizedText id="overview.page.title"/></Title>
       <Card className="overflow-auto">
         
 
@@ -16,4 +17,4 @@ function Information() {
   )
 }
 
-export default Information
+export default Overview

@@ -1,7 +1,7 @@
 const PAGES = Object.freeze({
-    DASHBOARD: {
-        KEY: "DASHBOARD",
-        ROUTE: "/dashboard"
+    OVERVIEW: {
+        KEY: "OVERVIEW",
+        ROUTE: "/overview"
     },
     BOOKINGS: {
         KEY: "BOOKINGS",

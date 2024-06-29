@@ -14,9 +14,9 @@ function NavigationBar() {
 
     const navItems: MenuItem[] = [
         {
-            label: RawLocalizedText("dashboard.page.label"),
-            key: PAGES.DASHBOARD.ROUTE,
-            onClick: () => router.push(PAGES.DASHBOARD.ROUTE),
+            label: RawLocalizedText("overview.page.label"),
+            key: PAGES.OVERVIEW.ROUTE,
+            onClick: () => router.push(PAGES.OVERVIEW.ROUTE),
         },
         {
             label: RawLocalizedText("bookings.page.label"),

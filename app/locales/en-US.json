@@ -39,10 +39,10 @@
     }
   },
 
-  "dashboard": {
+  "overview": {
     "page": {
-      "label": "Dashboard",
-      "title": "Dashboard" 
+      "label": "Overview",
+      "title": "Overview" 
     }
   },
   "bookings": {

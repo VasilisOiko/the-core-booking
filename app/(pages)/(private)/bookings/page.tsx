@@ -1,11 +1,10 @@
-
-
 import { getAvailableBookings } from "@/app/actions/bookings"
 import {
     Card,
     Title,
     BookingPanel
 } from "@/app/components"
+import { LocalizedText } from "@/app/locales"
 
 // TODO: Suspense react when fetching
 
@@ -15,7 +14,7 @@ async function Bookings() {
 
   return (
   <>
-    <Title>Bookings</Title>
+    <Title><LocalizedText id="bookings.page.title"/></Title>
     <Card className="overflow-auto">
       <BookingPanel bookings={ availableBookings }/>
     </Card>

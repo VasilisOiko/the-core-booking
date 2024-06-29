@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
     } else if (isAuthenticated() && request.nextUrl.pathname.match(("/login|/$"))) {
 
         // Redirect authenticated user away from login page
-        return NextResponse.redirect(new URL("/dashboard", request.url))
+        return NextResponse.redirect(new URL("/overview", request.url))
     }
 
     return NextResponse.next()
@@ -26,6 +26,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/", "/login", "/dashboard", "/bookings", "/information"],
+    matcher: ["/", "/login", "/overview", "/bookings", "/information"],
   }
   

@@ -38,7 +38,7 @@ const useLoginHandler = () => {
 
     switch (data) {
       case REQUEST.SUCCESSFUL:
-        router.push("/dashboard")
+        router.push("/overview")
         break
       case REQUEST.FAILED.WRONG_USER_DATA:
         showAlertMessage(wrongDetailsError)
