@@ -26,6 +26,7 @@ const getUniqueWodTitles = (
     ))
 )
 
+// TODO: change name to getClassesTimes
 const getWodClassesByTitle = (
     bookings: BookingProps,
     date: string,

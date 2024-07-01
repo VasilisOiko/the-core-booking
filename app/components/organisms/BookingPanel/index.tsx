@@ -13,6 +13,8 @@ import dayjs from "dayjs"
 import { Suspense, useState } from "react"
 import { getUniqueWodTitles, getWodClassesByTitle } from "@/app/utils/helpers/bookingFilters"
 import { BookingProps } from "@/app/utils/types/bookings"
+import BookingsCardsGrid from "../../molecules/BookingsCardsGrid"
+import LANGUAGES from "@/app/utils/constants/languages"
 
 
 type BookingPanelProps = {
@@ -35,7 +37,7 @@ const BookingPanel = ({ bookings }: BookingPanelProps) => {
             label: (
                 <Flex vertical align="center">
                     <Text>
-                        {RawLocalizedText(`days.${day.locale("gr-GR").format("dddd")}`)}    
+                        {RawLocalizedText(`days.${day.locale(LANGUAGES.GREEK).format("dddd")}`)}    
                     </Text>
                     <Text>
                         {day.format("DD-MM-YYYY")}
@@ -45,12 +47,20 @@ const BookingPanel = ({ bookings }: BookingPanelProps) => {
         }
     })
     
+    // const wodClassesItems = getUniqueWodTitles(Array.from(bookings), selectedDate)
+    // .map(title => ({
+    //     label: title,
+    //     key: title,
+    //     children: (
+    //         <WodList list={getWodClassesByTitle(Array.from(bookings), selectedDate, title)}/>
+    //     )
+    // }))
     const wodClassesItems = getUniqueWodTitles(Array.from(bookings), selectedDate)
     .map(title => ({
         label: title,
         key: title,
         children: (
-            <WodList list={getWodClassesByTitle(Array.from(bookings), selectedDate, title)}/>
+            <BookingsCardsGrid bookings={getWodClassesByTitle(Array.from(bookings), selectedDate, title)} />
         )
     }))
 
