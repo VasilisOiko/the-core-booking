@@ -12,7 +12,7 @@ import { RawLocalizedText } from "@/app/locales"
 import dayjs from "dayjs"
 import { useState } from "react"
 import { getUniqueClassesTitles, getClassesByTitle } from "@/app/utils/helpers/bookingFilters"
-import { BookingProps } from "@/app/utils/types/bookings"
+import { BookingProps } from "@/app/types/bookings"
 import BookingsCardsGrid from "../../molecules/BookingsCardsGrid"
 import LANGUAGES from "@/app/utils/constants/languages"
 

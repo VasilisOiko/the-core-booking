@@ -1,5 +1,5 @@
 import { Button, Card, Col, Flex, Row, Text, Title } from "@/app/components"
-import { WodClassesProps } from "@/app/utils/types/bookings"
+import { WodClassesProps } from "@/app/types/bookings"
 
 type BookingCardGridProps = {
     bookings: WodClassesProps[]

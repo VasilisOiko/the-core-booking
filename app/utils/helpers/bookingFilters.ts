@@ -1,4 +1,4 @@
-import { BookingProps, WodClassesProps } from "../types/bookings"
+import { BookingProps, WodClassesProps } from "../../types/bookings"
 
 
 const getClassesByDate = (bookings: BookingProps, date: string): WodClassesProps[] => (
@@ -26,7 +26,6 @@ const getUniqueClassesTitles = (
     ))
 )
 
-// TODO: change name to getClassesTimes
 const getClassesByTitle = (
     bookings: BookingProps,
     date: string,

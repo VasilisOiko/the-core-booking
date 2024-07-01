@@ -1,5 +1,5 @@
 import { fetchClasses } from "../services/classes"
-import { BookingProps } from "../utils/types/bookings"
+import { BookingProps } from "../types/bookings"
 
 const getAvailableBookings = async (): Promise<BookingProps> => {
 
