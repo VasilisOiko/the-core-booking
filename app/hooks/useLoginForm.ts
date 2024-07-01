@@ -7,7 +7,7 @@ import REQUEST from "../utils/constants/network"
 import { RawLocalizedText } from "../locales/index"
 import { login } from "../actions/authentication"
 
-const useLoginHandler = () => {
+const useLoginForm = () => {
   const [loading, setLoading] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState("")
@@ -64,4 +64,4 @@ const useLoginHandler = () => {
   }
 }
 
-export default useLoginHandler
+export default useLoginForm

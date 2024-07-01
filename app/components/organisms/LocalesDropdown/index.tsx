@@ -2,7 +2,7 @@ import { Dropdown, Button } from "../../index"
 import { type MenuProps } from "antd"
 import LANGUAGES from "@/app/utils/constants/languages"
 import { MdLanguage } from "react-icons/md"
-import { handleSelect } from "@/app/hooks/useLocalesHandlers"
+import { handleSelect } from "@/app/hooks/useLocaleHandlers"
 
 
 function LocalesDropdown(props?:any) {

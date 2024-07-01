@@ -13,7 +13,7 @@ import {
     Text,
   } from "@/app/components"
 
-import useLoginHandler from "@/app/hooks/useLoginHandler"
+import useLoginForm from "@/app/hooks/useLoginForm"
 
 const LoginForm = () => {
 
@@ -25,7 +25,7 @@ const LoginForm = () => {
         emailRequiredMessage,
         emailValidationMessage,
         handleSubmit,
-      } = useLoginHandler()
+      } = useLoginForm()
 
 
   return (
