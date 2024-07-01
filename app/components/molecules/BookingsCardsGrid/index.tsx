@@ -16,7 +16,7 @@ const BookingsCardsGrid = ({ bookings }: BookingCardGridProps) => {
         <Row gutter={[16, 16]}>
             {
                 bookings.map(booking => (
-                    <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={6}>
+                    <Col key={booking.id} xs={24} sm={24} md={24} lg={12} xl={8} xxl={6}>
                         <Card
                             bordered={true}
                             actions={[

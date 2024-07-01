@@ -10,8 +10,8 @@ import {
 
 import { RawLocalizedText } from "@/app/locales"
 import dayjs from "dayjs"
-import { Suspense, useState } from "react"
-import { getUniqueWodTitles, getWodClassesByTitle } from "@/app/utils/helpers/bookingFilters"
+import { useState } from "react"
+import { getUniqueClassesTitles, getClassesByTitle } from "@/app/utils/helpers/bookingFilters"
 import { BookingProps } from "@/app/utils/types/bookings"
 import BookingsCardsGrid from "../../molecules/BookingsCardsGrid"
 import LANGUAGES from "@/app/utils/constants/languages"
@@ -47,23 +47,14 @@ const BookingPanel = ({ bookings }: BookingPanelProps) => {
         }
     })
     
-    // const wodClassesItems = getUniqueWodTitles(Array.from(bookings), selectedDate)
-    // .map(title => ({
-    //     label: title,
-    //     key: title,
-    //     children: (
-    //         <WodList list={getWodClassesByTitle(Array.from(bookings), selectedDate, title)}/>
-    //     )
-    // }))
-    const wodClassesItems = getUniqueWodTitles(Array.from(bookings), selectedDate)
+    const wodClassesItems = getUniqueClassesTitles(Array.from(bookings), selectedDate)
     .map(title => ({
         label: title,
         key: title,
         children: (
-            <BookingsCardsGrid bookings={getWodClassesByTitle(Array.from(bookings), selectedDate, title)} />
+            <BookingsCardsGrid bookings={getClassesByTitle(Array.from(bookings), selectedDate, title)} />
         )
     }))
-
 
     return (
 

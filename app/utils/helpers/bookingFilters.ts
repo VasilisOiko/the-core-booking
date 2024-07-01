@@ -7,7 +7,7 @@ const getClassesByDate = (bookings: BookingProps, date: string): WodClassesProps
     .flatMap(booking => booking.wodClasses)
 )
 
-const getWodClassesByTime = (
+const getClassesByTime = (
     bookings: BookingProps,
     date: string,
     time: string,
@@ -16,7 +16,7 @@ const getWodClassesByTime = (
     .filter(wod => wod.time === time)
 )
 
-const getUniqueWodTitles = (
+const getUniqueClassesTitles = (
     bookings: BookingProps,
     date: string
 ): string[] => (
@@ -27,7 +27,7 @@ const getUniqueWodTitles = (
 )
 
 // TODO: change name to getClassesTimes
-const getWodClassesByTitle = (
+const getClassesByTitle = (
     bookings: BookingProps,
     date: string,
     title: string,
@@ -38,7 +38,7 @@ const getWodClassesByTitle = (
 
 export {
     getClassesByDate,
-    getWodClassesByTime,
-    getUniqueWodTitles,
-    getWodClassesByTitle
+    getClassesByTime,
+    getUniqueClassesTitles,
+    getClassesByTitle
 }
