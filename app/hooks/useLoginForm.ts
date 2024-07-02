@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Form } from "antd"
-import REQUEST from "../utils/constants/network"
+import { REQUEST } from "../utils/constants/network"
 import { RawLocalizedText } from "../locales/index"
 import { login } from "../actions/authentication"
 

@@ -6,6 +6,7 @@ import { Menu } from "@/app/components"
 import { RawLocalizedText } from "@/app/locales"
 import { PAGES } from "@/app/utils/constants/pages"
 import { useRouter, usePathname  } from "next/navigation"
+import { BookFilled, HomeFilled, InfoCircleFilled } from "@ant-design/icons"
 
 function NavigationBar() {
     type MenuItem = Required<MenuProps>["items"][number];
@@ -14,18 +15,21 @@ function NavigationBar() {
 
     const navItems: MenuItem[] = [
         {
-            label: RawLocalizedText("overview.page.label"),
             key: PAGES.OVERVIEW.ROUTE,
+            icon: <HomeFilled />,
+            label: RawLocalizedText("overview.page.label"),
             onClick: () => router.push(PAGES.OVERVIEW.ROUTE),
         },
         {
-            label: RawLocalizedText("bookings.page.label"),
             key: PAGES.BOOKINGS.ROUTE,
+            icon: <BookFilled />,
+            label: RawLocalizedText("bookings.page.label"),
             onClick: () => router.push(PAGES.BOOKINGS.ROUTE),
         },
         {
-            label: RawLocalizedText("information.page.label"),
             key: PAGES.INFORMATION.ROUTE,
+            icon: <InfoCircleFilled />,
+            label: RawLocalizedText("information.page.label"),
             onClick: () => router.push(PAGES.INFORMATION.ROUTE),
         }
     ]

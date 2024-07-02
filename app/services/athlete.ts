@@ -1,48 +1,13 @@
 import axios from "axios"
 import { getToken } from "../actions/authentication"
+import { REVALIDATE_TAG } from "../utils/constants/network"
+import { authURL, clientURL } from "./apiUrls"
 
 type loginProps = {
     username: string
     password: string
 }
 
-// TODO: replace urls as they are in a separate file
-const apiURL = "https://thecorecf.com/api/"
-const authURL = `${apiURL}auth/token/athlete/`
-const clientURL = `${apiURL}client/ddb67c26-e64c-4cc9-9468-0f1f75eb3e67`
-// const authURL = "auth/token/athlete/"
-// const clientURL = "client/ddb67c26-e64c-4cc9-9468-0f1f75eb3e67"
-
-const api = axios.create({
-    baseURL: "https://thecorecf.com//api",
-    timeout: 10000,
-    headers: {
-        Accept: "application/json, text/plain",
-        "Accept-Language": "en-US,enq=0.5",
-        "Content-Type": "application/json",
-    }
-})
-
-
-// const fetchToken = ({ username, password }: loginProps) => {
-
-//     console.log("fetchToken", username, password)
-
-//     return api.post(`${authURL}${username}`, {
-//         username: username,
-//         password: password,
-//     })
-// }
-
-
-// const fetchClient = () => {
-
-//     return api.get(clientURL, {
-//         headers: {
-//             Authorization: `Bearer ${getToken()}`
-//         }
-//     })
-// }
 const fetchToken = async ({ username, password }: loginProps) => {
 
     try {
@@ -67,13 +32,18 @@ const fetchToken = async ({ username, password }: loginProps) => {
     }
 }
 
-const fetchClient = async () => {
+const fetchAthlete = async () => {
+
+    const token = await getToken()
 
     try {
         const response = await fetch(clientURL, {
           method: "GET",
+          cache: "force-cache",
+          next: { tags: [REVALIDATE_TAG.ATHLETE] },
           headers: {
-            Authorization: `Bearer ${getToken()}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         })
         if (!response.ok) {
@@ -88,4 +58,4 @@ const fetchClient = async () => {
       }
 }
 
-export { fetchToken, fetchClient }
+export { fetchToken, fetchAthlete }

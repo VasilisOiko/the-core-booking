@@ -7,6 +7,8 @@ const theme: ThemeConfig = {
         colorTextHeading: "#45a099",
         borderRadius: 24,
 
+        colorTextPlaceholder: "#45a099",
+
         screenXS: 480,
         screenXSMax: 575,
         screenXSMin: 480,

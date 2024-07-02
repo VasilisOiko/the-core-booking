@@ -1,7 +1,8 @@
 "use server"
 import { cookies } from "next/headers"
-import REQUEST from "../utils/constants/network"
-import { fetchToken } from "../services/user"
+import { REQUEST } from "../utils/constants/network"
+import { fetchToken } from "../services/athlete"
+import { redirect } from "next/navigation"
 
 type loginCredentials = {
   email: string;
@@ -35,6 +36,7 @@ const login = async ({email, password}: loginCredentials) => {
 
 const logout = () => {
   cookies().delete("token")
+  redirect("/login")
 }
 
 

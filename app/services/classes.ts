@@ -1,4 +1,5 @@
 import { getToken } from "../actions/authentication"
+import { REVALIDATE_TAG } from "../utils/constants/network"
 import { classesURL } from "./apiUrls"
 
 
@@ -9,6 +10,8 @@ const fetchClasses = async () => {
     try {
         const response = await fetch(classesURL, {
             method: "GET",
+            cache: "force-cache",
+            next: { tags: [REVALIDATE_TAG.CLASSES] },
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
