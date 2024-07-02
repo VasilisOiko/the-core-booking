@@ -4,7 +4,7 @@ import { Dropdown, Button, Avatar, Menu, Drawer, Text, PersonalDetailsDescriptio
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import { RawLocalizedText } from "@/app/locales"
-import { MENU_ITEM_KEYS } from "@/app/utils/constants/identifiers"
+import { USER_MENU_ITEM_KEYS } from "@/app/utils/constants/identifiers"
 import { logout } from "@/app/actions/authentication"
 import { getAthlete } from "@/app/actions/athlete"
 import { AthleteProps } from "@/app/types/athlete"
@@ -19,18 +19,18 @@ function UserProfileMenu(props:any) {
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
         {
-            key: MENU_ITEM_KEYS.PERSONAL_DETAILS,
+            key: USER_MENU_ITEM_KEYS.PERSONAL_DETAILS,
             label: (<Text>{RawLocalizedText("userProfileMenu.PersonalDetails.label")}</Text>),
         },
         {
-            key: MENU_ITEM_KEYS.CHANGE_PASSWORD,
+            key: USER_MENU_ITEM_KEYS.CHANGE_PASSWORD,
             label: (<Text>{RawLocalizedText("userProfileMenu.changePassword.label")}</Text>),
         },
         {
             type: "divider",
         },
         {
-            key: MENU_ITEM_KEYS.LOG_OUT,
+            key: USER_MENU_ITEM_KEYS.LOG_OUT,
             label: (<Text>{RawLocalizedText("userProfileMenu.logOut.label")}</Text>),
         }
     ]
@@ -47,15 +47,15 @@ function UserProfileMenu(props:any) {
         console.log("item clicked: ", key)
 
         switch (key) {
-            case MENU_ITEM_KEYS.PERSONAL_DETAILS:
+            case USER_MENU_ITEM_KEYS.PERSONAL_DETAILS:
                 showDrawer()
                 break
 
-            case MENU_ITEM_KEYS.CHANGE_PASSWORD:
+            case USER_MENU_ITEM_KEYS.CHANGE_PASSWORD:
                 
                 break
 
-            case MENU_ITEM_KEYS.LOG_OUT:
+            case USER_MENU_ITEM_KEYS.LOG_OUT:
                 logout()
                 break
         }
