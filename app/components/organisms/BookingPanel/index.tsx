@@ -25,7 +25,6 @@ const BookingPanel = ({ bookings }: BookingPanelProps) => {
 
 
     const [selectedDate, setSelectedDate] = useState<string>(bookings[0].date)
-    const [selectedTime, setSelectedTime] = useState(bookings[0].wodClasses[0].time)
 
 
     const dateTabs = bookings.map(booking => booking.date)
