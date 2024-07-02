@@ -15,6 +15,7 @@ import { getUniqueClassesTitles, getClassesByTitle } from "@/app/utils/helpers/b
 import { BookingProps } from "@/app/types/bookings"
 import BookingsCardsGrid from "../../molecules/BookingsCardsGrid"
 import LANGUAGES from "@/app/utils/constants/languages"
+import { getLocalizedDayDate } from "@/app/utils/helpers/dateFormatters"
 
 
 type BookingPanelProps = {
@@ -29,17 +30,17 @@ const BookingPanel = ({ bookings }: BookingPanelProps) => {
 
     const dateTabs = bookings.map(booking => booking.date)
     .map(date => {
-        const day = dayjs(date)
+        const { dayOfWeek, formattedDate } = getLocalizedDayDate(date)
 
         return {
             key: date,
             label: (
                 <Flex vertical align="center">
                     <Text>
-                        {RawLocalizedText(`days.${day.locale(LANGUAGES.GREEK).format("dddd")}`)}    
+                        {dayOfWeek}    
                     </Text>
                     <Text>
-                        {day.format("DD-MM-YYYY")}
+                        {formattedDate}
                     </Text>
                 </Flex>
             )

@@ -9,6 +9,7 @@ import BookingPanel from "./organisms/BookingPanel"
 import LocalesDropdown from "./organisms/LocalesDropdown"
 import LoginForm from "./organisms/LoginForm"
 import NavigationBar from "./organisms/NavigationBar"
+import PersonalDetailsDescriptions from "./molecules/PersonalDetailsDescriptions"
 import UserProfileMenu from "./organisms/UserProfileMenu"
 
 /* ant design direct imports */
@@ -29,6 +30,7 @@ export {
     LocalesDropdown,
     LoginForm,
     NavigationBar,
+    PersonalDetailsDescriptions,
     UserProfileMenu,
     CheckableTag,
     Content,

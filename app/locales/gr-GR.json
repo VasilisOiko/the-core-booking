@@ -68,5 +68,24 @@
     "logOut": {
       "label": "Αποσύνδεση"
     }
+  },
+
+  "personalDetailsDescriptions": {
+    "title": "Προφίλ χρήστη",
+    "items": {
+      "firstName": "Όνομα",
+      "lastName": "Επώνυμο",
+      "email": "Email",
+      "phoneNumber": "Τηλέφωνο",
+      "address": "Διεύθυνση",
+      "registered": "Εγγραφή",
+      "membership": {
+        "label": "Περίοδος συνδρομής",
+        "starts": "Ξεκινά:",
+        "ends": "Λήγει:",
+        "subscription": "Τύπος συνδρομής"
+      }
+    }
   }
+
 }

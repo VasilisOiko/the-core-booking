@@ -68,5 +68,24 @@
     "logOut": {
       "label": "Log Out"
     }
+  },
+
+  "personalDetailsDescriptions": {
+    "title": "Personal Details",
+    "items": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "registered": "Registered",
+      "membership": {
+        "label": "Membership",
+        "starts": "Starts:",
+        "ends": "Ends:",
+        "subscription": "Subscription Plan"
+      }
+    }
   }
+
 }

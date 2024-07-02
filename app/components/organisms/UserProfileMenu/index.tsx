@@ -1,6 +1,6 @@
 "use client"
 
-import { Dropdown, Button, Avatar, Menu, Text } from "@/app/components"
+import { Dropdown, Button, Avatar, Menu, Drawer, Text, PersonalDetailsDescriptions } from "@/app/components"
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import { RawLocalizedText } from "@/app/locales"
@@ -14,6 +14,7 @@ import { useEffect, useState } from "react"
 function UserProfileMenu(props:any) {
 
     const [athlete, setAthlete] = useState<AthleteProps>()
+    const [open, setOpen] = useState(false)
 
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
@@ -34,21 +35,29 @@ function UserProfileMenu(props:any) {
         }
     ]
 
+    const showDrawer = () => {
+        setOpen(true)
+    }
+    
+      const onClose = () => {
+        setOpen(false)
+    }
+
     const handleItemClick = ({key}: {key: string}) => {
         console.log("item clicked: ", key)
 
         switch (key) {
             case MENU_ITEM_KEYS.PERSONAL_DETAILS:
-                
-                break;
+                showDrawer()
+                break
 
             case MENU_ITEM_KEYS.CHANGE_PASSWORD:
                 
-                break;
+                break
 
             case MENU_ITEM_KEYS.LOG_OUT:
                 logout()
-                break;
+                break
         }
     }
 
@@ -72,17 +81,22 @@ function UserProfileMenu(props:any) {
         </>
     )
 
-
+    // TODO: maybe display UserOutlined icon when user data loading
     return (
-        <Dropdown dropdownRender={menuComponent} trigger={["click"]} placement="bottom">
-            <Button
-                ghost
-                shape="circle"
-                icon={<Avatar size="large">{`${athlete?.lastName.charAt(0)}${athlete?.firstName.charAt(0)}`}</Avatar>}
-            >
-
-            </Button>
-        </Dropdown>
+        <>
+            <Dropdown dropdownRender={menuComponent} trigger={["click"]} placement="bottom">
+                <Button
+                    ghost
+                    shape="circle"
+                    icon={<Avatar size="large">{`${athlete?.lastName.charAt(0)}${athlete?.firstName.charAt(0)}`}</Avatar>}
+                >
+                </Button>
+            </Dropdown>
+            <Drawer placement="top" onClose={onClose} open={open}>
+                <PersonalDetailsDescriptions athlete={athlete} />
+            </Drawer>
+            
+        </>
     )
 }
 
