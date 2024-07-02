@@ -5,12 +5,26 @@ import { RawLocalizedText } from "@/app/locales"
 const getLocalizedDayDate = (date: string | undefined) => {
 
     if (!date) {
-            return { dayOfWeek: "", formattedDate: "" }
+        return { dayOfWeek: "", formattedDate: "" }
     }
 
     const dateObject = dayjs(date)
 
     const dayOfWeek  = RawLocalizedText(`days.${dateObject.locale(LANGUAGES.GREEK).format("dddd")}`)
+    const formattedDate  = dateObject.format("DD-MM-YYYY")
+
+    return { dayOfWeek , formattedDate }
+}
+
+const getDayDate = (date: string | undefined) => {
+
+    if (!date) {
+        return { dayOfWeek: "", formattedDate: "" }
+    }
+
+    const dateObject = dayjs(date)
+
+    const dayOfWeek  = dateObject.locale(LANGUAGES.GREEK).format("dddd")
     const formattedDate  = dateObject.format("DD-MM-YYYY")
 
     return { dayOfWeek , formattedDate }
@@ -45,4 +59,4 @@ const getDatePeriod = (startDate: string | undefined, endDate: string | undefine
     }
 }
 
-export { getLocalizedDayDate, getDatePeriod }
+export { getLocalizedDayDate, getDatePeriod, getDayDate }

@@ -16,8 +16,6 @@ function PersonalDetailsDescriptions({ athlete }: PersonalDetailsDescriptionsPro
   const registrationDate = getLocalizedDayDate(athlete?.registered)
   const membershipPeriod = getDatePeriod(athlete?.memberships[0]?.starts, athlete?.memberships[0]?.ends)
   
-  // TODO: set proper keys
-
   const items: DescriptionsProps["items"] = [
     {
       key: PERSONAL_DETAILS_KEYS.FIRST_NAME,

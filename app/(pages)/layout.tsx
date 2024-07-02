@@ -8,7 +8,8 @@ import {
   LocalesDropdown,
   Header,
   Image,
-  UserProfileMenu
+  UserProfileMenu,
+  SkeletonAvatar
 } from "../components"
 
 import { Content } from "antd/lib/layout/layout"
@@ -18,6 +19,8 @@ import theme from "../themes/antd/themeConfig"
 
 import crossfitLogo from "public/THE+CORE+logo+final.png"
 import { isAuthenticated } from "../actions/authentication"
+import { Suspense } from "react"
+import Loading from "./(private)/loading"
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -53,13 +56,13 @@ export default async function RootLayout({ children , }: Readonly<{
 
       </head>
         <body>
-        <NextIntlClientProvider messages={messages}>
-          <AntdRegistry>
-            <ConfigProvider theme={theme}>
+        <AntdRegistry>
+          <ConfigProvider theme={theme}>
+            <NextIntlClientProvider messages={messages}>
               <Header logo={logo}>
-                 <Flex justify="center" align="center" gap="middle">
-                    <LocalesDropdown />
-                    {isAuthenticated() && <UserProfileMenu/>}
+                <Flex justify="center" align="center" gap="middle">
+                  <LocalesDropdown />
+                  {isAuthenticated() && <UserProfileMenu/>}
                 </Flex>
               </Header>
               <Layout>
@@ -67,9 +70,9 @@ export default async function RootLayout({ children , }: Readonly<{
                   {children}
                 </Content>
               </Layout>
-            </ConfigProvider>
-          </AntdRegistry>
-        </NextIntlClientProvider>
+            </NextIntlClientProvider>
+          </ConfigProvider>
+        </AntdRegistry>
       </body>
     </html>
   )

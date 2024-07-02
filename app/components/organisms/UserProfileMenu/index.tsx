@@ -1,6 +1,6 @@
 "use client"
 
-import { Dropdown, Button, Avatar, Menu, Drawer, Text, PersonalDetailsDescriptions } from "@/app/components"
+import { Dropdown, Button, Avatar, Menu, Drawer, Text, Skeleton, PersonalDetailsDescriptions } from "@/app/components"
 import { MenuProps } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import { RawLocalizedText } from "@/app/locales"
@@ -8,13 +8,12 @@ import { USER_MENU_ITEM_KEYS } from "@/app/utils/constants/identifiers"
 import { logout } from "@/app/actions/authentication"
 import { getAthlete } from "@/app/actions/athlete"
 import { AthleteProps } from "@/app/types/athlete"
-import Loading from "@/app/(pages)/loading"
 import { useEffect, useState } from "react"
 
-function UserProfileMenu(props:any) {
+function UserProfileMenu() {
 
     const [athlete, setAthlete] = useState<AthleteProps>()
-    const [open, setOpen] = useState(false)
+    const [drawerVisibility, setDrawerVisibility] = useState(false)
 
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
@@ -36,14 +35,14 @@ function UserProfileMenu(props:any) {
     ]
 
     const showDrawer = () => {
-        setOpen(true)
+        setDrawerVisibility(true)
     }
     
-      const onClose = () => {
-        setOpen(false)
+    const closeDrawer = () => {
+        setDrawerVisibility(false)
     }
 
-    const handleItemClick = ({key}: {key: string}) => {
+    const handleItemClick = async ({ key }: {key: string}) => {
         console.log("item clicked: ", key)
 
         switch (key) {
@@ -56,46 +55,50 @@ function UserProfileMenu(props:any) {
                 break
 
             case USER_MENU_ITEM_KEYS.LOG_OUT:
-                logout()
+                await logout()
                 break
         }
     }
 
-    useEffect(() => {
-        getAthlete().then((data) => {
+    const setStateValues = async () => {
+        try {
+            const data = await getAthlete()
             setAthlete(data)
-        })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        setStateValues()
     
-      return () => {
-        setAthlete(undefined)
-      }
+        return () => {
+          setAthlete(undefined)
+        }
     }, [])
 
-    const menuComponent = (menu:any) => (   
-        <>
-            <Menu
-                className="w-44"
-                items={items}
-                onClick={handleItemClick}
-            />
-        </>
+    const menuComponent = () => (   
+        <Menu
+            className="w-40"
+            items={items}
+            onClick={handleItemClick}
+        />
     )
 
-    // TODO: maybe display UserOutlined icon when user data loading
     return (
         <>
-            <Dropdown dropdownRender={menuComponent} trigger={["click"]} placement="bottom">
+            <Dropdown arrow dropdownRender={menuComponent} trigger={["click"]} placement="bottomLeft">
                 <Button
                     ghost
                     shape="circle"
                     icon={<Avatar size="large">{`${athlete?.lastName.charAt(0)}${athlete?.firstName.charAt(0)}`}</Avatar>}
-                >
+                    >
                 </Button>
             </Dropdown>
-            <Drawer placement="top" onClose={onClose} open={open}>
+ 
+            <Drawer placement="top" onClose={closeDrawer} open={drawerVisibility}>
                 <PersonalDetailsDescriptions athlete={athlete} />
-            </Drawer>
-            
+            </Drawer> 
         </>
     )
 }
