@@ -69,6 +69,11 @@ const LoginForm = () => {
   return (
       <Form form={form}
           onFinish={handleSubmit}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              form.submit()
+            }
+          }}
           className="w-80"
         >
         <Row gutter={[24, 8]} justify="center">
