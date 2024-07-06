@@ -1,25 +1,34 @@
-import { Button, Card, Col, Row, Text, Title } from "@/app/components"
+import { Button, Card, CardMeta, Col, Popconfirm, Row, Text, Title } from "@/app/components"
 import { WodClassesProps } from "@/app/types/bookings"
 
 type BookingCardGridProps = {
     bookings: WodClassesProps[]
 }
 const BookingsCardsGrid = ({ bookings }: BookingCardGridProps) => {
-
+  
+  console.log("bookings: ", bookings)
   const BookingCard = ({ booking }: { booking: WodClassesProps }) => {
 
     return (
       <Card
         bordered={true}
         actions={[
-          <Button key="setting">
-            Make booking
-          </Button>,
+          <Popconfirm
+            title="Book this class?"
+            description="Are you sure you want to book this class?"
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button key={booking.id} type="text" block className="h-max">
+              Make booking
+            </Button>
+          </Popconfirm>
         ]}
       >
-        <Text strong>
-          {booking.time}
-        </Text>
+        <CardMeta
+          title={(<Text strong>{booking.time}</Text>)}
+          description={`Availability: ${booking.booked} / ${booking.capacity}`}
+        />
       </Card>
     )
   }
@@ -32,7 +41,7 @@ const BookingsCardsGrid = ({ bookings }: BookingCardGridProps) => {
       <Row gutter={[16, 16]}>
         {
           bookings.map(booking => (
-            <Col key={booking.id} xs={24} sm={24} md={24} lg={12} xl={8} xxl={6}>
+            <Col key={booking.id} xs={24} sm={24} md={12} lg={12} xl={8} xxl={6}>
               <BookingCard booking={booking} />
             </Col>
           ))

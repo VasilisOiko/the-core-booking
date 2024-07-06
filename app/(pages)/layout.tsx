@@ -49,22 +49,36 @@ export default async function RootLayout({ children , }: Readonly<{
       width={160}
     />
   )
+
+  const Logo = () =>{
+    return (
+      <Image
+        src={crossfitLogo.src}
+        alt="crossfit logo"
+        preview={false}
+        height={57}
+        width={160}
+      />
+    )
+  }
   
   return (
     <html lang={locale}>
       <head>
 
       </head>
-        <body>
+      <body>
         <AntdRegistry>
           <ConfigProvider theme={theme}>
             <NextIntlClientProvider messages={messages}>
-              <Header logo={logo}>
-                <Flex justify="center" align="center" gap="middle">
-                  <LocalesDropdown />
-                  {isAuthenticated() && <UserProfileMenu/>}
-                </Flex>
-              </Header>
+              {!isAuthenticated() &&
+                <Header logo={logo}>
+                  <Flex justify="space-between" align="center" gap="middle">
+                    <Logo/>
+                    <LocalesDropdown />
+                  </Flex>
+                </Header>
+              }
               <Layout>
                 <Content>
                   {children}

@@ -1,9 +1,13 @@
 
+import { getAthletePastBookings } from "@/app/actions/athlete"
 import { Card, Title } from "@/app/components"
 import { LocalizedText } from "@/app/locales"
+import {AthletePastBookingsProps} from "@/app/types/athlete"
 
 // TODO: Suspense react when fetching
-function Overview() {
+async function Overview() {
+
+  const pastBookings = await getAthletePastBookings()
 
   return (
     <>

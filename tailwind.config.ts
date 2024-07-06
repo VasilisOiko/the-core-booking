@@ -6,10 +6,12 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      sm: "480px",
+      xs: "480px",
+      sm: "576px",
       md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      lg: "992px",
+      xl: "1200px",
+      xxl: "1600px"
     },
     fontFamily: {
       anton: ["Anton", "arial", "sans-serif"],

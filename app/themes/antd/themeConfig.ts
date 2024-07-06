@@ -40,8 +40,13 @@ const theme: ThemeConfig = {
             controlPaddingHorizontal: 16,
             borderRadius: 11
         },
+        Menu: {
+            // darkPopupBg: "#252525",
+            darkItemBg: "#001529",
+        },
         Layout: {
             bodyBg: "#252525",
+            siderBg: "#001529",
         },
     },
 };

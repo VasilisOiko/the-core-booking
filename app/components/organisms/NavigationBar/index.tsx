@@ -8,7 +8,11 @@ import { PAGES } from "@/app/utils/constants/pages"
 import { useRouter, usePathname  } from "next/navigation"
 import { BookFilled, HomeFilled, InfoCircleFilled } from "@ant-design/icons"
 
-function NavigationBar() {
+type Props = {
+    onSelect?: () => void
+}
+
+function NavigationBar({ onSelect }: Props) {
     type MenuItem = Required<MenuProps>["items"][number];
 
     const router = useRouter()
@@ -36,11 +40,11 @@ function NavigationBar() {
 
     return (
         <Menu
-            className="h-full"
             theme="dark"
             mode="inline"
             items={navItems}
             defaultSelectedKeys={[usePathname()]}
+            onSelect={onSelect}
         />
     )
 }

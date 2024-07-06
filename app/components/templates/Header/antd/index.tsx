@@ -5,16 +5,11 @@ import { Header as AntdHeader } from "antd/lib/layout/layout";
 function Header(props?: any) {
 
     return (
-        <Layout>
-            <Affix>
-                <AntdHeader>
-                    <Flex justify="space-between" align="center">
-                        {props.logo}
-                        {props.children}
-                    </Flex>
-                </AntdHeader>
-            </Affix>
-        </Layout>
+        <Affix>
+            <AntdHeader>
+                {props.children}
+            </AntdHeader>
+        </Affix>
     )
 }
 
