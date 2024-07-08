@@ -12,6 +12,8 @@ export default getRequestConfig(async () => {
   
   if (!hasLanguageCookie()) {
     locale = LANGUAGES.GREEK
+
+    setLanguage(LANGUAGES.GREEK)
   }
   else {
     locale = getLanguage()

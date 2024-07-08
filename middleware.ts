@@ -1,15 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { isAuthenticated } from "./app/actions/authentication"
-import { hasLanguageCookie, setLanguage } from "./app/actions/localization"
-import LANGUAGES from "./app/utils/constants/languages"
 
 export function middleware(request: NextRequest) {
 
-    if (!hasLanguageCookie()) {
-        // Set the default language
-        setLanguage(LANGUAGES.GREEK)
-    }
-    
     if (!isAuthenticated() && !request.nextUrl.pathname.match(("/login"))) {
 
         // Redirect user to login if not authenticated

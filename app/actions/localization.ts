@@ -12,7 +12,7 @@ const setLanguage = async (language: string) => {
     try {
         cookies().set("language", language, { secure: true, sameSite: "strict" })
     } catch (error) {
-        console.error(error)
+        console.error("language cookie: ", error)
     }
 }
 

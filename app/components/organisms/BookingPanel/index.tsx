@@ -16,7 +16,7 @@ type BookingPanelProps = {
 
 function BookingPanel({ bookings }: BookingPanelProps) {
 
-    const classesItems = (selectedDate: string) => getUniqueClassesTitles(bookings, selectedDate)
+    const classesItemsByDate = (selectedDate: string) => getUniqueClassesTitles(bookings, selectedDate)
         .map(title => ({
             label: title,
             key: title,
@@ -43,7 +43,7 @@ function BookingPanel({ bookings }: BookingPanelProps) {
                     <Flex vertical> 
                         <Tabs
                             tabPosition="left"
-                            items={classesItems(date)}
+                            items={classesItemsByDate(date)}
                         />
                     </Flex>
                 )

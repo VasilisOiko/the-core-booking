@@ -4,7 +4,6 @@ import LANGUAGES from "@/app/utils/constants/languages"
 import { MdLanguage } from "react-icons/md"
 import { handleSelect } from "@/app/hooks/useLocaleHandlers"
 
-
 function LocalesDropdown(props?:any) {
 
     const localesOptions: MenuProps["items"] = [

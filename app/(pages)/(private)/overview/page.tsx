@@ -9,6 +9,8 @@ async function Overview() {
 
   const pastBookings = await getAthletePastBookings()
 
+  console.log("pastBookings: ", pastBookings)
+
   return (
     <>
       <Title><LocalizedText id="overview.page.title"/></Title>
