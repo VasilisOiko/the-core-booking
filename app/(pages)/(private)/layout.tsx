@@ -9,7 +9,7 @@ function layout({children}: {children: React.ReactNode}) {
     <>
       <Layout className="h-screen">
 
-        <DefaultSiderMenu classNames="hidden sm:block"/>
+        <DefaultSiderMenu className="hidden sm:block"/>
 
         <Layout>
           <Header>

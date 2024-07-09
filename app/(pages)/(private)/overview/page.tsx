@@ -9,7 +9,7 @@ async function Overview() {
 
   const pastBookings = await getAthletePastBookings()
 
-  console.log("pastBookings: ", pastBookings)
+  // console.log("pastBookings: ", pastBookings)
 
   return (
     <>

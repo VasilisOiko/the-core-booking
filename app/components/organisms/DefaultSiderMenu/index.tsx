@@ -2,9 +2,9 @@ import { Sider, NavigationBar, Image } from "@/app/components"
 import crossfitLogo from "public/THE+CORE+logo+final.png"
 
 type Props = {
-    classNames?: string
+    className?: string
 }
-function DefaultSiderMenu({ classNames }: Props) {
+function DefaultSiderMenu({ className }: Props) {
 
     const Logo = () =>{
         return (
@@ -23,7 +23,7 @@ function DefaultSiderMenu({ classNames }: Props) {
         <Sider
             breakpoint="lg"
             width={200}
-            className={classNames}
+            className={className}
           >
               <Logo/>
               <NavigationBar/>

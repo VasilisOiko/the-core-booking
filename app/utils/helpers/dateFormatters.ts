@@ -2,6 +2,16 @@ import dayjs from "dayjs"
 import LANGUAGES from "../constants/languages"
 import { RawLocalizedText } from "@/app/locales"
 
+/**
+ * Formats the given value to the format 'YYYY-MM-DDT09:00:00[Z]'
+ *
+ * @param value the value to be formatted
+ * @return formatted string
+ */
+const formatValueToBookingsDate = (value: any) => {
+    return dayjs(value).format("YYYY-MM-DDT09:00:00[Z]")
+}
+
 const getLocalizedDayDate = (date: string | undefined) => {
 
     if (!date) {
@@ -59,4 +69,4 @@ const getDatePeriod = (startDate: string | undefined, endDate: string | undefine
     }
 }
 
-export { getLocalizedDayDate, getDatePeriod, getDayDate }
+export { formatValueToBookingsDate, getLocalizedDayDate, getDatePeriod, getDayDate }

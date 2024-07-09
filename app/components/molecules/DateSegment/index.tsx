@@ -3,11 +3,15 @@ import { RawLocalizedText } from "@/app/locales"
 import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
 import dayjs from "dayjs"
 
-const DateSegment = () => {
+type Props = {
+  dates: string[]
+}
+
+const DateSegment = ({ dates }: Props) => {
     
   const bookingsDates = BOOKINGS.map(booking => booking.date)
 
-  const options = bookingsDates.map(date => {
+  const options = dates.map(date => {
       const day = dayjs(date)
 
     return {
