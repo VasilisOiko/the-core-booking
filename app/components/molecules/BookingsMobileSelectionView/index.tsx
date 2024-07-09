@@ -1,11 +1,11 @@
 "use client"
-import { BookingsCardsGrid, Col, DatePicker, Row, Select, SkeletonButton } from "@/app/components"
-import { BookingProps, WodClassesProps } from "@/app/types/bookings"
-import { getClassesByTitle, getUniqueClassesTitles } from "@/app/utils/helpers/bookingFilters"
-import { formatValueToBookingsDate, getDayDate, getLocalizedDayDate } from "@/app/utils/helpers/dateFormatters"
-import dayjs from "dayjs"
-import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
+import { BookingProps, WodClassesProps } from "@/app/types/bookings"
+import { BookingsCardsGrid, Col, DatePicker, Row, Select, SkeletonButton } from "@/app/components"
+import { getClassesByTitle, getUniqueClassesTitles } from "@/app/utils/helpers/bookingFilters"
+import { formatValueToBookingsDate, getDayDate } from "@/app/utils/helpers/dateFormatters"
+import { useTranslations } from "next-intl"
+import dayjs from "dayjs"
 
 type BookingPanelProps = {
     bookings: BookingProps

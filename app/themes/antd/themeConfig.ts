@@ -5,7 +5,7 @@ const theme: ThemeConfig = {
         fontSize: 16,
         colorPrimary: "#1890ff",
         colorTextHeading: "#45a099",
-        borderRadius: 24,
+        borderRadius: 8,
 
         colorTextPlaceholder: "#45a099",
 

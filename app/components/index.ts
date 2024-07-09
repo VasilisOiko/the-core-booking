@@ -1,5 +1,5 @@
 /* Molecules */
-import BookingsCardsGrid from "./molecules/BookingsCardsGrid"
+import BookingCard from "./molecules/BookingCard"
 import BookingCardSkeleton from "./molecules/BookingCardSkeleton"
 import BookingsDefaultSelectionView from "./molecules/BookingsDefaultSelectionView"
 import BookingsMobileSelectionView from "./molecules/BookingsMobileSelectionView"
@@ -7,13 +7,14 @@ import DateSegment from "./molecules/DateSegment"
 import WodFilterTags from "./molecules/WodFilterTags"
 import WodList from "./molecules/WodList"
 import WodTable from "./molecules/WodTable"
+import PersonalDetailsDescriptions from "./molecules/PersonalDetailsDescriptions"
 
 /* Organisms */
+import BookingsCardsGrid from "./organisms/BookingsCardsGrid"
 import BookingPanel from "./organisms/BookingPanel"
 import LocalesDropdown from "./organisms/LocalesDropdown"
 import LoginForm from "./organisms/LoginForm"
 import NavigationBar from "./organisms/NavigationBar"
-import PersonalDetailsDescriptions from "./molecules/PersonalDetailsDescriptions"
 import UserProfileMenu from "./organisms/UserProfileMenu"
 import DefaultSiderMenu from "./organisms/DefaultSiderMenu"
 import MobileSiderMenu from "./organisms/MobileSiderMenu"
@@ -35,9 +36,11 @@ import { default as CardMeta } from "antd/es/card/Meta"
 import SkeletonAvatar from "antd/es/skeleton/Avatar"
 import SkeletonButton from "antd/es/skeleton/Button"
 import SkeletonImage from "antd/es/skeleton/Image"
+import SkeletonInput from "antd/es/skeleton/Input"
 import SkeletonNode from "antd/es/skeleton/Node"
 
 export {
+    BookingCard,
     BookingsCardsGrid,
     BookingCardSkeleton,
     BookingsDefaultSelectionView,
@@ -66,6 +69,7 @@ export {
     SkeletonAvatar,
     SkeletonButton,
     SkeletonImage,
+    SkeletonInput,
     SkeletonNode,
     Text,
     Title,
@@ -117,4 +121,5 @@ export {
     Tooltip,
     Typography,
     Upload,
+    Watermark
 } from "antd"
