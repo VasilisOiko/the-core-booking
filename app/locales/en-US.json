@@ -49,6 +49,31 @@
     "page": {
       "label": "Bookings",
       "title": "Bookings" 
+    },
+    "card": {
+      "description": "Availability: {booked} / {capacity}",
+      "button": "Make booking" 
+    },
+    "popconfirm": {
+      "title": "Book this class",
+      "description": "Are you sure you want to book this class?",
+      "no": "No",
+      "yes": "Yes"
+    },
+    "notification": {
+      "description": "Class: {title} - {time}",
+      "success": {
+        "message": "Class booked successfully",
+        "description": "Class: {title} - {time}"
+      },
+      "warning": {
+        "message": "Class already booked for the day",
+        "description": "Class: {title} - {time}"
+      },
+      "error": {
+        "message": "Error while booking class",
+        "description": "Class: {title} - {time}"
+      }
     }
   },
   "information": {

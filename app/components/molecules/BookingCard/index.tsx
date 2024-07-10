@@ -3,34 +3,38 @@ import { useState } from "react"
 import { WodClassesProps } from "@/app/types/bookings"
 import { Button, Card, CardMeta, notification, Popconfirm, Text } from "@/app/components"
 import { bookClass } from "@/app/actions/bookings"
+import { useTranslations } from "next-intl"
 
 type Props = {
     booking: WodClassesProps
 }
-type NotificationType = "success" | "error"
+type NotificationType = "success" | "warning" | "error"
 
 function BookingCard({ booking }: Props) {
 
-    // TODO: research what should show for each request status
+    const t = useTranslations("bookings")
 
     const [api, contextHolder] = notification.useNotification();
 
     const [processRequest, setProcessRequest] = useState(false)
 
-    const showNotification = (type: NotificationType) => {
+    const showNotification = (statusCode: number) => {
+        let type: NotificationType = "error"
         let message: string
-        let description = `Booking class: ${booking.title} - ${booking.time}`
+        let description = t("notification.description", { title: booking.title, time: booking.time })
 
-        switch (type) {
-            case "success":
-                message = "Class booked successfully"
+        switch (statusCode) {
+            case 200:
+                type = "success"
+                message = t("notification.success.message")
                 break
-            case "error":
-                message = "Error while booking class"
+            case 400:
+                type = "warning"
+                message = t("notification.warning.message")
                 break
                     
             default:
-                message = "Error while booking class"
+                message = t("notification.error.message")
                 break
         }
         api[type]({
@@ -43,13 +47,13 @@ function BookingCard({ booking }: Props) {
 
     const handleBookingRequest = async (booking: WodClassesProps) => {
         setProcessRequest(true)
-        console.log("booking: ", booking)
-        const statusCode = await bookClass({ classId: booking.id })
-        console.log("status code: ", statusCode)
+
+        const statusCode = await bookClass({ classId: booking.id, classHour: booking.hour })
+        
         setProcessRequest(false)
-        showNotification(statusCode === 200 ? "success" : "error")
+        showNotification(statusCode)
     }
-    // TODO: add locales
+
     return (
         <>
             {contextHolder}
@@ -57,21 +61,21 @@ function BookingCard({ booking }: Props) {
             bordered={true}
             actions={[
                 <Popconfirm
-                title="Book this class?"
-                description="Are you sure you want to book this class?"
-                okText="Yes"
-                cancelText="No"
+                title={t("popconfirm.title")}
+                description={t("popconfirm.description")}
+                okText={t("popconfirm.yes")}
+                cancelText={t("popconfirm.no")}
                 onConfirm={ () => handleBookingRequest(booking) }
                 >
-                <Button key={booking.id} type="text" loading={processRequest} block className="h-max">
-                    Make booking
-                </Button>
+                    <Button key={booking.id} type="text" loading={processRequest} block className="h-max">
+                        {t("card.button")}
+                    </Button>
                 </Popconfirm>
             ]}
             >
             <CardMeta
                 title={(<Text strong>{booking.time}</Text>)}
-                description={`Availability: ${booking.booked} / ${booking.capacity}`}
+                description={t("card.description", { booked: booking.booked, capacity: booking.capacity })}
             />
             </Card>
         </>

@@ -49,6 +49,31 @@
     "page": {
       "label": "Κρατήσεις",
       "title": "Κρατήσεις" 
+    },
+    "card": {
+      "description": "Διαθεσιμότητα: {booked} / {capacity}",
+      "button": "Κράτηση" 
+    },
+    "popconfirm": {
+      "title": "Κράτηση αυτού του τμήματος;",
+      "description": "θέλετε να κάνετε κράτηση σε αυτό το τμήμα;",
+      "no": "Όχι",
+      "yes": "Ναι"
+    },
+    "notification": {
+      "description": "Τμήμα: {title} - {time}",
+      "success": {
+        "message": "Η κράτηση έγινε με επιτυχία",
+        "description": "Τμήμα: {title} - {time}"
+      },
+      "warning": {
+        "message": "Έχετε ήδη κάνει κράτηση για την συγκεκριμένη ημέρα",
+        "description": "Τμήμα: {title} - {time}"
+      },
+      "error":{
+        "message": "Προέκυψε σφάλμα κατά την κράτηση του τμήματος",
+        "description": "Τμήμα: {title} - {time}"
+      }
     }
   },
   "information": {

@@ -13,10 +13,10 @@ const getAvailableBookings = async (): Promise<BookingProps> => {
     }
 }
 
-const bookClass = async ({ classId }: { classId: string }) => {
+const bookClass = async ({ classId, classHour }: { classId: string, classHour: number }) => {
 
     try {
-        const response = await bookWorkoutClass({ classId })
+        const response = await bookWorkoutClass({ classId, classHour })
 
         return response.status
     }

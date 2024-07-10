@@ -23,3 +23,24 @@
 //         "method": "POST",
 //         "mode": "cors"
 //     });
+
+
+
+// await fetch("https://thecorecf.com//api/client/book/workout/e46501a4-e644-4aef-b2c0-37770507dcd8/11", {
+//     "credentials": "include",
+//     "headers": {
+//         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0",
+//         "Accept": "application/json, text/plain, */*",
+//         "Accept-Language": "en-US,en;q=0.5",
+//         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImRkYjY3YzI2LWU2NGMtNGNjOS05NDY4LTBmMWY3NWViM2U2NyIsIk5hbWUiOiLOks6xz4POr867zrfPgiIsIkxhc3RuYW1lIjoizp_Ouc66zr_Ovc-MzrzOv8-FIiwiQ2xpZW50SWQiOiI1Njhjb3JlMjIiLCJHeW1JZCI6IjU2OGNvcmUyMiIsIlJlZ2lzdGVyIjoiMi8yNC8yMDIyIDM6MDc6NDkgUE0iLCJleHAiOjE3MjMxMjcxNTEsImlzcyI6InRoZUNvcmUiLCJhdWQiOiJ0aGVDb3JlIn0.PaEJGy4c5WHhZkzl6M1PhUHgPrE7_QzOlLiI0jnmGYg",
+//         "Content-Type": "application/json",
+//         "Sec-Fetch-Dest": "empty",
+//         "Sec-Fetch-Mode": "cors",
+//         "Sec-Fetch-Site": "same-origin",
+//         "Priority": "u=1"
+//     },
+//     "referrer": "https://thecorecf.com/retail/wods",
+//     "body": "{}",
+//     "method": "POST",
+//     "mode": "cors"
+// });
