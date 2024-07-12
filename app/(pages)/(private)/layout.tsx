@@ -1,13 +1,14 @@
-import React from "react"
-import { Layout, Content, Image, Header, Flex, LocalesDropdown, UserProfileMenu, DefaultSiderMenu, MobileSiderMenu } from "@/app/components"
+import React, { Suspense } from "react"
+import { Layout, Content, Image, Header, Flex, LocalesDropdown, UserProfileMenu, DefaultSiderMenu, MobileSiderMenu, SkeletonAvatar } from "@/app/components"
+import { getAthlete } from "@/app/actions/athlete"
+import Loading from "./loading"
 
 
-function layout({children}: {children: React.ReactNode}) {
-
+async function layout({children}: {children: React.ReactNode}) {
 
   return (
     <>
-      <Layout className="h-screen">
+      <Layout hasSider className="h-screen">
 
         <DefaultSiderMenu className="hidden sm:block"/>
 

@@ -4,7 +4,7 @@ import { Descriptions, Text, Space } from "@/app/components"
 import { LocalizedText, RawLocalizedText } from "@/app/locales"
 import { AthleteProps } from "@/app/types/athlete"
 import { PERSONAL_DETAILS_KEYS } from "@/app/utils/constants/identifiers"
-import { getDatePeriod, getLocalizedDayDate } from "@/app/utils/helpers/dateFormatters"
+import { getDatePeriod, getDayDate } from "@/app/utils/helpers/dateFormatters"
 import { DescriptionsProps } from "antd"
 
 type PersonalDetailsDescriptionsProps = {
@@ -13,7 +13,9 @@ type PersonalDetailsDescriptionsProps = {
 
 function PersonalDetailsDescriptions({ athlete }: PersonalDetailsDescriptionsProps) {
 
-  const registrationDate = getLocalizedDayDate(athlete?.registered)
+  // const t = useTranslations()
+
+  const registrationDate = getDayDate(athlete?.registered)
   const membershipPeriod = getDatePeriod(athlete?.memberships[0]?.starts, athlete?.memberships[0]?.ends)
   
   const items: DescriptionsProps["items"] = [
@@ -45,7 +47,7 @@ function PersonalDetailsDescriptions({ athlete }: PersonalDetailsDescriptionsPro
     {
       key: PERSONAL_DETAILS_KEYS.REGISTERED,
       label: RawLocalizedText("personalDetailsDescriptions.items.registered"),
-      children: <Text>{`${registrationDate.dayOfWeek} ${registrationDate.formattedDate}`}</Text>,
+      children: <Text>{`${RawLocalizedText(`days.${registrationDate.dayOfWeek}`)} ${registrationDate.formattedDate}`}</Text>,
     },
     {
       key: PERSONAL_DETAILS_KEYS.SUBSCRIPTION,
@@ -62,14 +64,14 @@ function PersonalDetailsDescriptions({ athlete }: PersonalDetailsDescriptionsPro
             <Text strong>
               <LocalizedText id="personalDetailsDescriptions.items.membership.starts"/>
             </Text>
-            {` ${membershipPeriod.start.dayOfWeek} ${membershipPeriod.start.formattedDate}`}
+            {` ${RawLocalizedText(`days.${membershipPeriod.start.dayOfWeek}`)} ${membershipPeriod.start.formattedDate}`}
           </Text>
 
           <Text>
             <Text strong>
               <LocalizedText id="personalDetailsDescriptions.items.membership.ends"/>
             </Text>
-            {` ${membershipPeriod.end.dayOfWeek} ${membershipPeriod.end.formattedDate}`}
+            {` ${RawLocalizedText(`days.${membershipPeriod.end.dayOfWeek}`)} ${membershipPeriod.end.formattedDate}`}
           </Text>
 
         </Space>
@@ -77,10 +79,8 @@ function PersonalDetailsDescriptions({ athlete }: PersonalDetailsDescriptionsPro
     },
   ]
 
-  return athlete ? (
+  return (
     <Descriptions title={RawLocalizedText("personalDetailsDescriptions.title")} bordered items={items} />
-  ) : (
-    <Loading />
   )
 }
 

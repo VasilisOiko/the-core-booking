@@ -1,7 +1,7 @@
 "use server"
 import { BookingProps } from "@/app/types/bookings"
 import { getClassesByTitle, getUniqueClassesTitles } from "@/app/utils/helpers/bookingFilters"
-import { getLocalizedDayDate } from "@/app/utils/helpers/dateFormatters"
+import { getDayDate } from "@/app/utils/helpers/dateFormatters"
 import { BookingsCardsGrid, Flex, Tabs, Text } from "@/app/components"
 
 type BookingPanelProps = {
@@ -19,7 +19,7 @@ function BookingsDefaultSelectionView({ bookings }: BookingPanelProps) {
 
     const dateTabs = bookings?.map(booking => booking.date)
         .map(date => {
-            const { dayOfWeek, formattedDate } = getLocalizedDayDate(date)
+            const { dayOfWeek, formattedDate } = getDayDate(date)
 
             return {
                 key: date,

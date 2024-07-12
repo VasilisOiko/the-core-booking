@@ -8,19 +8,19 @@ import {
   LocalesDropdown,
   Header,
   Image,
-  UserProfileMenu,
-  SkeletonAvatar
 } from "../components"
 
 import { Content } from "antd/lib/layout/layout"
-import { ConfigProvider } from "antd"
 import { AntdRegistry } from "@ant-design/nextjs-registry"
+import { ConfigProvider } from "antd"
 import theme from "../themes/antd/themeConfig"
+import grEL from "antd/locale/el_GR"
+import enUS from "antd/locale/en_US"
 
 import crossfitLogo from "public/THE+CORE+logo+final.png"
 import { isAuthenticated } from "../actions/authentication"
-import { Suspense } from "react"
-import Loading from "./(private)/loading"
+import LANGUAGES from "../utils/constants/languages"
+import dayjs from "dayjs"
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +38,12 @@ export default async function RootLayout({ children , }: Readonly<{
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages()
+
+  const antdLocale = locale === LANGUAGES.GREEK ? grEL : enUS
+  const dayjsLocale = locale === LANGUAGES.GREEK ? "el" : "en"
+
+  require("dayjs/locale/el")
+  dayjs.locale(dayjsLocale)
 
 
   const logo = (
@@ -69,7 +75,7 @@ export default async function RootLayout({ children , }: Readonly<{
       </head>
       <body>
         <AntdRegistry>
-          <ConfigProvider theme={theme}>
+          <ConfigProvider theme={theme} locale={antdLocale}>
             <NextIntlClientProvider messages={messages}>
               {!isAuthenticated() &&
                 <Header logo={logo}>

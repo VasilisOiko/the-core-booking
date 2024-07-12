@@ -45,9 +45,13 @@ const theme: ThemeConfig = {
             darkItemBg: "#001529",
         },
         Layout: {
-            bodyBg: "#252525",
+            headerBg: "#001529",
             siderBg: "#001529",
+            bodyBg: "#252525",
         },
+        Skeleton: {
+            
+        }
     },
 };
 

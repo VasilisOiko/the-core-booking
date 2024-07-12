@@ -10,6 +10,7 @@ type Props = {
 }
 type NotificationType = "success" | "warning" | "error"
 
+// TODO: revalidate user on success to get new pastBookings
 function BookingCard({ booking }: Props) {
 
     const t = useTranslations("bookings")

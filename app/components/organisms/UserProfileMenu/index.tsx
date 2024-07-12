@@ -1,14 +1,15 @@
 "use client"
 
-import { Dropdown, Button, Avatar, Menu, Drawer, Text, Skeleton, PersonalDetailsDescriptions } from "@/app/components"
+import { Dropdown, Button, Avatar, Menu, Drawer, Text, Skeleton, PersonalDetailsDescriptions, SkeletonAvatar, PersonalDetailsDescriptionsSkeleton } from "@/app/components"
 import { MenuProps } from "antd"
-import { UserOutlined } from "@ant-design/icons"
+import { LoadingOutlined, UserOutlined } from "@ant-design/icons"
 import { RawLocalizedText } from "@/app/locales"
 import { USER_MENU_ITEM_KEYS } from "@/app/utils/constants/identifiers"
 import { logout } from "@/app/actions/authentication"
 import { getAthlete } from "@/app/actions/athlete"
 import { AthleteProps } from "@/app/types/athlete"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
+
 
 function UserProfileMenu() {
 
@@ -91,13 +92,25 @@ function UserProfileMenu() {
                 <Button
                     ghost
                     shape="circle"
-                    icon={<Avatar size="large">{`${athlete?.lastName.charAt(0)}${athlete?.firstName.charAt(0)}`}</Avatar>}
-                    >
+                    icon={
+                        !athlete ?
+                        <LoadingOutlined />
+                        :
+                        <Avatar size="large">{`${athlete.lastName.charAt(0)}${athlete.firstName.charAt(0)}`}</Avatar>
+                    }
+                >
                 </Button>
+            
             </Dropdown>
  
             <Drawer placement="top" onClose={closeDrawer} open={drawerVisibility}>
-                <PersonalDetailsDescriptions athlete={athlete} />
+                {
+                    !athlete ?
+                    <PersonalDetailsDescriptionsSkeleton/>
+                    :
+                    <PersonalDetailsDescriptions athlete={athlete} />
+
+                }
             </Drawer> 
         </>
     )

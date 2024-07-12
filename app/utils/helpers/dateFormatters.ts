@@ -12,20 +12,6 @@ const formatValueToBookingsDate = (value: any) => {
     return dayjs(value).format("YYYY-MM-DDT09:00:00[Z]")
 }
 
-const getLocalizedDayDate = (date: string | undefined) => {
-
-    if (!date) {
-        return { dayOfWeek: "", formattedDate: "" }
-    }
-
-    const dateObject = dayjs(date)
-
-    const dayOfWeek  = RawLocalizedText(`days.${dateObject.locale(LANGUAGES.GREEK).format("dddd")}`)
-    const formattedDate  = dateObject.format("DD-MM-YYYY")
-
-    return { dayOfWeek , formattedDate }
-}
-
 const getDayDate = (date: string | undefined) => {
 
     if (!date) {
@@ -34,7 +20,7 @@ const getDayDate = (date: string | undefined) => {
 
     const dateObject = dayjs(date)
 
-    const dayOfWeek  = dateObject.locale(LANGUAGES.GREEK).format("dddd")
+    const dayOfWeek  = dateObject.format("dddd")
     const formattedDate  = dateObject.format("DD-MM-YYYY")
 
     return { dayOfWeek , formattedDate }
@@ -54,8 +40,8 @@ const getDatePeriod = (startDate: string | undefined, endDate: string | undefine
         }
     }
 
-    const { dayOfWeek: startDayOfWeek, formattedDate: startFormattedDate } = getLocalizedDayDate(startDate)
-    const { dayOfWeek: endDayOfWeek, formattedDate: endFormattedDate } = getLocalizedDayDate(endDate)
+    const { dayOfWeek: startDayOfWeek, formattedDate: startFormattedDate } = getDayDate(startDate)
+    const { dayOfWeek: endDayOfWeek, formattedDate: endFormattedDate } = getDayDate(endDate)
 
     return {
         start: {
@@ -69,4 +55,4 @@ const getDatePeriod = (startDate: string | undefined, endDate: string | undefine
     }
 }
 
-export { formatValueToBookingsDate, getLocalizedDayDate, getDatePeriod, getDayDate }
+export { formatValueToBookingsDate, getDatePeriod, getDayDate }
