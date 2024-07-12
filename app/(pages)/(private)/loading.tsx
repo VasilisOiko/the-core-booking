@@ -1,4 +1,4 @@
-import { Flex, SkeletonAvatar, Spin } from "@/app/components"
+import { Flex, Spin } from "@/app/components"
 
 const Loading = () => {
 

@@ -48,9 +48,6 @@ const theme: ThemeConfig = {
             headerBg: "#001529",
             siderBg: "#001529",
             bodyBg: "#252525",
-        },
-        Skeleton: {
-            
         }
     },
 };

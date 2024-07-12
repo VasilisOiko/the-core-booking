@@ -1,14 +1,16 @@
-import { getAthletePastBookings } from "@/app/actions/athlete"
 import { Card, Col, Divider, Row, Statistic, Title } from "@/app/components"
 import { CalendarOutlined } from "@ant-design/icons"
 import { GiBiceps, GiFinishLine, GiRunningShoe, GiSlaveryWhip } from "react-icons/gi"
 import { IoStatsChartOutline } from "react-icons/io5"
 import dayjs from "dayjs"
+import { AthletePastBookingsProps } from "@/app/types/athlete"
+
+type Props = {
+  workouts: AthletePastBookingsProps
+}
 
 
-async function WorkoutStatistics() {
-
-    const workouts = await getAthletePastBookings()
+async function WorkoutStatistics({ workouts }: Props) {
 
     const periodOfRecords = workouts.reduce((period, workout) => {
       const date = dayjs(workout.date)

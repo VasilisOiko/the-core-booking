@@ -3,24 +3,26 @@ import { Calendar, Text, Title, Card, Tag, Badge, Popover, Space, Divider, Modal
 import { AthletePastBookingsProps } from "@/app/types/athlete"
 import { formatValueToBookingsDate } from "@/app/utils/helpers/dateFormatters"
 import dayjs, { Dayjs } from "dayjs"
-import type { CalendarProps } from "antd"
+import { theme, type CalendarProps } from "antd"
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import React, { useState } from "react"
 
-type BadgeColorStatus = "error" | "warning" | "success" | undefined
+type DataDisplayColorStatus = "error" | "warning" | "success" | undefined
+
+type TitleColorStatus = "secondary" | "success" | "warning" | "danger"
 
 type WorkoutGroupObject = {
     title: string,
-    statusColor: "secondary" | "success" | "warning" | "danger",
+    titleStatus: TitleColorStatus
     bookedTime: string,
     canceledTime?: string | null,
     isSubstituted: boolean
-
 }
 
 type Props = {
     workouts: AthletePastBookingsProps
 }
+
 
 const WorkoutCalendarTag = ({workout}: {workout: AthletePastBookingsProps[0]}) => {
 
@@ -44,17 +46,17 @@ const WorkoutCalendarTag = ({workout}: {workout: AthletePastBookingsProps[0]}) =
             content={popoverContent}
             trigger={["click", "hover"]}
         >
-            <div className="hidden md:block min-h-full" >
+            <div className="hidden sm:block min-h-full" >
                 <Tag
                     icon={ !canceledTime ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
                     color={statusColor}
                 >
-                    <div className="text-wrap">
+                    <div className="text-wrap sm:hidden md:block">
                         {workout.title}
                     </div>
                 </Tag>
             </div>
-            <div className="md:hidden min-h-full">
+            <div className="sm:hidden min-h-full">
                 <Badge status={statusColor}/>
             </div>
         </Popover>    
@@ -65,19 +67,19 @@ const WorkoutCalendarGroupTags = ({workouts}: {workouts: AthletePastBookingsProp
 
     const [modalVisibility, setModalVisibility] = useState(false)
 
-    let badgeStatuses: BadgeColorStatus[] = []
+    let workoutStatuses: DataDisplayColorStatus[] = []
 
     const workoutGroup = workouts.map((workout): WorkoutGroupObject => {
-        const statusColor = !!workout.cancellationTime ? "error" : workout.isSubstituted ? "warning" : "success"
+        const colorStatus = !!workout.cancellationTime ? "error" : workout.isSubstituted ? "warning" : "success"
 
-        badgeStatuses.some((status) => status === statusColor) ? null : badgeStatuses.push(statusColor)
+        workoutStatuses.some((status) => status === colorStatus) ? null : workoutStatuses.push(colorStatus)
 
         const bookedTime = dayjs(workout.bookedTime).format("HH:mm")
         const canceledTime = workout.cancellationTime && dayjs(workout.cancellationTime).format("HH:mm")
 
         return ({
             title: workout.title,
-            statusColor: statusColor === "error" ? "danger" : statusColor,
+            titleStatus: colorStatus === "error" ? "danger" : colorStatus,
             bookedTime,
             canceledTime,
             isSubstituted: workout.isSubstituted
@@ -90,7 +92,7 @@ const WorkoutCalendarGroupTags = ({workouts}: {workouts: AthletePastBookingsProp
         <Space direction="vertical">
             {workoutGroup.map((workout, index) => (
                 <React.Fragment key={index}>
-                    <Title type={workout.statusColor} level={5}>{workout.title}</Title>
+                    <Title type={workout.titleStatus} level={5}>{workout.title}</Title>
                     <Text type="secondary">Booked on: {workout.bookedTime}</Text>
                     { !!(workout.canceledTime) && <Text type="secondary">Canceled on: {workout.canceledTime}</Text>}
                     { !!(workout.isSubstituted) && <Text italic type="secondary">Substituted</Text>}
@@ -102,12 +104,6 @@ const WorkoutCalendarGroupTags = ({workouts}: {workouts: AthletePastBookingsProp
 
     return (
         <>
-            {/* <Popover
-                title={<Title level={4}>Workouts</Title>}
-                content={popoverContent}
-                trigger={["click", "hover"]}
-                overlayClassName="max-h-13 overflow-auto"
-            > */}
             <Modal
                 title={<Title level={4}>Workouts</Title>}
                 closable
@@ -117,13 +113,27 @@ const WorkoutCalendarGroupTags = ({workouts}: {workouts: AthletePastBookingsProp
             >
                 <ModalContent/>
             </Modal>
-                <div className="min-h-full" onClick={() => setModalVisibility(true)}>
-                    {badgeStatuses.map((status, index) => (
-                        <Badge key={index} status={status}/>
-                    ))}
-                    {badgeStatuses.length === 1 && <Badge status={badgeStatuses[0]}/>}
-                </div>
-            {/* </Popover> */}
+            <div className="min-h-full" onClick={() => setModalVisibility(true)}>
+                {workoutStatuses.map((status, index) => (
+                    <>
+                        <div className="hidden sm:block">
+                            <Tag
+                                icon={status !== "error" ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
+                                color={status}
+                            />
+                            {workoutStatuses.length === 1 &&
+                            <Tag
+                                icon={workoutStatuses[0] !== "error" ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
+                                color={workoutStatuses[0]}
+                            />}
+                        </div>
+                        <div className="sm:hidden">
+                            <Badge key={index} status={status}/>
+                            {workoutStatuses.length === 1 && <Badge status={workoutStatuses[0]}/>}
+                        </div>
+                    </>
+                ))}
+            </div>
         </>
     )
     
@@ -159,41 +169,6 @@ function WorkoutCalendar({workouts}: Props) {
             default:
                 return <WorkoutCalendarGroupTags workouts={todayWorkouts}/>
         }
-
-        // const statusColor = !!workout.cancellationTime ? "error" : workout.isSubstituted ? "warning" : "success"
-
-        // const bookedTime = dayjs(workout.bookedTime).format("HH:mm")
-        // const canceledTime = workout.cancellationTime && dayjs(workout.cancellationTime).format("HH:mm")
-
-
-        // const popoverContent = () => (
-        //     <Space direction="vertical">
-        //         <Text type="secondary">Booked on: {bookedTime}</Text>
-        //         { !!canceledTime && <Text type="secondary">Canceled on: {canceledTime}</Text>}
-        //         { !!workout.isSubstituted && <Text italic type="secondary">Substituted</Text>}
-        //     </Space>
-        // )
-
-            // <Popover
-            //     title={<Title level={5}>{workout.title}</Title>}
-            //     content={popoverContent}
-            //     trigger={["click", "hover"]}
-            // >
-            //     <div className="hidden md:block min-h-full" >
-            //         <Tag
-            //             icon={ !canceledTime ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
-            //             color={statusColor}
-            //         >
-            //             <div className="text-wrap">
-            //                 {workout.title}
-            //             </div>
-            //         </Tag>
-            //     </div>
-            //     <div className="md:hidden min-h-full">
-            //         <Badge status={statusColor}/>
-            //     </div>
-            // </Popover>
-        // )
     }
 
 

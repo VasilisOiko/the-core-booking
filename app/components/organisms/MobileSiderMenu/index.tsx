@@ -11,7 +11,7 @@ type Props = {
 
 function MobileSiderMenu({ classNames }: Props) {
   
-  const { token } = theme.useToken();
+  const { token } = theme.useToken()
   
   const [showMenu, setShowMenu] = useState(false)
   const Logo = () =>{
