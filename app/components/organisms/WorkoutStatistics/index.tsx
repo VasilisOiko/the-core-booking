@@ -1,29 +1,83 @@
-import { Card, Statistic } from "@/app/components"
-import { AthletePastBookingsProps } from "@/app/types/athlete"
+import { getAthletePastBookings } from "@/app/actions/athlete"
+import { Card, Col, Divider, Row, Statistic, Title } from "@/app/components"
+import { CalendarOutlined } from "@ant-design/icons"
+import { GiBiceps, GiFinishLine, GiRunningShoe, GiSlaveryWhip } from "react-icons/gi"
+import { IoStatsChartOutline } from "react-icons/io5"
 import dayjs from "dayjs"
 
-type Props = {
-    workouts: AthletePastBookingsProps
-}
 
-function WorkoutStatistics({workouts}: Props) {
-    const weekOfYear = require("dayjs/plugin/weekOfYear")
-    const updatedDayjs = dayjs.extend(require("dayjs/plugin/weekOfYear"))
-    
+async function WorkoutStatistics() {
 
-    // const workoutsPerWeek = workouts.reduce((statistics, workout) => {
-    //     const date = updatedDayjs(workout.date).week()
+    const workouts = await getAthletePastBookings()
 
-    //     if(!statistics[date.week()]) {
+    const periodOfRecords = workouts.reduce((period, workout) => {
+      const date = dayjs(workout.date)
+      if (period.startDate > date) {
+        period.startDate = date
+      }
 
-    //     return statistics
-    // }, {})
+      return period
+    }, {
+      startDate: dayjs(workouts[0].date),
+      endDate: dayjs()
+    })
+
+    const totalWorkoutsAttend = workouts.reduce((total: number, workout) => {
+
+        if (!!workout.cancellationTime) {
+            return total
+        }
+        return total + 1
+    }, 0)
+
+    const noWorkoutsPerMetric = workouts.reduce((statistics: any, workout) => {
+
+      if (!!workout.cancellationTime) {
+        return statistics
+      }
+      const date = dayjs(workout.date)
+      const week = `${date.startOf("week").format("DD/MM")} - ${date.endOf("week").format("DD/MM")}`
+
+      statistics.week[week] = statistics.week[week] ? statistics.week[week] + 1 : 1
+
+      return statistics
+  }, {
+    week: {},
+  })
+  
+  const weekWithMostWorkouts = Object.keys(noWorkoutsPerMetric.week)
+  .reduce((bestWeek: string, week: string) => noWorkoutsPerMetric.week[bestWeek] > noWorkoutsPerMetric.week[week] ? bestWeek : week)
+
+  const noWorkoutsPerWeek = Object.values(noWorkoutsPerMetric.week).map((value: unknown) => Number(value))
+
+  const averageWorkoutPerWeek = totalWorkoutsAttend / noWorkoutsPerWeek.length
 
   return (
-    <Card>
-        <Statistic title="Average Workout per week" value={workouts.length}/>
+    <>
+      <Title level={2}>{periodOfRecords.startDate.format("DD/MM/YYYY")} - {periodOfRecords.endDate.format("DD/MM/YYYY")}</Title>
+      <Divider />
+      <Row gutter={[16, 16]}>
+        
+        <Col>
+          <Card>
+            <Statistic title="Week with most workouts" value={weekWithMostWorkouts} prefix={<CalendarOutlined />}/>
+          </Card>
+        </Col>
 
-    </Card>
+        <Col>
+            <Card>
+              <Statistic title="Most Workouts in a week" value={noWorkoutsPerMetric.week[weekWithMostWorkouts]} prefix={<GiBiceps/>}/>
+            </Card>
+        </Col>
+
+        <Col>
+          <Card>
+              <Statistic precision={1} title="Average Workouts" value={averageWorkoutPerWeek} prefix={<IoStatsChartOutline/>} suffix="/ week"/>
+          </Card>
+        </Col>
+
+      </Row>
+    </>
   )
 }
 

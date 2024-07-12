@@ -23,6 +23,7 @@ function DefaultSiderMenu({ className }: Props) {
         <Sider
             breakpoint="lg"
             width={200}
+            collapsible
             className={className}
           >
               <Logo/>

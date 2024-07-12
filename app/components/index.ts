@@ -7,6 +7,7 @@ import DateSegment from "./molecules/DateSegment"
 import WodFilterTags from "./molecules/WodFilterTags"
 import WodList from "./molecules/WodList"
 import WodTable from "./molecules/WodTable"
+import WorkoutStatisticsSkeleton from "./molecules/WorkoutStatisticsSkeleton"
 import PersonalDetailsDescriptions from "./molecules/PersonalDetailsDescriptions"
 import PersonalDetailsDescriptionsSkeleton from "./molecules/PersonalDetailsDescriptionsSkeleton"
 
@@ -20,6 +21,7 @@ import UserProfileMenu from "./organisms/UserProfileMenu"
 import DefaultSiderMenu from "./organisms/DefaultSiderMenu"
 import MobileSiderMenu from "./organisms/MobileSiderMenu"
 import WorkoutCalendar from "./organisms/WorkoutsCalendar"
+import WorkoutStatistics from "./organisms/WorkoutStatistics"
 
 
 /* Templates */
@@ -52,7 +54,9 @@ export {
     WodFilterTags,
     WodList,
     WorkoutCalendar,
+    WorkoutStatistics,
     WodTable,
+    WorkoutStatisticsSkeleton,
     BookingPanel,
     LocalesDropdown,
     LoginForm,
@@ -106,6 +110,7 @@ export {
     List,
     Menu,
     message,
+    Modal,
     notification,
     Pagination,
     Popover,

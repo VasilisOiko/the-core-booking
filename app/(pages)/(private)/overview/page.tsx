@@ -1,27 +1,31 @@
 
 import { getAthletePastBookings } from "@/app/actions/athlete"
-import { Card, Title, WorkoutCalendar } from "@/app/components"
+import { BookingCardSkeleton, Card, Col, Row, Title, WorkoutCalendar, WorkoutStatistics, WorkoutStatisticsSkeleton } from "@/app/components"
 import { LocalizedText } from "@/app/locales"
-import {AthletePastBookingsProps} from "@/app/types/athlete"
+import { Suspense } from "react"
+import Loading from "../loading"
 
 // TODO: Suspense react when fetching
 async function Overview() {
-
-  const pastBookings = await getAthletePastBookings()
-
-  // console.log("pastBookings: ", pastBookings)
-
-  const workoutDates = pastBookings.map((booking) => booking.date)
-
+  
   return (
     <>
       <Title><LocalizedText id="overview.page.title"/></Title>
       <Card className="overflow-auto">
-        <WorkoutCalendar workouts={pastBookings}/>
+        <Row gutter={[16, 16]}>
+          
+          <Col>
+            <Suspense fallback={<WorkoutStatisticsSkeleton/>}>
+              <WorkoutStatistics/>
+            </Suspense>
+          </Col>
+          
+          <Col>
+            <WorkoutCalendar workouts={await getAthletePastBookings()}/>
+          </Col>
         
-
+        </Row>
       </Card>
-
     </>
   )
 }
