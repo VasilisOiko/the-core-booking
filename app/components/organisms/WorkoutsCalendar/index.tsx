@@ -9,7 +9,6 @@ import { RawLocalizedText } from "@/app/locales"
 type Props = {
     workouts: AthletePastBookingsProps
 }
-// TODO: Add locales
 function WorkoutCalendar({workouts}: Props) {
 
     require("dayjs/locale/el")
