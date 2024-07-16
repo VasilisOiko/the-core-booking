@@ -3,6 +3,6 @@
 import { MenuProps } from "antd"
 import { setLanguage } from "../actions/localization"
 
-export const handleSelect: MenuProps["onClick"] = async ({ key }) => {
-    await setLanguage(key)
+export const handleSelect: MenuProps["onClick"] = ({ key }) => {
+    setLanguage(key)
 }

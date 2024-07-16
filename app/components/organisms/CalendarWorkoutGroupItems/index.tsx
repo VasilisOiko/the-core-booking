@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import dayjs from "dayjs"
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import { AthletePastBookingsProps } from "@/app/types/athlete"
-import { Text, Title, Tag, Badge, Space, Divider, Modal } from "@/app/components"
+import { Text, Title, Tag, Badge, Space, Divider, Drawer } from "@/app/components"
 
 type DataDisplayColorStatus = "error" | "warning" | "success" | undefined
 
@@ -19,7 +19,7 @@ type WorkoutGroupObject = {
 
 const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsProps}) => {
 
-    const [modalVisibility, setModalVisibility] = useState(false)
+    const [drawerVisibility, setDrawerVisibility] = useState(false)
 
     let workoutStatuses: DataDisplayColorStatus[] = []
 
@@ -42,7 +42,7 @@ const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsPro
 
     
 
-    const ModalContent = () => (
+    const DrawerContent = () => (
         <Space direction="vertical">
             {workoutGroup.map((workout, index) => (
                 <React.Fragment key={index}>
@@ -58,19 +58,19 @@ const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsPro
 
     return (
         <>
-            <Modal
+            <Drawer
                 title={<Title level={4}>Workouts</Title>}
-                closable
-                onCancel={() => setModalVisibility(false)}
-                open={modalVisibility}
-                footer={null}
+                height={"75%"}
+                open={drawerVisibility}
+                onClose={() => setDrawerVisibility(false)}
+                placement="bottom"
             >
-                <ModalContent/>
-            </Modal>
-            <div className="min-h-full" onClick={() => setModalVisibility(true)}>
+                <DrawerContent/>
+            </Drawer>
+            <div className="min-h-full" onClick={() => setDrawerVisibility(true)}>
                 {workoutStatuses.map((status, index) => (
                     <>
-                        <div className="hidden sm:block">
+                        <div key={index} className="hidden sm:block">
                             <Tag
                                 icon={status !== "error" ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
                                 color={status}

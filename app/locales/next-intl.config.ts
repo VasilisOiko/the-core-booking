@@ -1,3 +1,4 @@
+"use server"
 import {getRequestConfig} from "next-intl/server"
 import LANGUAGES from "../utils/constants/languages"
 import { getLanguage, hasLanguageCookie, setLanguage } from "../actions/localization"
@@ -13,7 +14,7 @@ export default getRequestConfig(async () => {
   if (!hasLanguageCookie()) {
     locale = LANGUAGES.GREEK
 
-    setLanguage(LANGUAGES.GREEK)
+    // setLanguage(LANGUAGES.GREEK)
   }
   else {
     locale = getLanguage()

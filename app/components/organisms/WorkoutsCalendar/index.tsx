@@ -8,7 +8,7 @@ import { type CalendarProps } from "antd"
 type Props = {
     workouts: AthletePastBookingsProps
 }
-
+// TODO: Add locales
 function WorkoutCalendar({workouts}: Props) {
 
     require("dayjs/locale/el")

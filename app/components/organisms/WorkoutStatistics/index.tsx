@@ -9,7 +9,7 @@ type Props = {
   workouts: AthletePastBookingsProps
 }
 
-
+// TODO: Add locales
 async function WorkoutStatistics({ workouts }: Props) {
 
     const periodOfRecords = workouts.reduce((period, workout) => {
