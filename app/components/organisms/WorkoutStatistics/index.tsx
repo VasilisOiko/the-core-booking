@@ -4,6 +4,7 @@ import { GiBiceps, GiFinishLine, GiRunningShoe, GiSlaveryWhip } from "react-icon
 import { IoStatsChartOutline } from "react-icons/io5"
 import dayjs from "dayjs"
 import { AthletePastBookingsProps } from "@/app/types/athlete"
+import { RawLocalizedText } from "@/app/locales"
 
 type Props = {
   workouts: AthletePastBookingsProps
@@ -62,19 +63,19 @@ async function WorkoutStatistics({ workouts }: Props) {
         
         <Col>
           <Card>
-            <Statistic title="Week with most workouts" value={weekWithMostWorkouts} prefix={<CalendarOutlined />}/>
+            <Statistic title={RawLocalizedText("overview.statistic.weekWithMostWorkouts.title")} value={weekWithMostWorkouts} prefix={<CalendarOutlined />}/>
           </Card>
         </Col>
 
         <Col>
             <Card>
-              <Statistic title="Most Workouts in a week" value={noWorkoutsPerMetric.week[weekWithMostWorkouts]} prefix={<GiBiceps/>}/>
+              <Statistic title={RawLocalizedText("overview.statistic.mostWorkoutsInWeek.title")} value={noWorkoutsPerMetric.week[weekWithMostWorkouts]} prefix={<GiBiceps/>}/>
             </Card>
         </Col>
 
         <Col>
           <Card>
-              <Statistic precision={1} title="Average Workouts" value={averageWorkoutPerWeek} prefix={<IoStatsChartOutline/>} suffix="/ week"/>
+              <Statistic precision={1} title={RawLocalizedText("overview.statistic.averageWorkoutsPerWeek.title")} value={averageWorkoutPerWeek} prefix={<IoStatsChartOutline/>} suffix={RawLocalizedText("overview.statistic.averageWorkoutsPerWeek.prefix")}/>
           </Card>
         </Col>
 

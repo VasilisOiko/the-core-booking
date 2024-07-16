@@ -40,10 +40,35 @@
   },
 
   "overview": {
+
     "page": {
       "label": "Overview",
       "title": "Overview" 
+    },
+
+    "statistic": {
+      "weekWithMostWorkouts": {
+        "title": "Week with most workouts"
+      },
+      "mostWorkoutsInWeek": {
+        "title": "Most Workouts in a week"
+      },
+      "averageWorkoutsPerWeek": {
+        "title": "Average Workouts",
+        "prefix": "/ week"
+      }
+    },
+
+    "calendar": {
+      "title": "Calendar",
+      "content" : {
+        "title": "Workouts",
+        "bookedOn": "Booked on: {time}",
+        "canceledOn": "Canceled on: {time}",
+        "substituted": "substituted "
+      }
     }
+
   },
   "bookings": {
     "page": {

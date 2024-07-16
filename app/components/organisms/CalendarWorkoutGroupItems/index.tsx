@@ -4,6 +4,7 @@ import dayjs from "dayjs"
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import { AthletePastBookingsProps } from "@/app/types/athlete"
 import { Text, Title, Tag, Badge, Space, Divider, Drawer } from "@/app/components"
+import { useTranslations } from "next-intl"
 
 type DataDisplayColorStatus = "error" | "warning" | "success" | undefined
 
@@ -18,6 +19,8 @@ type WorkoutGroupObject = {
 }
 
 const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsProps}) => {
+
+    const t = useTranslations("overview.calendar")
 
     const [drawerVisibility, setDrawerVisibility] = useState(false)
 
@@ -47,9 +50,9 @@ const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsPro
             {workoutGroup.map((workout, index) => (
                 <React.Fragment key={index}>
                     <Title type={workout.titleStatus} level={5}>{workout.title}</Title>
-                    <Text type="secondary">Booked on: {workout.bookedTime}</Text>
-                    { !!(workout.canceledTime) && <Text type="secondary">Canceled on: {workout.canceledTime}</Text>}
-                    { !!(workout.isSubstituted) && <Text italic type="secondary">Substituted</Text>}
+                    <Text type="secondary">{t("content.bookedOn", {time: workout.bookedTime})}</Text>
+                    { !!(workout.canceledTime) && <Text type="secondary">{t("content.bookedOn", {time: workout.canceledTime})}</Text>}
+                    { !!(workout.isSubstituted) && <Text italic type="secondary">{t("content.substituted")}</Text>}
                     <Divider/>
                 </React.Fragment>
             ))}
@@ -59,7 +62,7 @@ const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsPro
     return (
         <>
             <Drawer
-                title={<Title level={4}>Workouts</Title>}
+                title={<Title level={4}>{t("content.title")}</Title>}
                 height={"75%"}
                 open={drawerVisibility}
                 onClose={() => setDrawerVisibility(false)}
@@ -70,20 +73,22 @@ const CalendarWorkoutGroupItems = ({workouts}: {workouts: AthletePastBookingsPro
             <div className="min-h-full" onClick={() => setDrawerVisibility(true)}>
                 {workoutStatuses.map((status, index) => (
                     <>
-                        <div key={index} className="hidden sm:block">
+                        <div key={2*index} className="hidden sm:block">
                             <Tag
+                                key={"primary"}
                                 icon={status !== "error" ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
                                 color={status}
                             />
                             {workoutStatuses.length === 1 &&
                             <Tag
+                                key={"extra"}
                                 icon={workoutStatuses[0] !== "error" ? <CheckCircleOutlined/> : <CloseCircleOutlined/>}
                                 color={workoutStatuses[0]}
                             />}
                         </div>
-                        <div className="sm:hidden">
-                            <Badge key={index} status={status}/>
-                            {workoutStatuses.length === 1 && <Badge status={workoutStatuses[0]}/>}
+                        <div key={2*index+1} className="sm:hidden">
+                            <Badge key={"primary"} status={status}/>
+                            {workoutStatuses.length === 1 && <Badge key={"extra"} status={workoutStatuses[0]}/>}
                         </div>
                     </>
                 ))}

@@ -40,10 +40,35 @@
   },
 
   "overview": {
+
     "page": {
       "label": "Επισκόπηση",
       "title": "Επισκόπηση" 
+    },
+
+    "statistic": {
+      "weekWithMostWorkouts": {
+        "title": "Εβδομάδα με τις περισσότερες προπονήσεις"
+      },
+      "mostWorkoutsInWeek": {
+        "title": "Περισσότερες προπονήσεις σε μια εβδομάδα"
+      },
+      "averageWorkoutsPerWeek": {
+        "title": "Μέσος όρος προπονήσεων",
+        "prefix": "/ εβδομάδα"
+      }
+    },
+
+    "calendar": {
+      "title": "Ημερολόγιο",
+      "content" : {
+        "title": "Προπονήσεις",
+        "bookedOn": "Κράτηση στις: {time}",
+        "canceledOn": "Ακυρώθηκε στις: {time}",
+        "substituted": "Αναπληρωματικός"
+      }
     }
+
   },
   "bookings": {
     "page": {

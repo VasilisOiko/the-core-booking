@@ -4,6 +4,7 @@ import { AthletePastBookingsProps } from "@/app/types/athlete"
 import { formatValueToBookingsDate } from "@/app/utils/helpers/dateFormatters"
 import dayjs, { Dayjs } from "dayjs"
 import { type CalendarProps } from "antd"
+import { RawLocalizedText } from "@/app/locales"
 
 type Props = {
     workouts: AthletePastBookingsProps
@@ -33,6 +34,7 @@ function WorkoutCalendar({workouts}: Props) {
         switch (todayWorkouts.length) {
             case 0:
                 return null
+
             case 1:
                 return <CalendarWorkoutItem workout={todayWorkouts[0]}/>
         
@@ -43,13 +45,13 @@ function WorkoutCalendar({workouts}: Props) {
 
     return (
         <Card
-            title={<Title level={2} >Calendar</Title>}
+            title={<Title level={2} >{RawLocalizedText("overview.calendar.title")}</Title>}
             type="inner"
         >
-                <Calendar
-                    validRange={[workoutMinDate.subtract(1, "day"), workoutMaxDate.add(4, "day")]}
-                    cellRender={(current, info) => cellRender(current, info)}
-                />
+            <Calendar
+                validRange={[workoutMinDate.subtract(1, "day"), workoutMaxDate.add(4, "day")]}
+                cellRender={(current, info) => cellRender(current, info)}
+            />
         </Card>
     )
 }
