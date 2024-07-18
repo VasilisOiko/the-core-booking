@@ -55,10 +55,10 @@ function BookingsMobileSelectionView({ bookings }: BookingPanelProps) {
     }
 
     const disabledDates = (current: any): boolean => {
-        const availableDates = new Set(bookings.map(booking => dayjs(booking.date).format('YYYY-MM-DD')));
-        const currentDate = dayjs(current).format('YYYY-MM-DD');
+        const availableDates = new Set(bookings.map(booking => dayjs(booking.date).format("YYYY-MM-DD")))
+        const currentDate = dayjs(current).format("YYYY-MM-DD")
 
-        return !availableDates.has(currentDate);
+        return !availableDates.has(currentDate)
     }
 
     useEffect(() => {

@@ -14,7 +14,7 @@ function BookingCard({ booking }: Props) {
 
     const t = useTranslations("bookings")
 
-    const [api, contextHolder] = notification.useNotification();
+    const [api, contextHolder] = notification.useNotification()
 
     const [processRequest, setProcessRequest] = useState(false)
 
@@ -43,7 +43,7 @@ function BookingCard({ booking }: Props) {
             showProgress: true,
             duration: 3
         })
-    };
+    }
 
     const handleBookingRequest = async (booking: WodClassesProps) => {
         setProcessRequest(true)
@@ -61,6 +61,7 @@ function BookingCard({ booking }: Props) {
             bordered={true}
             actions={[
                 <Popconfirm
+                key={booking.id}
                 title={t("popconfirm.title")}
                 description={t("popconfirm.description")}
                 okText={t("popconfirm.yes")}

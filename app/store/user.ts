@@ -7,17 +7,17 @@ type State = {
   clientUnit: object
   extraFields: object
   notifications: object[]
-};
+}
 
 type actions = {
-  updateUser: (user: State["user"]) => void;
-  updateUserBookings: (userBookings: State["userBookings"]) => void;
+  updateUser: (user: State["user"]) => void
+  updateUserBookings: (userBookings: State["userBookings"]) => void
   updateAvailableBookings: (
     availableBookings: State["availableBookings"],
-  ) => void;
-  updateClientUnit: (clientUnit: State["clientUnit"]) => void;
-  updateExtraFields: (extraFields: State["extraFields"]) => void;
-  updateNotifications: (notifications: State["notifications"]) => void;
+  ) => void
+  updateClientUnit: (clientUnit: State["clientUnit"]) => void
+  updateExtraFields: (extraFields: State["extraFields"]) => void
+  updateNotifications: (notifications: State["notifications"]) => void
 }
 
 const useStore = create<State & actions>((set) => ({
@@ -39,6 +39,6 @@ const useStore = create<State & actions>((set) => ({
   updateExtraFields: (extraFields) => set(() => ({ extraFields: extraFields })),
   updateNotifications: (notifications) =>
     set(() => ({ notifications: notifications })),
-}));
+}))
 
 export default useStore

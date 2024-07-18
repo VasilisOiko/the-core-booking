@@ -5,4 +5,4 @@ const LANGUAGES = {
     ENGLISH_TEXT: "English",
 }
 
-export default LANGUAGES;
+export default LANGUAGES

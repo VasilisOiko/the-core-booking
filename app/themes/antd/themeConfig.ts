@@ -50,6 +50,6 @@ const theme: ThemeConfig = {
             bodyBg: "#252525",
         }
     },
-};
+}
 
 export default theme

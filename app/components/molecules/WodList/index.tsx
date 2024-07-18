@@ -1,7 +1,7 @@
 "use client"
 import { Button, List, ListItem, Text, Title } from "@/app/components"
 import { BOOKINGS } from "@/app/utils/constants/dummy/bookings"
-import { WodClassesProps } from "@/app/types/bookings";
+import { WodClassesProps } from "@/app/types/bookings"
 
 
 type WodListProps = {

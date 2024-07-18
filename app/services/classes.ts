@@ -19,7 +19,7 @@ const fetchClasses = async () => {
         })
 
         if (!response.ok) {
-            throw new Error('Failed to fetch classes')
+            throw new Error("Failed to fetch classes")
           }
 
         const data = await response.json()
@@ -45,7 +45,7 @@ const bookWorkoutClass = async ({ classId, classHour }: { classId: string, class
                         origin: "https://thecorecf.com",
                     },
 
-                });
+                })
 
         const data = await response.json()
 

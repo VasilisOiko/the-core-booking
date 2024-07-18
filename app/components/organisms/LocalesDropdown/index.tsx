@@ -28,7 +28,7 @@ function LocalesDropdown(props?:any) {
             <Button shape="circle" icon={<MdLanguage size="30px" color="black"/>}>
             </Button>
         </Dropdown>
-    );
+    )
 }
 
 export default LocalesDropdown

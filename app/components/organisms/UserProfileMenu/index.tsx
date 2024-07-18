@@ -10,6 +10,8 @@ import { getAthlete } from "@/app/actions/athlete"
 import { AthleteProps } from "@/app/types/athlete"
 import { Suspense, useEffect, useState } from "react"
 
+// TODO: implement drawer
+// TODO: implement change password
 
 function UserProfileMenu() {
 
