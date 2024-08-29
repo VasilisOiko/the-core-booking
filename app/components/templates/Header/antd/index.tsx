@@ -7,7 +7,7 @@ function Header(props?: any) {
 
     return (
         <Affix>
-            <AntdHeader className="!bg-[#1C2B3A]">
+            <AntdHeader className="min-w-96 !bg-[#1C2B3A]">
                 {props.children}
             </AntdHeader>
         </Affix>
