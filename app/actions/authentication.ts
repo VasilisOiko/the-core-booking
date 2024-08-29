@@ -24,7 +24,7 @@ const login = async ({email, password}: loginCredentials) => {
       return REQUEST.FAILED.WRONG_USER_DATA
     }
 
-    cookies().set("token", response.data.token, { secure: true, sameSite: "strict" })
+    cookies().set("token", response.data.token, { secure: true, sameSite: "strict", maxAge: 60 * 60 * 24 * 30 })
     
     return REQUEST.SUCCESSFUL
   }
