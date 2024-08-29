@@ -20,8 +20,8 @@ const theme: ThemeConfig = {
         colorLinkHover: "#D9534F",
         
         // aliasTokens
-        colorTextHeading: "#1C3B4D",
-        colorTextPlaceholder: "#B5B5B5",
+        colorTextHeading: "#137FB9",
+        colorTextPlaceholder: "#13B9A0",
 
         fontSize: 16,
         borderRadius: 20,
@@ -61,12 +61,13 @@ const theme: ThemeConfig = {
             colorBorder: "#E5E5E5",     
         },
         Typography: {
-            colorTextHeading: "#000000",
+            colorTextHeading: "#3B536D",
             colorText: "#333333",       
         },
         Input: {
             activeBorderColor: "#1E90FF",
             hoverBorderColor: "#137fb9",
+            colorTextPlaceholder: "#B5B5B5",
         },
         Segmented: {
             trackPadding: 4,
