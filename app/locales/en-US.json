@@ -88,16 +88,18 @@
     "notification": {
       "description": "Class: {title} - {time}",
       "success": {
-        "message": "Class booked successfully",
-        "description": "Class: {title} - {time}"
+        "message": "Class booked successfully"
       },
       "warning": {
-        "message": "Class already booked for the day",
-        "description": "Class: {title} - {time}"
+        "isBooked": {
+          "message": "Class already booked for the day"
+        },
+        "noSubscription": {
+          "message": "Subscription required to book class"
+        }
       },
       "error": {
-        "message": "Error while booking class",
-        "description": "Class: {title} - {time}"
+        "message": "Error while booking class"
       }
     }
   },

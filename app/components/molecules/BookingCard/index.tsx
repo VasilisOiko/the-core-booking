@@ -3,6 +3,7 @@ import { useState } from "react"
 import { WodClassesProps } from "@/app/types/bookings"
 import { Button, Card, CardMeta, notification, Popconfirm, Text } from "@/app/components"
 import { bookClass } from "@/app/actions/bookings"
+import { BOOKING_REQUEST } from "@/app/utils/constants/network"
 import { useTranslations } from "next-intl"
 
 type Props = {
@@ -18,19 +19,23 @@ function BookingCard({ booking }: Props) {
 
     const [processRequest, setProcessRequest] = useState(false)
 
-    const showNotification = (statusCode: number) => {
+    const showNotification = (statusMessage: string) => {
         let type: NotificationType = "error"
         let message: string
         let description = t("notification.description", { title: booking.title, time: booking.time })
 
-        switch (statusCode) {
-            case 200:
+        switch (statusMessage) {
+            case BOOKING_REQUEST.SUCCESSFUL:
                 type = "success"
                 message = t("notification.success.message")
                 break
-            case 400:
+            case BOOKING_REQUEST.ALREADY_BOOKED:
                 type = "warning"
-                message = t("notification.warning.message")
+                message = t("notification.warning.isBooked.message")
+                break
+            case BOOKING_REQUEST.SUBSCRIPTION_EXPIRED:
+                type = "warning"
+                message = t("notification.warning.noSubscription.message")
                 break
                     
             default:
@@ -48,10 +53,10 @@ function BookingCard({ booking }: Props) {
     const handleBookingRequest = async (booking: WodClassesProps) => {
         setProcessRequest(true)
 
-        const statusCode = await bookClass({ classId: booking.id, classHour: booking.hour })
+        const statusMessage = await bookClass({ classId: booking.id, classHour: booking.hour })
         
         setProcessRequest(false)
-        showNotification(statusCode)
+        showNotification(statusMessage)
     }
 
     return (
