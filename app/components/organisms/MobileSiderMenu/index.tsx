@@ -36,25 +36,27 @@ function MobileSiderMenu({ classNames }: Props) {
         },
       }}
     >
+      <>
+        <Flex justify="center" hidden>
+          <Button icon={<MenuOutlined />}
+            shape="default"
+            onClick={() => setShowMenu(!showMenu)}
+            className={classNames}
+          />
+        </Flex>
 
-      <Flex justify="center" hidden>
-        <Button icon={<MenuOutlined />}
-          shape="default"
-          onClick={() => setShowMenu(!showMenu)}
-          className={classNames}
-        />
-      </Flex>
+        <Drawer
+          placement="left"
+          width={250}
+          closeIcon={<ArrowLeftOutlined  />}
+          title={<Logo/>}
+          open={showMenu}
+          onClose={() => setShowMenu(false)}
+        >
+            <NavigationBar onSelect={() => setShowMenu(false)}/>
+        </Drawer>
+      </>
 
-      <Drawer
-        placement="left"
-        width={250}
-        closeIcon={<ArrowLeftOutlined  />}
-        title={<Logo/>}
-        open={showMenu}
-        onClose={() => setShowMenu(false)}
-      >
-          <NavigationBar onSelect={() => setShowMenu(false)}/>
-      </Drawer>
     </ConfigProvider>
   )
 }

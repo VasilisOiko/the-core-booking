@@ -95,9 +95,10 @@ const LoginForm = () => {
                 { type: "email", message:emailValidationMessage}
               ]}>
               <Input
-                type="email"
-                placeholder={RawLocalizedText("login.email.placeholder")}
                 id="email"
+                type="email"
+                size="large"
+                placeholder={RawLocalizedText("login.email.placeholder")}
                 required={true}
                 prefix={
                   <HiOutlineAtSymbol className={"h-6 w-6 stroke-blue-zodiac stroke-2"} />
@@ -110,6 +111,7 @@ const LoginForm = () => {
               <Input.Password
                 id="password"
                 type="password"
+                size="large"
                 placeholder={RawLocalizedText("login.password.placeholder")}
                 visibilityToggle={true}                
                 prefix={
@@ -119,7 +121,7 @@ const LoginForm = () => {
           </Col>
           <Col>
             <Form.Item>
-              <Button type="primary" onClick={form.submit} loading={loading}>
+              <Button type="primary" size="large" onClick={form.submit} loading={loading}>
                 <LocalizedText id="login.button.title" />
               </Button>
             </Form.Item>

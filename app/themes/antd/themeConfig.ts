@@ -2,12 +2,30 @@ import type { ThemeConfig } from "antd"
 
 const theme: ThemeConfig = {
     token: {
-        fontSize: 16,
-        colorPrimary: "#1890ff",
-        colorTextHeading: "#45a099",
-        borderRadius: 8,
+        // seed tokens
+        colorBgBase: "#FFFFFF",
+        colorPrimary: "#1E90FF",
+        colorTextBase: "#000000",
+        colorSuccess: "#32A852",
+        colorWarning: "#FFD700",
+        colorError: "#B8132B",
+        colorInfo: "#1E90FF",
+        colorLink: "#B8132B",
 
-        colorTextPlaceholder: "#45a099",
+        // map tokens
+        colorBgContainer: "#F2F2F2",
+        colorBorder: "#E5E5E5",
+        colorTextSecondary: "#333333",
+        colorText: "#000000",
+        colorLinkHover: "#D9534F",
+        
+        // aliasTokens
+        colorTextHeading: "#1C3B4D",
+        colorTextPlaceholder: "#B5B5B5",
+
+        fontSize: 16,
+        borderRadius: 20,
+        borderRadiusSM: 14,
 
         screenXS: 480,
         screenXSMax: 575,
@@ -34,6 +52,22 @@ const theme: ThemeConfig = {
 
     },
     components: {
+        Button: {
+            colorPrimary: "#1E90FF",
+            colorPrimaryHover: "#137fb9",
+        },
+        Card: {
+            colorBgContainer: "#FFFFFF",
+            colorBorder: "#E5E5E5",     
+        },
+        Typography: {
+            colorTextHeading: "#000000",
+            colorText: "#333333",       
+        },
+        Input: {
+            activeBorderColor: "#1E90FF",
+            hoverBorderColor: "#137fb9",
+        },
         Segmented: {
             trackPadding: 4,
             controlHeight: 50,
@@ -41,13 +75,18 @@ const theme: ThemeConfig = {
             borderRadius: 11
         },
         Menu: {
-            // darkPopupBg: "#252525",
-            darkItemBg: "#001529",
+            darkItemSelectedBg: "#2A4158", 
+            darkItemBg: "#3B536D",
+            darkItemColor: "#E5E5E5",
+            darkItemHoverBg: "#243B53",
+            darkItemHoverColor: "#FFFFFF",
         },
         Layout: {
-            headerBg: "#001529",
-            siderBg: "#001529",
-            bodyBg: "#252525",
+            headerBg: "#1C2B3A",
+            siderBg: "#3B536D",
+            triggerBg: "#1C2B3A",
+            triggerColor: "#E5E5E5",
+            bodyBg: "#F5F5F5",
         }
     },
 }

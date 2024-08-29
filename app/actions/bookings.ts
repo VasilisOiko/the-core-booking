@@ -20,6 +20,8 @@ const bookClass = async ({ classId, classHour }: { classId: string, classHour: n
 
     revalidateTag(REVALIDATE_TAG.ATHLETE)
 
+    // TODO: create custom constants for responses
+
     try {
         const response = await bookWorkoutClass({ classId, classHour })
 

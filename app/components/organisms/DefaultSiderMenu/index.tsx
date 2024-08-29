@@ -9,6 +9,7 @@ function DefaultSiderMenu({ className }: Props) {
     const Logo = () =>{
         return (
             <Image
+                className="p-2 mt-1 ml-4"
                 src={crossfitLogo.src}
                 alt="crossfit logo"
                 preview={false}

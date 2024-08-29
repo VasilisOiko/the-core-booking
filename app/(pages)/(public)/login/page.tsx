@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic"
-import { Flex } from "@/app/components"
+import { Flex, Card } from "@/app/components"
 import Loading from "@/app/(pages)/loading"
 
 const LoginForm = dynamic(() => import("@/app/components/organisms/LoginForm"), {
@@ -10,11 +10,13 @@ const page = () => {
 
   return (
     <Flex
-      className="h-screen"
+      className="h-screen bg-[#3B536D]"
       justify="center"
       align="center"
     >
+      <Card>
         <LoginForm/>
+      </Card>
     </Flex>
   )
 }
