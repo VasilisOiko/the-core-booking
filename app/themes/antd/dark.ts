@@ -1,4 +1,4 @@
-import type { ThemeConfig } from "antd";
+import type { ThemeConfig } from "antd"
 
 const darkTheme: ThemeConfig = {
     token: {
@@ -88,6 +88,6 @@ const darkTheme: ThemeConfig = {
             bodyBg: "#202020", // Slightly lighter dark gray for body
         }
     },
-};
+}
 
-export default darkTheme;
+export default darkTheme

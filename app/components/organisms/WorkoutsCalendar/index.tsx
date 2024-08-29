@@ -18,7 +18,7 @@ function WorkoutCalendar({workouts}: Props) {
     const workoutMaxDate = dayjs()
 
 
-    const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
+    const cellRender: CalendarProps<Dayjs>["cellRender"] = (current, info) => {
 
         if(info.type !== "date") {
             return null
