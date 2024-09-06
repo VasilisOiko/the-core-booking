@@ -10,7 +10,7 @@ type NotificationType = "success" | "warning" | "error"
 // TODO: after change clear form and close drawer
 // TODO: rule the new password should contain a number and a symbol
 
-function changePasswordForm() {
+function ChangePasswordForm() {
 
     const [formInstance] = Form.useForm()
 
@@ -153,4 +153,4 @@ function changePasswordForm() {
   )
 }
 
-export default changePasswordForm
+export default ChangePasswordForm
