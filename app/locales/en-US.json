@@ -73,7 +73,14 @@
   "bookings": {
     "page": {
       "label": "Bookings",
-      "title": "Bookings" 
+      "title": "Bookings" ,
+
+      "noBookingsView": {
+        "result": {
+          "title": "There are no classes available at the moment",
+          "subtitle": "Try again later"
+        }
+      }
     },
     "card": {
       "description": "Availability: {booked} / {capacity}",

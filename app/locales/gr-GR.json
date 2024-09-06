@@ -73,7 +73,14 @@
   "bookings": {
     "page": {
       "label": "Κρατήσεις",
-      "title": "Κρατήσεις" 
+      "title": "Κρατήσεις",
+
+      "noBookingsView": {
+        "result": {
+          "title": "Δεν υπάρχουν διαθέσιμα τμήματα αυτή τη στιγμή",
+          "subtitle": "Δοκιμάστε ξανά αργότερα"
+          }
+        }
     },
     "card": {
       "description": "Διαθεσιμότητα: {booked} / {capacity}",
