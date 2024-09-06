@@ -10,7 +10,7 @@ const hasLanguageCookie = () => {
 
 const setLanguage = async (language: string) => {
     try {
-        cookies().set("language", language, { secure: true, sameSite: "strict" })
+        cookies().set("language", language, { secure: true, sameSite: "strict", maxAge: 60 * 60 * 24 * 30 })
     } catch (error) {
         console.error("language cookie: ", error)
     }
