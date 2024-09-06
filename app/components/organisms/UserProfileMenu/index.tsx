@@ -16,7 +16,7 @@ import { Suspense, useEffect, useState } from "react"
 function UserProfileMenu() {
 
     const [athlete, setAthlete] = useState<AthleteProps>()
-    const [drawerVisibility, setDrawerVisibility] = useState(false)
+    const [personalDetailsDrawerVisibility, setPersonalDetailsDrawerVisibility] = useState(false)
 
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
@@ -37,12 +37,12 @@ function UserProfileMenu() {
         }
     ]
 
-    const showDrawer = () => {
-        setDrawerVisibility(true)
+    const showPersonalDetailsDrawer = () => {
+        setPersonalDetailsDrawerVisibility(true)
     }
     
-    const closeDrawer = () => {
-        setDrawerVisibility(false)
+    const closePersonalDetailsDrawer = () => {
+        setPersonalDetailsDrawerVisibility(false)
     }
 
     const handleItemClick = async ({ key }: {key: string}) => {
@@ -50,7 +50,7 @@ function UserProfileMenu() {
 
         switch (key) {
             case USER_MENU_ITEM_KEYS.PERSONAL_DETAILS:
-                showDrawer()
+                showPersonalDetailsDrawer()
                 break
 
             case USER_MENU_ITEM_KEYS.CHANGE_PASSWORD:
@@ -105,7 +105,7 @@ function UserProfileMenu() {
             
             </Dropdown>
  
-            <Drawer placement="top" onClose={closeDrawer} open={drawerVisibility}>
+            <Drawer placement="top" onClose={closePersonalDetailsDrawer} open={personalDetailsDrawerVisibility}>
                 {
                     !athlete ?
                     <PersonalDetailsDescriptionsSkeleton/>
