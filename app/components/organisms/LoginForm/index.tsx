@@ -18,6 +18,9 @@ import { useRouter } from "next/navigation"
 import { login } from "@/app/actions/authentication"
 import { REQUEST } from "@/app/utils/constants/network"
 
+// TODO: refactor size for input as it can be on form element
+// TODO: refactor password input as inputPassword from antd
+
 const LoginForm = () => {
 
   const [loading, setLoading] = useState(false)

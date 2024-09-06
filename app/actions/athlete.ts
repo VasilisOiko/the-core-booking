@@ -1,7 +1,7 @@
-import { fetchAthlete } from "../services/athlete"
+"use server"
+
+import { fetchAthlete, requestChangePassword } from "../services/athlete"
 import { AthletePastBookingsProps, AthleteProps } from "../types/athlete"
-
-
 
 const getAthlete = async (): Promise<AthleteProps> => {
 
@@ -38,4 +38,11 @@ const getAthletePastBookings = async (): Promise<AthletePastBookingsProps> => {
     }
 }
 
-export { getAthlete, getAthletePastBookings }
+const changePassword = async (oldPassword: string, newPassword: string): Promise<boolean | string> => {
+
+    const response = await requestChangePassword(oldPassword, newPassword)
+
+    return response.data
+}
+
+export { getAthlete, getAthletePastBookings, changePassword }

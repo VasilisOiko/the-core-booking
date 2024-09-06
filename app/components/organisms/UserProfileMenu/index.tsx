@@ -1,6 +1,6 @@
 "use client"
 
-import { Dropdown, Button, Avatar, Menu, Drawer, Text, Skeleton, PersonalDetailsDescriptions, SkeletonAvatar, PersonalDetailsDescriptionsSkeleton } from "@/app/components"
+import { Dropdown, Button, Avatar, Menu, Drawer, Text, Skeleton, PersonalDetailsDescriptions, SkeletonAvatar, PersonalDetailsDescriptionsSkeleton, ChangePasswordForm } from "@/app/components"
 import { MenuProps } from "antd"
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons"
 import { RawLocalizedText } from "@/app/locales"
@@ -17,6 +17,7 @@ function UserProfileMenu() {
 
     const [athlete, setAthlete] = useState<AthleteProps>()
     const [personalDetailsDrawerVisibility, setPersonalDetailsDrawerVisibility] = useState(false)
+    const [changePasswordDrawerVisibility, setChangePasswordDrawerVisibility] = useState(false)
 
     type MenuItem = Required<MenuProps>["items"][number]
     const items: MenuItem[] = [
@@ -45,6 +46,14 @@ function UserProfileMenu() {
         setPersonalDetailsDrawerVisibility(false)
     }
 
+    const showChangePasswordDrawer = () => {
+        setChangePasswordDrawerVisibility(true)
+    }
+    
+    const closeChangePasswordDrawer = () => {
+        setChangePasswordDrawerVisibility(false)
+    }
+
     const handleItemClick = async ({ key }: {key: string}) => {
         console.log("item clicked: ", key)
 
@@ -54,7 +63,7 @@ function UserProfileMenu() {
                 break
 
             case USER_MENU_ITEM_KEYS.CHANGE_PASSWORD:
-                
+                showChangePasswordDrawer()
                 break
 
             case USER_MENU_ITEM_KEYS.LOG_OUT:
@@ -102,7 +111,6 @@ function UserProfileMenu() {
                     }
                 >
                 </Button>
-            
             </Dropdown>
  
             <Drawer placement="top" onClose={closePersonalDetailsDrawer} open={personalDetailsDrawerVisibility}>
@@ -113,6 +121,10 @@ function UserProfileMenu() {
                     <PersonalDetailsDescriptions athlete={athlete} />
 
                 }
+            </Drawer> 
+            
+            <Drawer placement="right" onClose={closeChangePasswordDrawer} open={changePasswordDrawerVisibility}>
+                <ChangePasswordForm />
             </Drawer> 
         </>
     )

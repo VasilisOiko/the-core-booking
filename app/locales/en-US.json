@@ -111,12 +111,71 @@
   },
   
   "userProfileMenu": {
+
     "PersonalDetails": {
       "label": "Personal Details"
     },
+
     "changePassword": {
-      "label": "Change Password"
+      "label": "Change Password",
+
+      "title": "Change Password",
+
+      "form": {
+
+        "oldPassword": {
+          "label": "Old Password"
+        },
+
+        "newPassword": {
+          "label": "New Password"
+        },
+
+        "confirmNewPassword": {
+          "label": "Confirm New Password"
+        },
+
+        "button": {
+          "label": "Change Password"
+        },
+
+        "validationMessages": {
+          "oldPassword": {
+            "required": "Old password must be filled"
+          },
+          "newPassword": {
+            "required": "new password cannot be empty"
+          },
+          "confirmPassword": {
+            "required": "Confirm password cannot be empty",
+            "match": "New and confirm passwords do not match"
+          }
+        },
+
+        "notification": {
+          "success": {
+            "message": "Password changed successfully",
+            "description": "Your password was changed successfully"
+          },
+          "warning": {
+            "invalidOldPassword": {
+              "message": "Could not change password",
+              "description": "Old password is incorrect"
+            },
+            "invalidNewPassword": {
+              "message": "Could not change password",
+              "description": "New password should contain at least a number and a symbol"
+            }
+          },
+          "error": {
+            "message": "Unknown error",
+            "description": "An unknown error has occurred, please try again later"
+          }
+        }
+
+      }
     },
+
     "logOut": {
       "label": "Log Out"
     }

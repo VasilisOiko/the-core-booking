@@ -1,7 +1,7 @@
 import axios from "axios"
 import { getToken } from "../actions/authentication"
 import { REVALIDATE_TAG } from "../utils/constants/network"
-import { authURL, clientURL } from "./apiUrls"
+import { authURL, changePasswordURL, clientURL } from "./apiUrls"
 
 type loginProps = {
     username: string
@@ -58,4 +58,33 @@ const fetchAthlete = async () => {
       }
 }
 
-export { fetchToken, fetchAthlete }
+const requestChangePassword = async (oldPassword: string, newPassword: string) => {
+
+    const token = await getToken()
+
+    try {
+      const response = await fetch(changePasswordURL, {
+        method: "PUT",
+        "headers": {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          oldPassword,
+          newPassword
+        }),
+      })
+
+      const data = await response.json()
+
+      return { status: response.status, data}
+      
+    } catch (error: any) {
+
+      console.error(`Error fetching client: ${error.message}`)
+
+      return { status: 417, data: {}}
+    }
+}
+
+export { fetchToken, fetchAthlete, requestChangePassword }

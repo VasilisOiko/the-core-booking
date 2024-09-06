@@ -111,12 +111,71 @@
   },
 
   "userProfileMenu": {
+
     "PersonalDetails": {
       "label": "Προφίλ χρήστη"
     },
+
     "changePassword": {
-      "label": "Αλλαγή κωδικού"
+      "label": "Αλλαγή κωδικού",
+
+      "title": "Αλλαγή κωδικού",
+
+      "form": {
+
+        "oldPassword": {
+          "label": "Τρέχων Κωδικός"
+        },
+
+        "newPassword": {
+          "label": "Νέος Κωδικός"
+        },
+
+        "confirmNewPassword": {
+          "label": "Επιβεβαίωση Κωδικού"
+        },
+
+        "button": {
+          "label": "Αλλαγή Κωδικού"
+        },
+
+        "validationMessages": {
+          "oldPassword": {
+            "required": "Ο τρέχων κωδικός πρέπει να συμπληρωθεί"
+          },
+          "newPassword": {
+            "required": "Ο νέος κωδικός πρέπει να συμπληρωθεί"
+          },
+          "confirmPassword": {
+            "required": "Ο Κωδικός επιβαιβέωσης πρέπει να συμπληρωθεί",
+            "match": "Ο κωδικός δεν ταιριάζει με τον νέο κωδικό"
+          }
+        },
+
+        "notification": {
+          "success": {
+            "message": "Η αλλαγή ολοκληρώθηκε",
+            "description": "Ο Κωδικός πρόσβασης άλλαξε με επιτυχία"
+          },
+          "warning": {
+            "invalidOldPassword": {
+              "message": "Η αλλαγή δεν πραγματοποιήθηκε",
+              "description": "Ο τρέχων κωδικός είναι λανθασμένος"
+            },
+            "invalidNewPassword": {
+              "message": "Η αλλαγή δεν πραγματοποιήθηκε",
+              "description": "Ο Κωδικός πρέπει να περιέχει τουλάχιστον ένα αριθμό και ένα σύμβολο"
+            }
+          },
+          "error": {
+            "message": "Άγνωστο σφάλμα",
+            "description": "Παρουσιάστηκε ένα άγνωστο σφάλμα, παρακαλώ δοκιμάστε ξανά αργότερα"
+          }
+        }
+
+      }
     },
+
     "logOut": {
       "label": "Αποσύνδεση"
     }

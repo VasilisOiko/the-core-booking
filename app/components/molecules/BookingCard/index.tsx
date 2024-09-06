@@ -17,7 +17,7 @@ function BookingCard({ booking }: Props) {
 
     const [api, contextHolder] = notification.useNotification()
 
-    const [processRequest, setProcessRequest] = useState(false)
+    const [processingRequest, setProcessingRequest] = useState(false)
 
     const showNotification = (statusMessage: string) => {
         let type: NotificationType = "error"
@@ -51,11 +51,11 @@ function BookingCard({ booking }: Props) {
     }
 
     const handleBookingRequest = async (booking: WodClassesProps) => {
-        setProcessRequest(true)
+        setProcessingRequest(true)
 
         const statusMessage = await bookClass({ classId: booking.id, classHour: booking.hour })
         
-        setProcessRequest(false)
+        setProcessingRequest(false)
         showNotification(statusMessage)
     }
 
@@ -73,7 +73,7 @@ function BookingCard({ booking }: Props) {
                 cancelText={t("popconfirm.no")}
                 onConfirm={ () => handleBookingRequest(booking) }
                 >
-                    <Button key={booking.id} type="text" loading={processRequest} block className="h-max">
+                    <Button key={booking.id} type="text" loading={processingRequest} block className="h-max">
                         {t("card.button")}
                     </Button>
                 </Popconfirm>

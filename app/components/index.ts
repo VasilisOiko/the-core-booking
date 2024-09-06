@@ -16,6 +16,7 @@ import BookingPanel from "./organisms/BookingPanel"
 import BookingsCardsGrid from "./organisms/BookingsCardsGrid"
 import CalendarWorkoutGroupItems from "./organisms/CalendarWorkoutGroupItems"
 import CalendarWorkoutItem from "./organisms/CalendarWorkoutItem"
+import ChangePasswordForm from "./organisms/ChangePasswordForm"
 import DefaultSiderMenu from "./organisms/DefaultSiderMenu"
 import LocalesDropdown from "./organisms/LocalesDropdown"
 import LoginForm from "./organisms/LoginForm"
@@ -36,7 +37,7 @@ import { default as CardMeta } from "antd/es/card/Meta"
 import { default as ListItem } from "antd/es/list/Item"
 import CheckableTag from "antd/es/tag/CheckableTag"
 import Content from "antd/es/layout/layout"
-import Header from "./templates/Header/antd"
+import Header from "./templates/Header/antd" 
 import Sider from "antd/es/layout/Sider"
 import SkeletonAvatar from "antd/es/skeleton/Avatar"
 import SkeletonButton from "antd/es/skeleton/Button"
@@ -45,6 +46,7 @@ import SkeletonInput from "antd/es/skeleton/Input"
 import SkeletonNode from "antd/es/skeleton/Node"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
+import { Input } from "postcss"
 
 export {
     BookingCard,
@@ -63,6 +65,7 @@ export {
     BookingsCardsGrid,
     CalendarWorkoutGroupItems,
     CalendarWorkoutItem,
+    ChangePasswordForm,
     DefaultSiderMenu,
     LocalesDropdown,
     LoginForm,

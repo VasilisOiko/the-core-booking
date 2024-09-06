@@ -60,6 +60,10 @@ const theme: ThemeConfig = {
             colorBgContainer: "#FFFFFF",
             colorBorder: "#E5E5E5",     
         },
+        Divider: {
+            colorSplit: "#E5E5E5",
+            lineWidth: 1,
+        },
         Typography: {
             colorTextHeading: "#3B536D",
             colorText: "#333333",       
